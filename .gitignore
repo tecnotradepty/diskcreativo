@@ -1,0 +1,5 @@
+# Respaldo local de archivos antiguos (ya existen en el historial de Git)
+_archive/
+node_modules/
+.DS_Store
+Thumbs.db

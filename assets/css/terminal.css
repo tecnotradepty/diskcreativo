@@ -1,0 +1,222 @@
+/* ─── MÓDULO DEX (OS TERMINAL INTERFACE) ─── */
+.dex-container {
+    flex: 1; 
+    padding: 120px 4vw 60px 4vw; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    position: relative; 
+    z-index: 10;
+}
+
+.os-window {
+    width: 100%; 
+    max-width: 900px; 
+    background: rgba(5, 5, 5, 0.85);
+    backdrop-filter: blur(20px); 
+    -webkit-backdrop-filter: blur(20px);
+    border: var(--hairline-dark); 
+    border-radius: 8px; 
+    box-shadow: 0 30px 60px rgba(0,0,0,0.9);
+    overflow: hidden;
+}
+
+.os-titlebar {
+    background: #111; 
+    padding: 12px 20px; 
+    display: flex; 
+    align-items: center;
+    border-bottom: var(--hairline-dark); 
+    position: relative;
+}
+
+.os-dots { 
+    display: flex; 
+    gap: 8px; 
+}
+.dot { 
+    width: 12px; 
+    height: 12px; 
+    border-radius: 50%; 
+}
+.dot.red { background: #FF5F56; } 
+.dot.yellow { background: #FFBD2E; } 
+.dot.green { background: #27C93F; }
+
+.os-title {
+    position: absolute; 
+    left: 50%; 
+    transform: translateX(-50%);
+    font-family: var(--font-code); 
+    font-size: 0.75rem; 
+    color: var(--text-muted);
+    letter-spacing: 1px;
+}
+
+.os-content { 
+    padding: 3rem 4vw; 
+    font-family: var(--font-code); 
+}
+
+.terminal-intro { 
+    margin-bottom: 3rem; 
+    color: var(--text-muted); 
+    line-height: 1.6; 
+    font-size: 0.9rem; 
+}
+.terminal-intro p { 
+    margin-bottom: 0.5rem; 
+}
+.sys-success { 
+    color: var(--accent-neon); 
+}
+
+.audit-form { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 4rem; 
+}
+
+.form-block { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 2rem; 
+}
+.block-header {
+    color: #fff; 
+    font-size: 1rem; 
+    font-weight: 600; 
+    text-transform: uppercase;
+    letter-spacing: 2px; 
+    border-bottom: var(--hairline); 
+    padding-bottom: 0.5rem;
+    display: inline-block; 
+    align-self: flex-start; 
+    margin-bottom: 0.5rem;
+}
+.block-header::before { 
+    content: ">> "; 
+    color: var(--brand-purple); 
+}
+
+.form-group { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 0.8rem; 
+}
+.form-label { 
+    font-size: 0.85rem; 
+    color: var(--text-muted); 
+}
+.prompt-symbol { 
+    color: var(--accent-neon); 
+    margin-right: 8px; 
+}
+
+.terminal-input {
+    width: 100%; 
+    background: transparent; 
+    border: none; 
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    color: #fff; 
+    font-family: var(--font-code); 
+    font-size: 1rem; 
+    padding: 0.5rem 0;
+    transition: border-color 0.3s;
+}
+.terminal-input:focus { 
+    outline: none; 
+    border-bottom-color: var(--accent-neon); 
+}
+.terminal-input::placeholder { 
+    color: rgba(255,255,255,0.15); 
+}
+
+textarea.terminal-input { 
+    resize: vertical; 
+    min-height: 80px; 
+    line-height: 1.5; 
+}
+
+select.terminal-input {
+    appearance: none; 
+    -webkit-appearance: none; 
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236E6E7A' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat; 
+    background-position: right 0px center; 
+    padding-right: 20px;
+}
+select.terminal-input option { 
+    background: var(--bg-secondary); 
+    color: #fff; 
+    font-family: var(--font-sans); 
+}
+
+/* EXECUTE BUTTON */
+.terminal-submit-wrapper { 
+    margin-top: 2rem; 
+    display: flex; 
+    justify-content: flex-end; 
+}
+.btn-execute {
+    background: transparent; 
+    color: var(--accent-neon); 
+    border: 1px solid var(--accent-neon);
+    padding: 1rem 2rem; 
+    font-family: var(--font-code); 
+    font-size: 0.9rem; 
+    font-weight: 600;
+    text-transform: uppercase; 
+    letter-spacing: 2px; 
+    cursor: pointer; 
+    transition: all 0.3s;
+}
+.btn-execute:hover { 
+    background: var(--accent-neon); 
+    color: #000; 
+    box-shadow: 0 0 20px rgba(0, 255, 102, 0.4); 
+}
+.btn-execute::before { content: "[ "; }
+.btn-execute::after { content: " ]"; }
+
+/* ─── RESPONSIVE MÓVIL ─── */
+@media (max-width: 900px) {
+    .dex-container { 
+        padding: 90px 1.5rem 40px 1.5rem; 
+    }
+    .os-window { 
+        border-radius: 4px; 
+    }
+    .os-titlebar { 
+        padding: 10px 15px; 
+    }
+    .os-title { 
+        font-size: 0.65rem; 
+    }
+    .os-content { 
+        padding: 2rem 1.5rem; 
+    }
+    
+    .audit-form { 
+        gap: 3rem; 
+    }
+    .block-header { 
+        font-size: 0.9rem; 
+    }
+    .form-label { 
+        font-size: 0.75rem; 
+    }
+    .terminal-input { 
+        font-size: 0.9rem; 
+    }
+    .terminal-submit-wrapper { 
+        justify-content: center; 
+    }
+    .btn-execute { 
+        width: 100%; 
+        padding: 1rem; 
+        font-size: 0.8rem; 
+        text-align: center; 
+    }
+}

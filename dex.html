@@ -4,197 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Disk Creativo | Compilar Proyecto</title>
+    <meta name="description" content="Compilador y auditoría interactiva de proyectos B2B de Disk Creativo. Diagnóstico operativo, definición de alcance y cotización directa.">
+    <meta name="theme-color" content="#050505">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/images/brand/logo-nav.png">
     
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,700&display=swap" rel="stylesheet">
 
-    <style>
-        :root {
-            /* Variables Core */
-            --bg-primary: #050505;
-            --bg-secondary: #0A0A0C;
-            --brand-purple: #6B00FF;
-            --accent-neon: #00FF66;
-            --text-main: #EAE9E4; 
-            --text-muted: rgba(234, 233, 228, 0.6);
-            --hairline: 1px solid rgba(255, 255, 255, 0.1);
-            --hairline-dark: 1px solid rgba(255, 255, 255, 0.05);
-            --line-solid-white: 1px solid rgba(255, 255, 255, 0.4);
-            
-            /* Tipografía */
-            --font-display: 'Anton', sans-serif;
-            --font-serif: 'Playfair Display', serif;
-            --font-sans: 'Inter', sans-serif;
-            --font-code: 'Courier New', Courier, monospace;
-        }
-
-        html, body { overflow-x: hidden; max-width: 100%; width: 100%; }
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-
-        body {
-            color: var(--text-main); font-family: var(--font-sans);
-            -webkit-font-smoothing: antialiased; background-color: var(--bg-primary);
-            position: relative; min-height: 100vh; display: flex; flex-direction: column;
-        }
-
-        /* ─── LIENZO Y ESTRELLAS (HEREDADO DE INDEX) ─── */
-        .ambient-canvas {
-            position: fixed; top: -5vh; left: 0; right: 0; 
-            width: 100vw; height: 110vh; 
-            background-image: url('https://raw.githubusercontent.com/tecnotradepty/portafoliojd/27a5f1ff96e9d1b4c4a205126ccbcba5a9b57582/DIQC/file_000000006e7481fd87c722d8d1370ae9.png');
-            background-position: center center; background-size: cover; background-repeat: no-repeat;
-            background-color: var(--bg-primary); background-attachment: fixed;
-            z-index: -3; filter: brightness(0.9) saturate(1.1);
-        }
-
-        .minimal-stars { position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: -2; pointer-events: none; }
-        .minimal-stars::after {
-            content: ""; position: absolute; width: 2px; height: 2px; background: transparent;
-            box-shadow: 15vw 10vh rgba(255,255,255,0.5), 85vw 25vh rgba(255,255,255,0.3), 45vw 40vh rgba(255,255,255,0.6), 10vw 60vh rgba(255,255,255,0.4), 75vw 70vh rgba(255,255,255,0.5), 90vw 15vh rgba(255,255,255,0.2), 25vw 85vh rgba(255,255,255,0.4), 65vw 90vh rgba(255,255,255,0.3), 5vw 35vh rgba(255,255,255,0.5), 50vw 15vh rgba(255,255,255,0.2);
-            animation: slowBreathe 8s infinite alternate ease-in-out;
-        }
-        @keyframes slowBreathe { 0% { opacity: 0.4; } 100% { opacity: 0.8; } }
-
-        /* ─── NAVBAR B2B (EXACTAMENTE IGUAL A INDEX) ─── */
-        .top-navbar {
-            position: fixed; top: 0; left: 0; width: 100%; height: 70px;
-            background: rgba(5, 5, 5, 0.5); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
-            border-bottom: var(--hairline); display: flex; justify-content: space-between; align-items: center;
-            padding: 0 4vw; z-index: 2000; transition: transform 0.3s ease;
-        }
-        .navbar-brand { display: flex; align-items: center; gap: 10px; font-family: var(--font-sans); font-size: 1rem; font-weight: 600; color: #fff; letter-spacing: 2px; text-decoration: none; text-transform: uppercase; }
-        .brand-icon { height: 22px; width: auto; object-fit: contain; }
-        .navbar-links { display: flex; gap: 3rem; align-items: center; }
-        .nav-link { color: var(--text-main); text-decoration: none; font-family: var(--font-sans); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; transition: color 0.3s; }
-        .nav-link:hover { color: var(--brand-purple); }
-        .nav-btn-wa {
-            background: transparent; color: #fff; border: 1px solid rgba(255,255,255,0.3); padding: 0.5rem 1.2rem; border-radius: 50px; font-weight: 400; text-decoration: none; font-family: var(--font-sans); font-size: 0.75rem; letter-spacing: 1px; display: flex; align-items: center; gap: 8px; transition: all 0.3s; text-transform: uppercase;
-        }
-        .nav-btn-wa svg { width: 14px; height: 14px; fill: currentColor; }
-        .nav-btn-wa:hover { background: #25D366; border-color: #25D366; color: #000; }
-
-        /* ─── MÓDULO DEX (OS TERMINAL INTERFACE) ─── */
-        .dex-container {
-            flex: 1; padding: 120px 4vw 60px 4vw; display: flex; 
-            flex-direction: column; align-items: center; position: relative; z-index: 10;
-        }
-
-        .os-window {
-            width: 100%; max-width: 900px; background: rgba(5, 5, 5, 0.85);
-            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-            border: var(--hairline-dark); border-radius: 8px; box-shadow: 0 30px 60px rgba(0,0,0,0.9);
-            overflow: hidden;
-        }
-
-        .os-titlebar {
-            background: #111; padding: 12px 20px; display: flex; align-items: center;
-            border-bottom: var(--hairline-dark); position: relative;
-        }
-
-        .os-dots { display: flex; gap: 8px; }
-        .dot { width: 12px; height: 12px; border-radius: 50%; }
-        .dot.red { background: #FF5F56; } .dot.yellow { background: #FFBD2E; } .dot.green { background: #27C93F; }
-
-        .os-title {
-            position: absolute; left: 50%; transform: translateX(-50%);
-            font-family: var(--font-code); font-size: 0.75rem; color: var(--text-muted);
-            letter-spacing: 1px;
-        }
-
-        .os-content { padding: 3rem 4vw; font-family: var(--font-code); }
-
-        .terminal-intro { margin-bottom: 3rem; color: var(--text-muted); line-height: 1.6; font-size: 0.9rem; }
-        .terminal-intro p { margin-bottom: 0.5rem; }
-        .sys-success { color: var(--accent-neon); }
-
-        .audit-form { display: flex; flex-direction: column; gap: 4rem; }
-
-        .form-block { display: flex; flex-direction: column; gap: 2rem; }
-        .block-header {
-            color: #fff; font-size: 1rem; font-weight: 600; text-transform: uppercase;
-            letter-spacing: 2px; border-bottom: var(--hairline); padding-bottom: 0.5rem;
-            display: inline-block; align-self: flex-start; margin-bottom: 0.5rem;
-        }
-        .block-header::before { content: ">> "; color: var(--brand-purple); }
-
-        .form-group { display: flex; flex-direction: column; gap: 0.8rem; }
-        .form-label { font-size: 0.85rem; color: var(--text-muted); }
-        .prompt-symbol { color: var(--accent-neon); margin-right: 8px; }
-
-        .terminal-input {
-            width: 100%; background: transparent; border: none; border-bottom: 1px solid rgba(255,255,255,0.2);
-            color: #fff; font-family: var(--font-code); font-size: 1rem; padding: 0.5rem 0;
-            transition: border-color 0.3s;
-        }
-        .terminal-input:focus { outline: none; border-bottom-color: var(--accent-neon); }
-        .terminal-input::placeholder { color: rgba(255,255,255,0.15); }
-
-        textarea.terminal-input { resize: vertical; min-height: 80px; line-height: 1.5; }
-
-        select.terminal-input {
-            appearance: none; -webkit-appearance: none; cursor: pointer;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236E6E7A' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
-            background-repeat: no-repeat; background-position: right 0px center; padding-right: 20px;
-        }
-        select.terminal-input option { background: var(--bg-secondary); color: #fff; font-family: var(--font-sans); }
-
-        /* EXECUTE BUTTON */
-        .terminal-submit-wrapper { margin-top: 2rem; display: flex; justify-content: flex-end; }
-        .btn-execute {
-            background: transparent; color: var(--accent-neon); border: 1px solid var(--accent-neon);
-            padding: 1rem 2rem; font-family: var(--font-code); font-size: 0.9rem; font-weight: 600;
-            text-transform: uppercase; letter-spacing: 2px; cursor: pointer; transition: all 0.3s;
-        }
-        .btn-execute:hover { background: var(--accent-neon); color: #000; box-shadow: 0 0 20px rgba(0, 255, 102, 0.4); }
-        .btn-execute::before { content: "[ "; }
-        .btn-execute::after { content: " ]"; }
-
-        /* ─── RESPONSIVE MÓVIL ─── */
-        @media (max-width: 900px) {
-            .top-navbar { padding: 0 4vw; height: 60px; }
-            .navbar-brand { font-size: 0.75rem; gap: 4px; }
-            .navbar-brand span { display: none; } 
-            .brand-icon { height: 18px; }
-            .navbar-links { gap: 1rem; } 
-            .nav-link { font-size: 0.6rem; }
-            .nav-btn-wa { padding: 0.4rem 0.8rem; font-size: 0.6rem; gap: 4px;}
-            
-            .dex-container { padding: 90px 1.5rem 40px 1.5rem; }
-            .os-window { border-radius: 4px; }
-            .os-titlebar { padding: 10px 15px; }
-            .os-title { font-size: 0.65rem; }
-            .os-content { padding: 2rem 1.5rem; }
-            
-            .audit-form { gap: 3rem; }
-            .block-header { font-size: 0.9rem; }
-            .form-label { font-size: 0.75rem; }
-            .terminal-input { font-size: 0.9rem; }
-            .terminal-submit-wrapper { justify-content: center; }
-            .btn-execute { width: 100%; padding: 1rem; font-size: 0.8rem; text-align: center; }
-        }
-    </style>
+    <!-- Estilos Modulares -->
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/terminal.css">
 </head>
 <body>
 
+    <!-- Fondo espacial y estrellas compartidas -->
     <div class="ambient-canvas"></div>
     <div class="minimal-stars"></div>
 
+    <!-- Barra de Navegación B2B -->
     <nav class="top-navbar" id="topNavbar">
-        <a href="experimento.html" class="navbar-brand">
+        <a href="index.html" class="navbar-brand">
             DISK<span>.CREATIVO</span>
-            <img src="https://raw.githubusercontent.com/tecnotradepty/portafoliojd/ea71a2a658c405870ed1a44f792c411025c2e937/DIQC/1785538967768.png" alt="Disk Icon" class="brand-icon">
+            <img src="assets/images/brand/logo-nav.png" alt="Disk Icon" class="brand-icon">
         </a>
         <div class="navbar-links">
-            <a href="experimento.html" class="nav-link">Inicio</a>
-            <a href="dex.html" class="nav-link" style="color: var(--brand-purple);">Construye</a>
-            <a href="https://wa.me/50768529324" target="_blank" class="nav-btn-wa">
+            <a href="index.html" class="nav-link">Inicio</a>
+            <a href="dex.html" class="nav-link active">Construye</a>
+            <a href="https://wa.me/50768529324" target="_blank" rel="noopener noreferrer" class="nav-btn-wa">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>
                 WhatsApp
             </a>
         </div>
     </nav>
 
+    <!-- Ventana OS Terminal -->
     <main class="dex-container">
         <div class="os-window">
             
@@ -216,16 +63,17 @@
 
                 <form id="auditForm" class="audit-form">
                     
+                    <!-- Bloque 1: Identidad Comercial -->
                     <div class="form-block">
                         <span class="block-header">Identidad Comercial</span>
                         
                         <div class="form-group">
-                            <label class="form-label"><span class="prompt-symbol">~ $</span> Nombre del Negocio / Marca:</label>
+                            <label class="form-label" for="q_nombre"><span class="prompt-symbol">~ $</span> Nombre del Negocio / Marca:</label>
                             <input type="text" id="q_nombre" class="terminal-input" placeholder="Ingresa el nombre aquí" required>
                         </div>
 
                         <div class="form-group">
-                            <label class="form-label"><span class="prompt-symbol">~ $</span> Sector o Tipo de Negocio:</label>
+                            <label class="form-label" for="q_sector"><span class="prompt-symbol">~ $</span> Sector o Tipo de Negocio:</label>
                             <select id="q_sector" class="terminal-input" required>
                                 <option value="" disabled selected>Selecciona un sector</option>
                                 <option value="Tattoo & Body Art">Tattoo / Arte Corporal</option>
@@ -240,7 +88,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="form-label"><span class="prompt-symbol">~ $</span> Modelo de Ingresos Principal:</label>
+                            <label class="form-label" for="q_modelo"><span class="prompt-symbol">~ $</span> Modelo de Ingresos Principal:</label>
                             <select id="q_modelo" class="terminal-input" required>
                                 <option value="" disabled selected>Selecciona el modelo de negocio</option>
                                 <option value="B2B (Business to Business)">B2B (Venta a otras empresas)</option>
@@ -251,11 +99,12 @@
                         </div>
                     </div>
 
-                    <div class="form-group block">
+                    <!-- Bloque 2: Diagnóstico Operativo -->
+                    <div class="form-block">
                         <span class="block-header">Diagnóstico Operativo</span>
                         
                         <div class="form-group">
-                            <label class="form-label"><span class="prompt-symbol">~ $</span> Infraestructura Actual (Qué tienes hecho):</label>
+                            <label class="form-label" for="q_infra"><span class="prompt-symbol">~ $</span> Infraestructura Actual (Qué tienes hecho):</label>
                             <select id="q_infra" class="terminal-input" required>
                                 <option value="" disabled selected>Selecciona tu estado actual</option>
                                 <option value="Solo Redes Sociales">Solo existimos en Instagram / TikTok / Redes</option>
@@ -266,28 +115,29 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="form-label"><span class="prompt-symbol">~ $</span> Cuellos de Botella (Procesos Ineficientes):</label>
+                            <label class="form-label" for="q_falla"><span class="prompt-symbol">~ $</span> Cuellos de Botella (Procesos Ineficientes):</label>
                             <select id="q_falla" class="terminal-input" required>
                                 <option value="" disabled selected>Identifica el mayor problema actual</option>
                                 <option value="Pérdida de ventas por lentitud">Se pierden clientes por responder lento en WhatsApp / DM</option>
                                 <option value="Caos de Agendamiento">El control de citas o reservas es un dolor de cabeza manual</option>
                                 <option value="Cobros manuales">Los cobros no están automatizados, dependo de capturas de Yappy/Transferencia</option>
-                                <option value="Baja Percepción de Marca">El cliente no nos percibe \"Premium\", falta autoridad visual</option>
+                                <option value="Baja Percepción de Marca">El cliente no nos percibe "Premium", falta autoridad visual</option>
                                 <option value="Operación Fragmentada">Uso 5 plataformas distintas para vender un solo producto</option>
                             </select>
                         </div>
 
                         <div class="form-group">
-                            <label class="form-label"><span class="prompt-symbol">~ $</span> Detonante del Cambio (Por qué buscar una solución HOY):</label>
+                            <label class="form-label" for="q_detonante"><span class="prompt-symbol">~ $</span> Detonante del Cambio (Por qué buscar una solución HOY):</label>
                             <textarea id="q_detonante" class="terminal-input" placeholder="Ej: Me cansé de perder ventas en la madrugada, necesito automatizar..." required></textarea>
                         </div>
                     </div>
 
-                    <div class="form-group block">
+                    <!-- Bloque 3: Alcance y Visión -->
+                    <div class="form-block">
                         <span class="block-header">Alcance y Visión</span>
                         
                         <div class="form-group">
-                            <label class="form-label"><span class="prompt-symbol">~ $</span> Requerimiento Objetivo (Qué buscas construir):</label>
+                            <label class="form-label" for="q_objetivo"><span class="prompt-symbol">~ $</span> Requerimiento Objetivo (Qué buscas construir):</label>
                             <select id="q_objetivo" class="terminal-input" required>
                                 <option value="" disabled selected>Selecciona el módulo de software</option>
                                 <option value="Landing Page Transaccional">Landing Page Orientada a Ventas / Captura de Leads</option>
@@ -298,16 +148,17 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="form-label"><span class="prompt-symbol">~ $</span> Visión a 12-24 meses:</label>
+                            <label class="form-label" for="q_vision"><span class="prompt-symbol">~ $</span> Visión a 12-24 meses:</label>
                             <textarea id="q_vision" class="terminal-input" placeholder="¿Dónde ves a la empresa con esta nueva infraestructura?" required></textarea>
                         </div>
                     </div>
 
-                    <div class="form-group block">
+                    <!-- Bloque 4: Asignación de Capital -->
+                    <div class="form-block">
                         <span class="block-header">Asignación de Capital</span>
                         
                         <div class="form-group">
-                            <label class="form-label"><span class="prompt-symbol">~ $</span> Rango de Presupuesto Asignado (Ajuste Panamá):</label>
+                            <label class="form-label" for="q_presupuesto"><span class="prompt-symbol">~ $</span> Rango de Presupuesto Asignado (Ajuste Panamá):</label>
                             <select id="q_presupuesto" class="terminal-input" required>
                                 <option value="" disabled selected>Selecciona el capital disponible para el despliegue</option>
                                 <option value="$300 - $600 USD (MVP)">$300 - $600 USD (Despliegue Rápido / Landing Page Básica)</option>
@@ -328,65 +179,8 @@
         </div>
     </main>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Reloj de la terminal
-            const date = new Date();
-            document.getElementById('timeNode').textContent = date.toLocaleString('en-US', { weekday: 'short', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
-
-            // Navbar Scroll
-            const topNavbar = document.getElementById('topNavbar');
-            window.addEventListener('scroll', () => {
-                const scrolled = window.scrollY;
-                if(scrolled > 50) topNavbar.style.transform = 'translateY(-100%)';
-                else topNavbar.style.transform = 'translateY(0)';
-            }, { passive: true });
-
-            // Motor de compilación a WhatsApp
-            const form = document.getElementById('auditForm');
-            form.addEventListener('submit', (e) => {
-                e.preventDefault();
-
-                // Extracción de variables
-                const nombre = document.getElementById('q_nombre').value.trim();
-                const sector = document.getElementById('q_sector').value;
-                const modelo = document.getElementById('q_modelo').value;
-                const infra = document.getElementById('q_infra').value;
-                const falla = document.getElementById('q_falla').value;
-                const detonante = document.getElementById('q_detonante').value.trim();
-                const objetivo = document.getElementById('q_objetivo').value;
-                const vision = document.getElementById('q_vision').value.trim();
-                const presupuesto = document.getElementById('q_presupuesto').value;
-
-                // Formateo estricto del Payload B2B
-                const payload = `*INIT: DISK_CREATIVO_OS_AUDIT* 🚀
-----------------------------------------
-*1. IDENTIDAD COMERCIAL*
-🏢 *Negocio:* ${nombre}
-🏷️ *Sector:* ${sector}
-🔄 *Modelo:* ${modelo}
-
-*2. DIAGNÓSTICO OPERATIVO*
-🧱 *Infraestructura Actual:* ${infra}
-⚠️ *Cuello de Botella Crítico:* ${falla}
-⚡ *Detonante del Cambio:* "${detonante}"
-
-*3. ALCANCE Y VISIÓN*
-🎯 *Requerimiento:* ${objetivo}
-🔭 *Visión a Futuro:* "${vision}"
-
-*4. PARÁMETROS FINANCIEROS*
-💰 *Presupuesto Asignado:* ${presupuesto}
-----------------------------------------
-*Esperando conexión con arquitectura técnica...*`;
-
-                const encodedPayload = encodeURIComponent(payload);
-                const whatsappUrl = `https://wa.me/50768529324?text=${encodedPayload}`;
-                
-                // Ejecución de despliegue
-                window.open(whatsappUrl, '_blank');
-            });
-        });
-    </script>
+    <!-- Scripts Modulares -->
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/terminal.js"></script>
 </body>
 </html>

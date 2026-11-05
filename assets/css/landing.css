@@ -1,56 +1,54 @@
-/* ─── 03. HERO SECTION ─── */
-.hero-section { 
-    position: relative; 
-    min-height: 100vh; 
-    min-height: 100dvh; 
-    display: flex; 
-    flex-direction: column; 
-    align-items: center; 
-    justify-content: center; 
-    padding: 2vw; 
-    padding-top: 70px; 
-    z-index: 10; 
+/* ─── 03. HERO SECTION (DISTRIBUCIÓN ASIMÉTRICA & COMPACTA) ─── */
+.hero-section.hero-compact {
+    position: relative;
+    min-height: 65vh;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(100px, 14vh, 135px) 4vw clamp(40px, 6vh, 60px) 4vw;
+    z-index: 10;
 }
 
-.hero-sandwich { 
-    position: relative; 
-    display: flex; 
-    flex-direction: column; 
-    align-items: center; 
-    width: 100%; 
-    max-width: 100%; 
-    z-index: 10; 
+.hero-split-container {
+    width: 100%;
+    max-width: 1320px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    align-items: center;
+    gap: clamp(2rem, 5vw, 5rem);
+    position: relative;
+    z-index: 10;
 }
 
-.sandwich-node { 
-    position: relative; 
-    display: flex; 
-    flex-direction: column; 
-    align-items: center; 
-    width: 100%; 
+/* Columna Izquierda: Información & Titular */
+.hero-text-col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    position: relative;
+    z-index: 12;
 }
 
-.hero-giant-text {
-    font-family: var(--font-display); 
-    font-size: clamp(3rem, 15vw, 22rem); 
-    line-height: 0.85; 
-    text-align: center; 
-    margin: 0; 
+.hero-compact-title {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 6.5vw, 7.2rem);
+    line-height: 0.86;
     text-transform: uppercase;
-    display: flex; 
-    flex-direction: column; 
-    gap: clamp(1rem, 4vh, 4rem); 
-    letter-spacing: -2px; 
-    width: 100%; 
-    position: relative; 
+    display: flex;
+    flex-direction: column;
+    gap: clamp(0.3rem, 1vh, 0.8rem);
+    margin: 0 0 1.5rem 0;
+    letter-spacing: -1px;
+    width: 100%;
 }
 
-.hero-giant-text div { 
-    display: flex; 
-    justify-content: center; 
-    align-items: center; 
-    gap: 0.2vw; 
-    flex-wrap: nowrap; 
+.hero-compact-title .title-line {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.08em;
 }
 
 /* MATERIALES TIPOGRÁFICOS - MATEMÁTICA 3D PROPORCIONAL (EM UNITS) */
@@ -97,61 +95,14 @@
 .overlap-i { margin-left: -0.08em; }
 .overlap-t { z-index: 25 !important; position: relative; }
 
-/* Aro Orbital Futurista alrededor del Disco */
-.orbital-hud-ring {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: clamp(160px, 24vw, 410px);
-    height: clamp(160px, 24vw, 410px);
-    border: 1px dashed rgba(255, 255, 255, 0.25);
-    border-radius: 50%;
-    z-index: 4;
-    pointer-events: none;
-    animation: spinOrbit 45s linear infinite;
-}
-
-.orbital-hud-ring::before {
-    content: "";
-    position: absolute;
-    inset: -14px;
-    border-radius: 50%;
-    border: 1px solid rgba(112, 0, 255, 0.32);
-    border-top-color: var(--accent-neon);
-    border-bottom-color: var(--accent-cyan);
-}
-
-@keyframes spinOrbit {
-    0% { transform: translate(-50%, -50%) rotate(0deg); }
-    100% { transform: translate(-50%, -50%) rotate(360deg); }
-}
-
-.giant-transparent-logo {
-    position: absolute; 
-    top: 50%; 
-    left: 50%; 
-    transform: translate(-50%, -50%); 
-    width: clamp(120px, 18vw, 320px); 
-    z-index: 5; 
-    pointer-events: none;
-    filter: drop-shadow(0px 0.1em 0.1em rgba(0, 0, 0, 0.95));
-    animation: mechanicalFloat 10s ease-in-out infinite; 
-}
-
-@keyframes mechanicalFloat { 
-    0%, 100% { transform: translate(-50%, -50%); } 
-    50% { transform: translate(-50%, -52%); } 
-}
-
 @keyframes floatLetter { 
     0%, 100% { transform: translateY(0px); } 
-    50% { transform: translateY(-12px); } 
+    50% { transform: translateY(-8px); } 
 }
 
 .float-anim { 
     display: inline-block; 
-    animation: floatLetter 9s ease-in-out infinite; 
+    animation: floatLetter 8s ease-in-out infinite; 
 }
 .delay-1 { animation-delay: 0s; } 
 .delay-2 { animation-delay: 1.5s; } 
@@ -160,30 +111,113 @@
 .delay-5 { animation-delay: 6s; } 
 .delay-6 { animation-delay: 7.5s; }
 
-/* REPRODUCTOR NUEVO PNG (NODO CTA) */
-.hero-reproductor-btn {
-    display: block; 
-    margin-top: 2rem; 
-    width: 90%; 
-    max-width: 400px;
-    position: relative; 
-    z-index: 20; 
-    cursor: pointer;
-    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), filter 0.2s;
-    filter: drop-shadow(0px 15px 20px rgba(0,0,0,0.8));
+.hero-compact-statement {
+    max-width: 580px;
+    font-family: var(--font-sans);
+    font-size: clamp(0.95rem, 1.2vw, 1.12rem);
+    line-height: 1.6;
+    color: rgba(242, 242, 245, 0.8);
+    font-weight: 300;
+    margin-bottom: 2rem;
+    text-align: left;
 }
-.hero-reproductor-btn img { 
-    width: 100%; 
-    height: auto; 
-    display: block; 
+
+.hero-compact-statement em {
+    font-family: var(--font-serif);
+    font-style: italic;
+    color: #FFFFFF;
+    font-size: 1.08em;
 }
-.hero-reproductor-btn:hover { 
-    transform: translateY(4px); 
-    filter: drop-shadow(0px 8px 10px rgba(0,0,0,0.9)); 
+
+.hero-compact-statement strong {
+    color: #FFFFFF;
+    font-weight: 600;
 }
-.hero-reproductor-btn:active { 
-    transform: translateY(10px); 
-    filter: drop-shadow(0px 2px 3px rgba(0,0,0,0.95)); 
+
+.hero-actions-row {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    flex-wrap: wrap;
+}
+
+.hero-action-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #FFFFFF;
+    color: #000000;
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 0.85rem;
+    padding: 0.95rem 1.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    text-decoration: none;
+    border: 1px solid #FFFFFF;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 10px 25px rgba(255, 255, 255, 0.12);
+}
+
+.hero-action-primary svg {
+    width: 16px;
+    height: 16px;
+    transition: transform 0.3s;
+}
+
+.hero-action-primary:hover {
+    background: var(--accent-neon);
+    border-color: var(--accent-neon);
+    color: #000;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(0, 255, 102, 0.25);
+}
+.hero-action-primary:hover svg {
+    transform: translateX(4px);
+}
+
+.hero-action-secondary {
+    font-family: var(--font-code);
+    font-size: 0.78rem;
+    letter-spacing: 1.5px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 0.95rem 1.4rem;
+    border: var(--hairline);
+    background: rgba(255, 255, 255, 0.02);
+    transition: all 0.3s;
+}
+.hero-action-secondary:hover {
+    color: #FFF;
+    border-color: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.06);
+}
+
+/* Columna Derecha: Tótem Isotipo 3D Real (Three.js WebGL) */
+.hero-visual-col {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.hero-disc-wrapper {
+    position: relative;
+    width: clamp(280px, 30vw, 440px);
+    height: clamp(280px, 30vw, 440px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+}
+
+#threeDiscCanvas {
+    width: 100% !important;
+    height: 100% !important;
+    display: block;
+    filter: drop-shadow(0px 30px 55px rgba(0, 0, 0, 0.95));
+    pointer-events: none;
 }
 
 .analog-cut {
@@ -596,67 +630,53 @@
     .sym-4 { display: none; }
 
     /* DYNAMIC VIEWPORT & SAFE SCALING */
-    .hero-section { 
-        min-height: 100vh; 
-        min-height: 100dvh; 
-        padding: 70px 4vw 30px 4vw; 
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-    .hero-sandwich { 
-        max-width: 520px; 
-        width: 100%;
-        margin: auto 0; 
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
+    .hero-section.hero-compact {
+        min-height: auto;
+        padding: 85px 5vw 35px 5vw;
     }
 
-    .sandwich-node {
-        position: relative;
-        width: 100%;
-        display: flex;
-        flex-direction: column;
+    .hero-split-container {
+        grid-template-columns: 1fr;
+        gap: 2.2rem;
+        text-align: center;
+    }
+
+    .hero-text-col {
         align-items: center;
+        text-align: center;
+    }
+
+    .hero-compact-title {
+        font-size: clamp(2.6rem, 11vw, 4.4rem);
+        align-items: center;
+        gap: 0.2rem;
+        margin-bottom: 1.2rem;
+    }
+
+    .hero-compact-statement {
+        text-align: center;
+        font-size: 0.95rem;
+        margin-bottom: 1.6rem;
+    }
+
+    .hero-actions-row {
         justify-content: center;
-    }
-    
-    .hero-giant-text { 
-        font-size: clamp(2.8rem, 13.5vw, 5.2rem); 
-        line-height: 0.85; 
-        gap: clamp(2.2rem, 6.5vh, 4rem); 
-        letter-spacing: -1px; 
         width: 100%;
+        gap: 0.8rem;
     }
-    .hero-giant-text div.line-disk {
-        gap: clamp(0.35rem, 1.5vw, 0.85rem);
-        letter-spacing: clamp(0.06em, 1.2vw, 0.15em);
+
+    .hero-visual-col {
+        order: -1;
+        margin-bottom: 0.5rem;
     }
-    .hero-giant-text div.line-creativo {
-        gap: 0.1vw;
-        letter-spacing: -0.02em;
+
+    .hero-disc-wrapper {
+        width: clamp(220px, 55vw, 320px);
+        height: clamp(220px, 55vw, 320px);
     }
-    
+
     .solid-gray-letter {
         filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.85));
-    }
-
-    .giant-transparent-logo { 
-        width: clamp(120px, 35vw, 175px); 
-        top: 50%; 
-        left: 50%;
-        filter: drop-shadow(0px 10px 25px rgba(0, 0, 0, 0.95));
-    }
-    .orbital-hud-ring {
-        width: clamp(145px, 42vw, 210px);
-        height: clamp(145px, 42vw, 210px);
-    }
-    .hero-reproductor-btn { 
-        width: clamp(250px, 82vw, 360px); 
-        margin-top: clamp(1.8rem, 4.5vh, 3rem); 
     } 
 
     .b2b-block { 
@@ -751,22 +771,20 @@
 
 /* ─── PANTALLAS ULTRA ESTRECHAS (< 480px) ─── */
 @media (max-width: 480px) {
-    .hero-section { 
-        padding-top: 60px; 
+    .hero-compact-title {
+        font-size: clamp(2.2rem, 11.5vw, 3.2rem);
     }
-    .hero-giant-text { 
-        font-size: clamp(2.3rem, 12.8vw, 3.4rem); 
-        gap: clamp(1.8rem, 5vh, 2.8rem); 
+    .hero-actions-row {
+        flex-direction: column;
+        gap: 0.8rem;
     }
-    .giant-transparent-logo { 
-        width: clamp(105px, 32vw, 138px); 
+    .hero-action-primary, .hero-action-secondary {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
     }
-    .orbital-hud-ring {
-        width: clamp(130px, 38vw, 165px);
-        height: clamp(130px, 38vw, 165px);
-    }
-    .hero-reproductor-btn { 
-        width: clamp(220px, 86vw, 310px); 
-        margin-top: clamp(1.4rem, 3.5vh, 2.2rem); 
+    .hero-disc-wrapper {
+        width: clamp(190px, 62vw, 250px);
+        height: clamp(190px, 62vw, 250px);
     }
 }

@@ -44,21 +44,27 @@ body {
     min-height: 100%;
 }
 
-/* ─── 01. LIENZO ESPACIAL ─── */
+/* ─── 01. LIENZO DEL ESCENARIO DE INDEX (MÁS CORTO Y LADOS EN NEGRO) ─── */
 .ambient-canvas {
-    position: fixed; 
-    top: -5vh; 
-    left: 0; 
-    right: 0; 
-    width: 100vw; 
-    height: 110vh; 
-    background-image: url('../images/backgrounds/escenario-lampara.png');
-    background-position: center center; 
-    background-size: cover; 
-    background-repeat: no-repeat;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: clamp(520px, 72vh, 760px);
     background-color: var(--bg-primary);
-    z-index: -3; 
-    filter: brightness(0.9) saturate(1.1);
+    background-image: 
+        /* Fusión suave a los costados hacia negro sólido */
+        linear-gradient(to right, #050505 0%, rgba(5,5,5,0) 20%, rgba(5,5,5,0) 80%, #050505 100%),
+        /* Fusión suave inferior hacia negro antes de la cinta analógica */
+        linear-gradient(to bottom, transparent 40%, rgba(5,5,5,0.85) 80%, #050505 100%),
+        /* Fondo original de index */
+        url('../images/backgrounds/escenario-lampara.png');
+    background-position: center top, center top, center top;
+    background-size: 100% 100%, 100% 100%, auto 100%;
+    background-repeat: no-repeat;
+    z-index: 1;
+    pointer-events: none;
+    filter: brightness(0.92) saturate(1.05);
 }
 
 .stars-container { 
@@ -67,7 +73,7 @@ body {
     left: 0; 
     right: 0; 
     bottom: 0; 
-    z-index: -2; 
+    z-index: 2; 
     pointer-events: none; 
 }
 
@@ -289,8 +295,11 @@ body {
 /* ─── RESPONSIVE MÓVIL (NAVBAR & FOOTER) ─── */
 @media (max-width: 900px) {
     .ambient-canvas { 
-        background-position: center 15%; 
-        filter: brightness(0.85) saturate(1.1); 
+        height: 100%;
+        min-height: 580px;
+        background-size: 100% 100%, 100% 100%, cover;
+        background-position: center top;
+        filter: brightness(0.88) saturate(1.05);
     }
 
     .top-navbar { 

@@ -23,8 +23,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,700&display=swap" rel="stylesheet">
 
     <!-- Estilos Modulares -->
-    <link rel="stylesheet" href="assets/css/main.css">
-    <link rel="stylesheet" href="assets/css/landing.css">
+    <link rel="stylesheet" href="assets/css/main.css?v=4">
+    <link rel="stylesheet" href="assets/css/landing.css?v=4">
 </head>
 <body>
 
@@ -61,27 +61,20 @@
         </div>
     </nav>
 
-    <!-- ─── HERO SECTION ─── -->
-    <section class="hero-section" id="inicio">
-        <div class="hero-sandwich">
-            <div class="sandwich-node">
-                <!-- Aro Orbital Futurista -->
-                <div class="orbital-hud-ring"></div>
-
-                <!-- Disco Isotipo 3D Flotante -->
-                <img src="assets/images/brand/disco-3d.png" alt="Disk Creativo Render 3D" class="giant-transparent-logo" id="dynamic-logo">
-                
-                <!-- Tipografía Hero Modular -->
-                <h1 class="hero-giant-text">
-                    <!-- LÍNEA 1 -->
-                    <div class="brand-line line-disk">
+    <!-- ─── HERO SECTION (DISTRIBUCIÓN ASIMÉTRICA & COMPACTA) ─── -->
+    <section class="hero-section hero-compact" id="inicio">
+        <div class="hero-split-container">
+            
+            <!-- Columna Izquierda: Identidad & Titular Compacto -->
+            <div class="hero-text-col">
+                <h1 class="hero-compact-title">
+                    <div class="title-line line-disk">
                         <span class="solid-gray-letter delay-1">D</span>
                         <span class="acrylic-letter float-anim delay-1" data-text="I">I</span>
                         <span class="solid-gray-letter">S</span>
                         <span class="solid-gray-letter float-anim delay-2">K</span>
                     </div>
-                    <!-- LÍNEA 2 -->
-                    <div class="brand-line line-creativo">
+                    <div class="title-line line-creativo">
                         <span class="solid-gray-letter float-anim delay-3">C</span>
                         <span class="solid-gray-letter delay-4">R</span>
                         <span class="acrylic-letter float-anim delay-4" data-text="E">E</span>
@@ -92,7 +85,31 @@
                         <span class="solid-gray-letter">O</span>
                     </div>
                 </h1>
-            </div> 
+
+                <p class="hero-compact-statement">
+                    Antes que programadores e ingenieros, <em>somos humanos, somos artistas</em>.<br>
+                    Construimos <strong>software a la medida, plataformas SaaS y arquitecturas web</strong> con alma propia y alto impacto comercial.
+                </p>
+
+                <div class="hero-actions-row">
+                    <a href="dex.html" class="hero-action-primary">
+                        <span>Configurar Proyecto</span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                    <a href="#identidad" class="hero-action-secondary">
+                        Explorar Manifiesto ↓
+                    </a>
+                </div>
+            </div>
+
+            <!-- Columna Derecha: Tótem Isotipo 3D Real (Three.js WebGL) -->
+            <div class="hero-visual-col">
+                <div class="hero-disc-wrapper" id="webglDiscContainer">
+                    <!-- Canvas 3D con Three.js -->
+                    <canvas id="threeDiscCanvas"></canvas>
+                </div>
+            </div>
+
         </div>
     </section>
 
@@ -197,6 +214,8 @@
     </footer>
 
     <!-- Scripts Modulares -->
+    <script src="assets/js/three.min.js"></script>
+    <script src="assets/js/disc-3d.js?v=4"></script>
     <script src="assets/js/main.js"></script>
     <script src="assets/js/portfolio.js"></script>
 </body>

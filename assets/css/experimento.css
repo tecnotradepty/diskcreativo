@@ -53,19 +53,19 @@ html, body {
     top: 0;
     left: 0;
     width: 100%;
-    height: clamp(520px, 70vh, 760px);
-    background-color: var(--bg-primary);
+    height: clamp(520px, 72vh, 760px);
+    background-color: #050505;
     background-image: 
-        /* Fusión suave en los laterales hacia negro sólido */
-        linear-gradient(to right, #050505 0%, rgba(5,5,5,0.7) 14%, rgba(5,5,5,0) 28%, rgba(5,5,5,0) 72%, rgba(5,5,5,0.7) 86%, #050505 100%),
-        /* Fusión suave en la parte inferior hacia negro antes de la cinta analógica */
-        linear-gradient(to bottom, transparent 45%, rgba(5,5,5,0.75) 78%, #050505 100%),
-        /* Fondo original de index (escenario con la lámpara y franjas) */
+        /* Fusión suave a los costados hacia negro sólido */
+        linear-gradient(to right, #050505 0%, rgba(5,5,5,0) 20%, rgba(5,5,5,0) 80%, #050505 100%),
+        /* Fusión suave inferior hacia negro antes de la cinta analógica */
+        linear-gradient(to bottom, transparent 40%, rgba(5,5,5,0.85) 80%, #050505 100%),
+        /* Fondo original de index */
         url('../images/backgrounds/escenario-lampara.png');
     background-position: center top, center top, center top;
     background-size: 100% 100%, 100% 100%, auto 100%;
     background-repeat: no-repeat;
-    z-index: -3;
+    z-index: 1;
     pointer-events: none;
     filter: brightness(0.92) saturate(1.05);
 }
@@ -73,7 +73,7 @@ html, body {
 .stars-container {
     position: fixed;
     inset: 0;
-    z-index: -2;
+    z-index: 2;
     pointer-events: none;
 }
 

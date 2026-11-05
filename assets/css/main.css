@@ -141,7 +141,11 @@ body {
     align-items: center;
     padding: 0 4vw; 
     z-index: 2000; 
-    transition: transform 0.3s ease;
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.top-navbar.nav-hidden {
+    transform: translateY(-100%);
 }
 
 .navbar-brand { 

@@ -23,7 +23,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,700&display=swap" rel="stylesheet">
 
     <!-- Hoja de Estilos del Prototipo -->
-    <link rel="stylesheet" href="assets/css/experimento.css?v=6">
+    <link rel="stylesheet" href="assets/css/experimento.css?v=7">
 </head>
 <body>
 
@@ -322,15 +322,15 @@
 
     <!-- Conmutador de Prueba de la Barra Claymorphism en Experimento -->
     <div style="position: fixed; bottom: 20px; right: 20px; z-index: 9999; display: flex; gap: 8px; background: rgba(10,10,14,0.92); backdrop-filter: blur(12px); padding: 8px; border: 1px solid rgba(255,255,255,0.18); border-radius: 8px; font-family: monospace; font-size: 11px; box-shadow: 0 10px 25px rgba(0,0,0,0.5);">
-        <button onclick="document.getElementById('topNavbar').classList.remove('style-edge')" style="background: #FFF; color: #000; border: none; padding: 6px 12px; cursor: pointer; font-weight: bold; font-family: inherit; border-radius: 4px;">1. CÁPSULA FLOTANTE 3D</button>
-        <button onclick="document.getElementById('topNavbar').classList.add('style-edge')" style="background: #222; color: #FFF; border: 1px solid #555; padding: 6px 12px; cursor: pointer; font-weight: bold; font-family: inherit; border-radius: 4px;">2. BARRA BORDE A BORDE</button>
-        <button onclick="document.querySelector('.nav-btn-clay').classList.toggle('btn-clay-white')" style="background: #E8E8ED; color: #111; border: 1px solid #AAA; padding: 6px 10px; cursor: pointer; font-weight: bold; font-family: inherit; border-radius: 4px;">ALTERNAR BOTÓN (NEGRO / BLANCO 3D)</button>
+        <button onclick="document.getElementById('topNavbar').classList.toggle('nav-frosted')" style="background: linear-gradient(135deg, #FFF, #AAA); color: #000; border: none; padding: 6px 12px; cursor: pointer; font-weight: bold; font-family: inherit; border-radius: 4px;">TEST: BLANCO DIFUMINADO FROSTED</button>
+        <button onclick="document.getElementById('topNavbar').classList.toggle('style-edge')" style="background: #222; color: #FFF; border: 1px solid #555; padding: 6px 12px; cursor: pointer; font-weight: bold; font-family: inherit; border-radius: 4px;">CÁPSULA / BORDE A BORDE</button>
+        <button onclick="document.querySelector('.nav-btn-clay').classList.toggle('btn-clay-white')" style="background: #E8E8ED; color: #111; border: 1px solid #AAA; padding: 6px 10px; cursor: pointer; font-weight: bold; font-family: inherit; border-radius: 4px;">BOTÓN (NEGRO / BLANCO)</button>
     </div>
 
     <!-- Scripts Modulares -->
     <script src="assets/js/three.min.js"></script>
     <script src="assets/js/disc-3d.js?v=3"></script>
-    <script src="assets/js/main.js"></script>
+    <script src="assets/js/main.js?v=5"></script>
     <script src="assets/js/portfolio.js"></script>
 </body>
 </html>

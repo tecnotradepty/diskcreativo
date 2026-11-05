@@ -440,7 +440,7 @@ html, body {
     background: rgba(255, 255, 255, 0.06);
 }
 
-/* Columna Derecha: Tótem Isotipo 3D + Retícula Técnica Minimalista */
+/* Columna Derecha: Tótem Isotipo 3D Puro (Sin Líneas) */
 .hero-visual-col {
     display: flex;
     align-items: center;
@@ -448,171 +448,29 @@ html, body {
     position: relative;
 }
 
-.tech-viewfinder-box {
+.hero-disc-wrapper {
     position: relative;
-    width: clamp(280px, 28vw, 400px);
-    height: clamp(280px, 28vw, 400px);
+    width: clamp(240px, 26vw, 380px);
+    height: clamp(240px, 26vw, 380px);
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.03) 0%, transparent 70%);
 }
 
-/* 4 Esquinas técnicas en blanco nítido minimalista */
-.corner-bracket {
-    position: absolute;
-    width: 14px;
-    height: 14px;
-    pointer-events: none;
-}
-.corner-tl {
-    top: -1px;
-    left: -1px;
-    border-top: 2px solid rgba(255, 255, 255, 0.85);
-    border-left: 2px solid rgba(255, 255, 255, 0.85);
-}
-.corner-tr {
-    top: -1px;
-    right: -1px;
-    border-top: 2px solid rgba(255, 255, 255, 0.85);
-    border-right: 2px solid rgba(255, 255, 255, 0.85);
-}
-.corner-bl {
-    bottom: -1px;
-    left: -1px;
-    border-bottom: 2px solid rgba(255, 255, 255, 0.85);
-    border-left: 2px solid rgba(255, 255, 255, 0.85);
-}
-.corner-br {
-    bottom: -1px;
-    right: -1px;
-    border-bottom: 2px solid rgba(255, 255, 255, 0.85);
-    border-right: 2px solid rgba(255, 255, 255, 0.85);
-}
-
-/* Ejes de cruceta técnica blanca */
-.axis-crosshair {
-    position: absolute;
-    background: rgba(255, 255, 255, 0.1);
-    pointer-events: none;
-}
-.axis-h {
-    top: 50%;
-    left: 0;
-    width: 100%;
-    height: 1px;
-    transform: translateY(-50%);
-}
-.axis-v {
-    left: 50%;
-    top: 0;
-    width: 1px;
-    height: 100%;
-    transform: translateX(-50%);
-}
-
-/* ─── LÍNEAS BLANCAS GIRANDO EN CÍRCULOS (MINIMALISMO TÉCNICO) ─── */
-@keyframes spinOrbitWhite {
-    0% { transform: translate(-50%, -50%) rotate(0deg); }
-    100% { transform: translate(-50%, -50%) rotate(360deg); }
-}
-
-@keyframes spinOrbitReverse {
-    0% { transform: translate(-50%, -50%) rotate(360deg); }
-    100% { transform: translate(-50%, -50%) rotate(0deg); }
-}
-
-/* Aro Exterior: Línea circular fina con dos arcos blancos nítidos girando */
-.white-orbit-outer {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: clamp(235px, 24vw, 355px);
-    height: clamp(235px, 24vw, 355px);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-top: 2px solid #FFFFFF;
-    border-bottom: 2px solid #FFFFFF;
-    border-radius: 50%;
-    pointer-events: none;
-    animation: spinOrbitWhite 28s linear infinite;
-    z-index: 4;
-}
-
-.white-orbit-outer::after {
-    content: "";
-    position: absolute;
-    top: -3px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 5px;
-    height: 5px;
-    background: #FFFFFF;
-    border-radius: 50%;
-    box-shadow: 0 0 8px rgba(255, 255, 255, 0.9);
-}
-
-/* Aro Medio: Círculo punteado blanco tenue girando en sentido inverso */
-.white-orbit-mid {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: clamp(265px, 27vw, 395px);
-    height: clamp(265px, 27vw, 395px);
-    border: 1px dotted rgba(255, 255, 255, 0.3);
-    border-radius: 50%;
-    pointer-events: none;
-    animation: spinOrbitReverse 55s linear infinite;
-    z-index: 3;
-}
-
-/* Aro Interior: Líneas discontinuas blancas girando cerca del disco */
-.white-orbit-inner {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: clamp(195px, 20.5vw, 295px);
-    height: clamp(195px, 20.5vw, 295px);
-    border: 1.5px dashed rgba(255, 255, 255, 0.45);
-    border-radius: 50%;
-    pointer-events: none;
-    animation: spinOrbitWhite 38s linear infinite reverse;
-    z-index: 4;
-}
-
-/* Disco 3D Central dentro de la retícula */
+/* Disco 3D Central Flotante */
 .totem-disc-img {
     position: relative;
-    width: clamp(160px, 18vw, 260px);
+    width: clamp(190px, 22vw, 320px);
     height: auto;
     z-index: 5;
     pointer-events: none;
-    filter: drop-shadow(0px 20px 40px rgba(0, 0, 0, 0.95));
+    filter: drop-shadow(0px 25px 50px rgba(0, 0, 0, 0.95));
     animation: mechanicalFloat 9s ease-in-out infinite;
 }
 
 @keyframes mechanicalFloat {
     0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-8px); }
-}
-
-/* Metadatos inferiores de telemetría blanca */
-.viewfinder-meta {
-    position: absolute;
-    bottom: -28px;
-    left: 0;
-    right: 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-family: var(--font-code);
-    font-size: 0.64rem;
-    letter-spacing: 1.5px;
-    color: rgba(255, 255, 255, 0.45);
-    text-transform: uppercase;
+    50% { transform: translateY(-10px); }
 }
 
 /* ─── 04. DIVISIÓN CINTA DE CINE ANALÓGICA (RESTAURADA) ─── */
@@ -1268,33 +1126,13 @@ html, body {
         margin-bottom: 0.5rem;
     }
 
-    .tech-viewfinder-box {
-        width: clamp(230px, 55vw, 300px);
-        height: clamp(230px, 55vw, 300px);
-    }
-
-    .white-orbit-outer {
-        width: clamp(190px, 46vw, 255px);
-        height: clamp(190px, 46vw, 255px);
-    }
-
-    .white-orbit-mid {
-        width: clamp(215px, 51vw, 285px);
-        height: clamp(215px, 51vw, 285px);
-    }
-
-    .white-orbit-inner {
-        width: clamp(160px, 39vw, 215px);
-        height: clamp(160px, 39vw, 215px);
+    .hero-disc-wrapper {
+        width: clamp(190px, 45vw, 250px);
+        height: clamp(190px, 45vw, 250px);
     }
 
     .totem-disc-img {
-        width: clamp(130px, 30vw, 170px);
-    }
-
-    .viewfinder-meta {
-        bottom: -24px;
-        font-size: 0.58rem;
+        width: clamp(140px, 34vw, 190px);
     }
 
     .solid-gray-letter {
@@ -1344,12 +1182,11 @@ html, body {
         text-align: center;
         justify-content: center;
     }
-    .tech-viewfinder-box {
-        width: clamp(210px, 70vw, 260px);
-        height: clamp(210px, 70vw, 260px);
+    .hero-disc-wrapper {
+        width: clamp(170px, 50vw, 210px);
+        height: clamp(170px, 50vw, 210px);
     }
-    .viewfinder-meta {
-        font-size: 0.52rem;
-        bottom: -22px;
+    .totem-disc-img {
+        width: clamp(130px, 40vw, 165px);
     }
 }

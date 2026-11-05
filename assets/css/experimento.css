@@ -440,7 +440,7 @@ html, body {
     background: rgba(255, 255, 255, 0.06);
 }
 
-/* Columna Derecha: Tótem Isotipo 3D Puro (Sin Líneas) */
+/* Columna Derecha: Tótem Isotipo 3D Real (Three.js WebGL) */
 .hero-visual-col {
     display: flex;
     align-items: center;
@@ -450,27 +450,25 @@ html, body {
 
 .hero-disc-wrapper {
     position: relative;
-    width: clamp(240px, 26vw, 380px);
-    height: clamp(240px, 26vw, 380px);
+    width: clamp(280px, 30vw, 440px);
+    height: clamp(280px, 30vw, 440px);
     display: flex;
     align-items: center;
     justify-content: center;
+    user-select: none;
 }
 
-/* Disco 3D Central Flotante */
-.totem-disc-img {
-    position: relative;
-    width: clamp(190px, 22vw, 320px);
-    height: auto;
-    z-index: 5;
-    pointer-events: none;
-    filter: drop-shadow(0px 25px 50px rgba(0, 0, 0, 0.95));
-    animation: mechanicalFloat 9s ease-in-out infinite;
+#threeDiscCanvas {
+    width: 100% !important;
+    height: 100% !important;
+    display: block;
+    filter: drop-shadow(0px 30px 55px rgba(0, 0, 0, 0.95));
+    cursor: grab;
+    transition: filter 0.3s ease;
 }
 
-@keyframes mechanicalFloat {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
+#threeDiscCanvas:active {
+    cursor: grabbing;
 }
 
 /* ─── 04. DIVISIÓN CINTA DE CINE ANALÓGICA (RESTAURADA) ─── */
@@ -1127,12 +1125,8 @@ html, body {
     }
 
     .hero-disc-wrapper {
-        width: clamp(190px, 45vw, 250px);
-        height: clamp(190px, 45vw, 250px);
-    }
-
-    .totem-disc-img {
-        width: clamp(140px, 34vw, 190px);
+        width: clamp(220px, 55vw, 320px);
+        height: clamp(220px, 55vw, 320px);
     }
 
     .solid-gray-letter {
@@ -1183,10 +1177,7 @@ html, body {
         justify-content: center;
     }
     .hero-disc-wrapper {
-        width: clamp(170px, 50vw, 210px);
-        height: clamp(170px, 50vw, 210px);
-    }
-    .totem-disc-img {
-        width: clamp(130px, 40vw, 165px);
+        width: clamp(190px, 62vw, 250px);
+        height: clamp(190px, 62vw, 250px);
     }
 }

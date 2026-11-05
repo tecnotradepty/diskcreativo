@@ -100,125 +100,170 @@ html, body {
     100% { opacity: 0.45; }
 }
 
-/* ─── 02. NAVBAR CORPORATIVA FUTURISTA ─── */
+/* ─── 02. NAVBAR CORPORATIVA BLACK MIRROR (BLANCO ASÉPTICO / MONOCROMÁTICO) ─── */
 .top-navbar {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 70px;
-    background: rgba(5, 5, 8, 0.65);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border-bottom: var(--hairline);
+    height: 52px;
+    background: #FFFFFF;
+    border-bottom: 1px solid #E0E0E4;
+    box-shadow: 0 1px 12px rgba(0, 0, 0, 0.08);
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 4vw;
     z-index: 2000;
-    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease;
 }
 
 .navbar-brand-group {
     display: flex;
     align-items: center;
-    gap: 1.2rem;
+    gap: 1rem;
 }
 
 .navbar-brand {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 9px;
     font-family: var(--font-sans);
-    font-size: 0.95rem;
+    font-size: 0.88rem;
     font-weight: 700;
-    color: #fff;
+    color: #0A0A0A;
     letter-spacing: 2px;
     text-decoration: none;
     text-transform: uppercase;
 }
 
 .brand-icon {
-    height: 22px;
+    height: 18px;
     width: auto;
     object-fit: contain;
+    filter: grayscale(1) brightness(0);
+    transition: filter 0.3s ease;
 }
 
-.nav-telemetry-badge {
-    display: flex;
-    align-items: center;
-    gap: 6px;
+.corp-division-badge {
     font-family: var(--font-code);
-    font-size: 0.62rem;
-    color: var(--text-muted);
-    background: rgba(255, 255, 255, 0.05);
-    border: var(--hairline);
-    padding: 4px 10px;
-    border-radius: 100px;
-    letter-spacing: 1px;
-}
-
-.status-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--accent-neon);
-    box-shadow: 0 0 8px var(--accent-neon);
-    animation: pulseNeon 2s infinite ease-in-out;
-}
-
-@keyframes pulseNeon {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.4; transform: scale(0.85); }
+    font-size: 0.6rem;
+    color: #666666;
+    letter-spacing: 1.5px;
+    border-left: 1px solid #D0D0D5;
+    padding-left: 12px;
+    text-transform: uppercase;
+    font-weight: 500;
 }
 
 .navbar-links {
     display: flex;
-    gap: 2.5rem;
+    gap: 2.2rem;
     align-items: center;
 }
 
 .nav-link {
-    color: var(--text-main);
+    color: #4A4A4A;
     text-decoration: none;
     font-family: var(--font-code);
-    font-size: 0.72rem;
+    font-size: 0.68rem;
+    font-weight: 500;
     text-transform: uppercase;
+    letter-spacing: 1.8px;
+    position: relative;
+    padding: 4px 0;
+    transition: color 0.2s ease;
+}
+
+.nav-link:hover {
+    color: #000000;
+}
+
+.nav-link.active {
+    color: #000000;
+    font-weight: 600;
+}
+
+.nav-link.active::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 1.5px;
+    background: #000000;
+}
+
+/* Botón Clínico Brutalista (Sin curvas, contraste puro) */
+.nav-btn-corp {
+    background: #000000;
+    color: #FFFFFF;
+    border: 1px solid #000000;
+    border-radius: 0px;
+    padding: 0.45rem 1.1rem;
+    font-family: var(--font-code);
+    font-size: 0.68rem;
+    font-weight: 600;
     letter-spacing: 1.5px;
-    transition: color 0.25s;
-}
-
-.nav-link:hover, .nav-link.active {
-    color: var(--accent-neon);
-}
-
-.nav-btn-wa {
-    background: rgba(255, 255, 255, 0.05);
-    color: #fff;
-    border: 1px solid rgba(255, 255, 255, 0.28);
-    padding: 0.5rem 1.2rem;
-    border-radius: 50px;
-    font-family: var(--font-sans);
-    font-size: 0.75rem;
-    letter-spacing: 1px;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     gap: 8px;
-    transition: all 0.3s;
     text-transform: uppercase;
     text-decoration: none;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.nav-btn-wa svg {
-    width: 14px;
-    height: 14px;
-    fill: currentColor;
+.nav-btn-corp svg {
+    width: 12px;
+    height: 12px;
+    transition: transform 0.2s ease;
 }
 
-.nav-btn-wa:hover {
-    background: #25D366;
-    border-color: #25D366;
-    color: #000;
+.nav-btn-corp:hover {
+    background: #FFFFFF;
+    color: #000000;
+    border-color: #000000;
+}
+
+.nav-btn-corp:hover svg {
+    transform: translateX(3px);
+}
+
+/* ─── MODO ALTERNATIVO: MONOLITO NEGRO MATE CON ELEMENTOS BLANCOS CLÍNICOS ─── */
+.top-navbar.theme-monolith {
+    background: #08080A;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+}
+.top-navbar.theme-monolith .navbar-brand {
+    color: #FFFFFF;
+}
+.top-navbar.theme-monolith .brand-icon {
+    filter: brightness(0) invert(1);
+}
+.top-navbar.theme-monolith .corp-division-badge {
+    color: rgba(255, 255, 255, 0.45);
+    border-left-color: rgba(255, 255, 255, 0.2);
+}
+.top-navbar.theme-monolith .nav-link {
+    color: rgba(255, 255, 255, 0.6);
+}
+.top-navbar.theme-monolith .nav-link:hover,
+.top-navbar.theme-monolith .nav-link.active {
+    color: #FFFFFF;
+}
+.top-navbar.theme-monolith .nav-link.active::after {
+    background: #FFFFFF;
+}
+.top-navbar.theme-monolith .nav-btn-corp {
+    background: #FFFFFF;
+    color: #000000;
+    border-color: #FFFFFF;
+}
+.top-navbar.theme-monolith .nav-btn-corp:hover {
+    background: transparent;
+    color: #FFFFFF;
+    border-color: #FFFFFF;
 }
 
 /* ─── 03. HERO SECTION (REDiseño EDITORIAL ASIMÉTRICO & COMPACTO) ─── */
@@ -1064,18 +1109,17 @@ html, body {
         filter: brightness(0.88) saturate(1.05);
     }
 
-    .nav-telemetry-badge { display: none; }
+    .corp-division-badge { display: none; }
     .sym-1 { display: none; }
     .sym-2 { --size: 3.5rem; top: 18%; right: 6%; opacity: 0.4; }
     .sym-3 { --size: 2.2rem; bottom: 18%; left: 6%; opacity: 0.3; }
 
-    .top-navbar { padding: 0 4vw; height: 60px; }
-    .navbar-brand { font-size: 0.75rem; gap: 4px; }
-    .navbar-brand span { display: none; }
-    .brand-icon { height: 18px; }
+    .top-navbar { padding: 0 4vw; height: 50px; }
+    .navbar-brand { font-size: 0.76rem; gap: 6px; }
+    .brand-icon { height: 16px; }
     .navbar-links { gap: 1rem; }
-    .nav-link { font-size: 0.6rem; }
-    .nav-btn-wa { padding: 0.4rem 0.8rem; font-size: 0.6rem; gap: 4px; }
+    .nav-link { font-size: 0.62rem; letter-spacing: 1px; }
+    .nav-btn-corp { padding: 0.38rem 0.75rem; font-size: 0.62rem; gap: 4px; }
 
     .hero-section.hero-compact {
         min-height: auto;

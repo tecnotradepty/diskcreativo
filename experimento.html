@@ -68,27 +68,25 @@
         </div>
     </nav>
 
-    <!-- ─── 03. HERO SECTION ─── -->
-    <section class="hero-section" id="inicio">
-        <div class="hero-sandwich">
-            <div class="sandwich-node">
-                <!-- Aro Orbital Futurista -->
-                <div class="orbital-hud-ring"></div>
+    <!-- ─── 03. HERO SECTION (REDiseño EDITORIAL ASIMÉTRICO Y COMPACTO) ─── -->
+    <section class="hero-section hero-compact" id="inicio">
+        <div class="hero-split-container">
+            
+            <!-- Columna Izquierda: Identidad & Titular Compacto -->
+            <div class="hero-text-col">
+                <div class="hero-tag-badge">
+                    <span class="pulse-indicator"></span>
+                    <span>INGENIERÍA DIGITAL // ARTE DE SOFTWARE</span>
+                </div>
 
-                <!-- Disco Isotipo 3D Central -->
-                <img src="assets/images/brand/disco-3d.png" alt="Disk Creativo Render 3D" class="giant-transparent-logo" id="dynamic-logo">
-                
-                <!-- Tipografía Monumental con Nuevos Colores -->
-                <h1 class="hero-giant-text">
-                    <!-- LÍNEA 1 -->
-                    <div class="brand-line line-disk">
+                <h1 class="hero-compact-title">
+                    <div class="title-line line-disk">
                         <span class="solid-gray-letter delay-1">D</span>
                         <span class="acrylic-letter float-anim delay-1" data-text="I">I</span>
                         <span class="solid-gray-letter">S</span>
                         <span class="solid-gray-letter float-anim delay-2">K</span>
                     </div>
-                    <!-- LÍNEA 2 -->
-                    <div class="brand-line line-creativo">
+                    <div class="title-line line-creativo">
                         <span class="solid-gray-letter float-anim delay-3">C</span>
                         <span class="solid-gray-letter delay-4">R</span>
                         <span class="acrylic-letter float-anim delay-4" data-text="E">E</span>
@@ -99,28 +97,36 @@
                         <span class="solid-gray-letter">O</span>
                     </div>
                 </h1>
+
+                <p class="hero-compact-statement">
+                    Antes que programadores e ingenieros, <em>somos humanos, somos artistas</em>.<br>
+                    Construimos <strong>software a la medida, plataformas SaaS y arquitecturas web</strong> con alma propia y alto impacto comercial.
+                </p>
+
+                <div class="hero-actions-row">
+                    <a href="dex.html" class="hero-action-primary">
+                        <span>Configurar Proyecto</span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                    <a href="#identidad" class="hero-action-secondary">
+                        Explorar Manifiesto ↓
+                    </a>
+                </div>
             </div>
 
-            <!-- Manifiesto Corto de Propósito -->
-            <p class="hero-purpose-statement">
-                Antes que programadores e ingenieros, <em>somos humanos, somos artistas</em>.<br>
-                Construimos <strong>software a la medida, plataformas SaaS y arquitecturas web</strong> con alma propia.
-            </p>
-            
-            <!-- Consola Futurista de Inicio de Proyecto -->
-            <a href="dex.html" class="cyber-launch-deck" title="Iniciar configuración de proyecto">
-                <div class="deck-left">
-                    <div class="deck-power-led">⚡</div>
-                    <div class="deck-Texts">
-                        <span class="deck-label-top">PROTOCOLO // COMPILADOR CREATIVO</span>
-                        <span class="deck-main-action">Inicia tu Proyecto</span>
+            <!-- Columna Derecha: Tótem Isotipo 3D con Aro Orbital HUD -->
+            <div class="hero-visual-col">
+                <div class="totem-orbit-wrap">
+                    <div class="orbital-hud-ring"></div>
+                    <div class="totem-ambient-glow"></div>
+                    <img src="assets/images/brand/disco-3d.png" alt="Disk Creativo Render 3D" class="totem-disc-img" id="dynamic-logo">
+                    <div class="totem-coordinates-tag">
+                        <span>COORD: 08°58′N 79°31′W</span>
+                        <span class="status-live">● CORE ACTIVE</span>
                     </div>
                 </div>
-                <div class="deck-right">
-                    <span class="deck-counter">00.0.085</span>
-                    <span class="deck-keycap">[ EJECUTAR → ]</span>
-                </div>
-            </a>
+            </div>
+
         </div>
     </section>
 

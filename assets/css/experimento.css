@@ -47,26 +47,27 @@ html, body {
     padding: 0;
 }
 
-/* ─── 01. LIENZO ESPACIAL PROFUNDO & ATMÓSFERA EDITORIAL (NUEVO FONDO) ─── */
+/* ─── 01. LIENZO DEL ESCENARIO DE INDEX (MÁS CORTO Y LADOS EN NEGRO) ─── */
 .ambient-canvas {
-    position: fixed;
-    inset: 0;
-    width: 100vw;
-    height: 100vh;
-    background: 
-        /* Glow cromático en la zona del tótem 3D */
-        radial-gradient(circle at 75% 38%, rgba(107, 0, 255, 0.22) 0%, rgba(0, 240, 255, 0.08) 35%, transparent 65%),
-        /* Sutil resplandor cenital ambiental */
-        radial-gradient(circle at 30% 15%, rgba(255, 255, 255, 0.04) 0%, transparent 50%),
-        /* Micro-cuadrícula técnica milimétrica */
-        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-        /* Fondo base negro abisal */
-        #06060A;
-    background-size: 100% 100%, 100% 100%, 50px 50px, 50px 50px, auto;
-    background-position: center center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: clamp(520px, 70vh, 760px);
+    background-color: var(--bg-primary);
+    background-image: 
+        /* Fusión suave en los laterales hacia negro sólido */
+        linear-gradient(to right, #050505 0%, rgba(5,5,5,0.7) 14%, rgba(5,5,5,0) 28%, rgba(5,5,5,0) 72%, rgba(5,5,5,0.7) 86%, #050505 100%),
+        /* Fusión suave en la parte inferior hacia negro antes de la cinta analógica */
+        linear-gradient(to bottom, transparent 45%, rgba(5,5,5,0.75) 78%, #050505 100%),
+        /* Fondo original de index (escenario con la lámpara y franjas) */
+        url('../images/backgrounds/escenario-lampara.png');
+    background-position: center top, center top, center top;
+    background-size: 100% 100%, 100% 100%, auto 100%;
+    background-repeat: no-repeat;
     z-index: -3;
-    filter: none;
+    pointer-events: none;
+    filter: brightness(0.92) saturate(1.05);
 }
 
 .stars-container {
@@ -1056,8 +1057,11 @@ html, body {
 /* ─── RESPONSIVE MÓVIL BLINDADO ─── */
 @media (max-width: 900px) {
     .ambient-canvas {
-        background-position: center 15%;
-        filter: brightness(0.85) saturate(1.1);
+        height: 100%;
+        min-height: 580px;
+        background-size: 100% 100%, 100% 100%, cover;
+        background-position: center top;
+        filter: brightness(0.88) saturate(1.05);
     }
 
     .nav-telemetry-badge { display: none; }

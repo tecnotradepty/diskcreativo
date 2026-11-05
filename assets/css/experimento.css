@@ -440,7 +440,7 @@ html, body {
     background: rgba(255, 255, 255, 0.06);
 }
 
-/* Columna Derecha: Tótem Isotipo 3D + Aro HUD */
+/* Columna Derecha: Tótem Isotipo 3D + Retícula Técnica Minimalista */
 .hero-visual-col {
     display: flex;
     align-items: center;
@@ -448,91 +448,148 @@ html, body {
     position: relative;
 }
 
-.totem-orbit-wrap {
+.tech-viewfinder-box {
     position: relative;
-    width: clamp(260px, 28vw, 420px);
-    height: clamp(260px, 28vw, 420px);
+    width: clamp(280px, 28vw, 400px);
+    height: clamp(280px, 28vw, 400px);
     display: flex;
     align-items: center;
     justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.03) 0%, transparent 70%);
 }
 
-.totem-ambient-glow {
+/* 4 Esquinas técnicas en blanco nítido minimalista */
+.corner-bracket {
     position: absolute;
-    inset: 15%;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(107, 0, 255, 0.4) 0%, rgba(0, 240, 255, 0.15) 50%, transparent 70%);
-    filter: blur(35px);
+    width: 14px;
+    height: 14px;
     pointer-events: none;
-    z-index: 1;
+}
+.corner-tl {
+    top: -1px;
+    left: -1px;
+    border-top: 2px solid rgba(255, 255, 255, 0.85);
+    border-left: 2px solid rgba(255, 255, 255, 0.85);
+}
+.corner-tr {
+    top: -1px;
+    right: -1px;
+    border-top: 2px solid rgba(255, 255, 255, 0.85);
+    border-right: 2px solid rgba(255, 255, 255, 0.85);
+}
+.corner-bl {
+    bottom: -1px;
+    left: -1px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.85);
+    border-left: 2px solid rgba(255, 255, 255, 0.85);
+}
+.corner-br {
+    bottom: -1px;
+    right: -1px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.85);
+    border-right: 2px solid rgba(255, 255, 255, 0.85);
 }
 
-.orbital-hud-ring {
+/* Ejes de cruceta técnica blanca */
+.axis-crosshair {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.1);
+    pointer-events: none;
+}
+.axis-h {
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    transform: translateY(-50%);
+}
+.axis-v {
+    left: 50%;
+    top: 0;
+    width: 1px;
+    height: 100%;
+    transform: translateX(-50%);
+}
+
+/* Aro técnico blanco de tolerancia milimétrica (estático, sobrio) */
+.minimal-tech-ring {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 100%;
-    height: 100%;
-    border: 1px dashed rgba(255, 255, 255, 0.25);
+    width: clamp(210px, 22vw, 320px);
+    height: clamp(210px, 22vw, 320px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 50%;
-    z-index: 4;
     pointer-events: none;
-    animation: spinOrbit 45s linear infinite;
 }
 
-.orbital-hud-ring::before {
-    content: "";
+/* Marcas cardinales estilo CAD en blanco */
+.cad-tick {
     position: absolute;
-    inset: -14px;
-    border-radius: 50%;
-    border: 1px solid rgba(112, 0, 255, 0.32);
-    border-top-color: var(--accent-neon);
-    border-bottom-color: var(--accent-cyan);
+    background: rgba(255, 255, 255, 0.45);
+    pointer-events: none;
+}
+.tick-top {
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1px;
+    height: 10px;
+}
+.tick-bottom {
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1px;
+    height: 10px;
+}
+.tick-left {
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 10px;
+    height: 1px;
+}
+.tick-right {
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 10px;
+    height: 1px;
 }
 
-@keyframes spinOrbit {
-    0% { transform: translate(-50%, -50%) rotate(0deg); }
-    100% { transform: translate(-50%, -50%) rotate(360deg); }
-}
-
+/* Disco 3D Central dentro de la retícula */
 .totem-disc-img {
     position: relative;
-    width: clamp(170px, 20vw, 290px);
+    width: clamp(160px, 18vw, 260px);
     height: auto;
     z-index: 5;
     pointer-events: none;
-    filter: drop-shadow(0px 25px 45px rgba(0, 0, 0, 0.95));
+    filter: drop-shadow(0px 20px 40px rgba(0, 0, 0, 0.95));
     animation: mechanicalFloat 9s ease-in-out infinite;
 }
 
 @keyframes mechanicalFloat {
     0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
+    50% { transform: translateY(-8px); }
 }
 
-.totem-coordinates-tag {
+/* Metadatos inferiores de telemetría blanca */
+.viewfinder-meta {
     position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
+    bottom: -28px;
+    left: 0;
+    right: 0;
     display: flex;
-    gap: 1.2rem;
+    justify-content: space-between;
+    align-items: center;
     font-family: var(--font-code);
-    font-size: 0.62rem;
-    letter-spacing: 2px;
-    color: rgba(255, 255, 255, 0.4);
-    background: rgba(10, 10, 16, 0.75);
-    border: var(--hairline-dark);
-    padding: 5px 14px;
-    border-radius: 20px;
-    backdrop-filter: blur(8px);
-    white-space: nowrap;
-    z-index: 6;
-}
-
-.totem-coordinates-tag .status-live {
-    color: var(--accent-neon);
+    font-size: 0.64rem;
+    letter-spacing: 1.5px;
+    color: rgba(255, 255, 255, 0.45);
+    text-transform: uppercase;
 }
 
 /* ─── 04. DIVISIÓN CINTA DE CINE ANALÓGICA (RESTAURADA) ─── */
@@ -1188,18 +1245,23 @@ html, body {
         margin-bottom: 0.5rem;
     }
 
-    .totem-orbit-wrap {
-        width: clamp(200px, 46vw, 260px);
-        height: clamp(200px, 46vw, 260px);
+    .tech-viewfinder-box {
+        width: clamp(230px, 55vw, 300px);
+        height: clamp(230px, 55vw, 300px);
+    }
+
+    .minimal-tech-ring {
+        width: clamp(170px, 42vw, 230px);
+        height: clamp(170px, 42vw, 230px);
     }
 
     .totem-disc-img {
         width: clamp(130px, 30vw, 170px);
     }
 
-    .orbital-hud-ring {
-        width: 100%;
-        height: 100%;
+    .viewfinder-meta {
+        bottom: -24px;
+        font-size: 0.58rem;
     }
 
     .solid-gray-letter {
@@ -1249,8 +1311,12 @@ html, body {
         text-align: center;
         justify-content: center;
     }
-    .totem-coordinates-tag {
+    .tech-viewfinder-box {
+        width: clamp(210px, 70vw, 260px);
+        height: clamp(210px, 70vw, 260px);
+    }
+    .viewfinder-meta {
         font-size: 0.52rem;
-        padding: 3px 10px;
+        bottom: -22px;
     }
 }

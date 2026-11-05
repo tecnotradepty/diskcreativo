@@ -512,52 +512,75 @@ html, body {
     transform: translateX(-50%);
 }
 
-/* Aro técnico blanco de tolerancia milimétrica (estático, sobrio) */
-.minimal-tech-ring {
+/* ─── LÍNEAS BLANCAS GIRANDO EN CÍRCULOS (MINIMALISMO TÉCNICO) ─── */
+@keyframes spinOrbitWhite {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@keyframes spinOrbitReverse {
+    0% { transform: translate(-50%, -50%) rotate(360deg); }
+    100% { transform: translate(-50%, -50%) rotate(0deg); }
+}
+
+/* Aro Exterior: Línea circular fina con dos arcos blancos nítidos girando */
+.white-orbit-outer {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: clamp(210px, 22vw, 320px);
-    height: clamp(210px, 22vw, 320px);
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    width: clamp(235px, 24vw, 355px);
+    height: clamp(235px, 24vw, 355px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-top: 2px solid #FFFFFF;
+    border-bottom: 2px solid #FFFFFF;
     border-radius: 50%;
     pointer-events: none;
+    animation: spinOrbitWhite 28s linear infinite;
+    z-index: 4;
 }
 
-/* Marcas cardinales estilo CAD en blanco */
-.cad-tick {
+.white-orbit-outer::after {
+    content: "";
     position: absolute;
-    background: rgba(255, 255, 255, 0.45);
+    top: -3px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 5px;
+    height: 5px;
+    background: #FFFFFF;
+    border-radius: 50%;
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.9);
+}
+
+/* Aro Medio: Círculo punteado blanco tenue girando en sentido inverso */
+.white-orbit-mid {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: clamp(265px, 27vw, 395px);
+    height: clamp(265px, 27vw, 395px);
+    border: 1px dotted rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
     pointer-events: none;
+    animation: spinOrbitReverse 55s linear infinite;
+    z-index: 3;
 }
-.tick-top {
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 1px;
-    height: 10px;
-}
-.tick-bottom {
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 1px;
-    height: 10px;
-}
-.tick-left {
-    left: 0;
+
+/* Aro Interior: Líneas discontinuas blancas girando cerca del disco */
+.white-orbit-inner {
+    position: absolute;
     top: 50%;
-    transform: translateY(-50%);
-    width: 10px;
-    height: 1px;
-}
-.tick-right {
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 10px;
-    height: 1px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: clamp(195px, 20.5vw, 295px);
+    height: clamp(195px, 20.5vw, 295px);
+    border: 1.5px dashed rgba(255, 255, 255, 0.45);
+    border-radius: 50%;
+    pointer-events: none;
+    animation: spinOrbitWhite 38s linear infinite reverse;
+    z-index: 4;
 }
 
 /* Disco 3D Central dentro de la retícula */
@@ -1250,9 +1273,19 @@ html, body {
         height: clamp(230px, 55vw, 300px);
     }
 
-    .minimal-tech-ring {
-        width: clamp(170px, 42vw, 230px);
-        height: clamp(170px, 42vw, 230px);
+    .white-orbit-outer {
+        width: clamp(190px, 46vw, 255px);
+        height: clamp(190px, 46vw, 255px);
+    }
+
+    .white-orbit-mid {
+        width: clamp(215px, 51vw, 285px);
+        height: clamp(215px, 51vw, 285px);
+    }
+
+    .white-orbit-inner {
+        width: clamp(160px, 39vw, 215px);
+        height: clamp(160px, 39vw, 215px);
     }
 
     .totem-disc-img {

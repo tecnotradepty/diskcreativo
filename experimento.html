@@ -23,7 +23,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,700&display=swap" rel="stylesheet">
 
     <!-- Hoja de Estilos del Prototipo -->
-    <link rel="stylesheet" href="assets/css/experimento.css?v=5">
+    <link rel="stylesheet" href="assets/css/experimento.css?v=6">
 </head>
 <body>
 
@@ -43,22 +43,17 @@
         <div class="stars-2"></div>
     </div>
 
-    <!-- ─── 02. NAVBAR CORPORATIVA BLACK MIRROR (BLANCO ASÉPTICO) ─── -->
-    <nav class="top-navbar" id="topNavbar">
-        <div class="navbar-brand-group">
-            <a href="#inicio" class="navbar-brand">
-                <img src="assets/images/brand/logo-nav.png" alt="Disk Icon" class="brand-icon">
-                <span>DISK CREATIVO</span>
-            </a>
-            <span class="corp-division-badge">DIV. INGENIERÍA // CORP.</span>
-        </div>
+    <!-- ─── 02. NAVBAR CLAYMORPHISM 3D BLACK MIRROR ─── -->
+    <nav class="top-navbar nav-claymorphic" id="topNavbar">
+        <a href="#inicio" class="navbar-brand">
+            <img src="assets/images/brand/logo-nav.png" alt="Disk Icon" class="brand-icon">
+            <span class="brand-name">DISK CREATIVO</span>
+        </a>
 
         <div class="navbar-links">
-            <a href="#identidad" class="nav-link">Identidad</a>
-            <a href="#divisiones" class="nav-link">Divisiones</a>
-            <a href="#portafolio" class="nav-link">Portafolio</a>
-            <a href="dex.html" class="nav-link active">Terminal DEX</a>
-            <a href="https://wa.me/50768529324" target="_blank" rel="noopener noreferrer" class="nav-btn-corp">
+            <a href="#inicio" class="nav-link active">Inicio</a>
+            <a href="dex.html" class="nav-link">Inicia tu Proyecto</a>
+            <a href="https://wa.me/50768529324" target="_blank" rel="noopener noreferrer" class="nav-btn-clay">
                 <span>Contacto</span>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
@@ -325,10 +320,11 @@
         </div>
     </footer>
 
-    <!-- Conmutador de Prueba de la Barra en Experimento -->
-    <div style="position: fixed; bottom: 20px; right: 20px; z-index: 9999; display: flex; gap: 8px; background: rgba(10,10,10,0.85); backdrop-filter: blur(10px); padding: 6px; border: 1px solid rgba(255,255,255,0.2); border-radius: 4px; font-family: monospace; font-size: 11px;">
-        <button onclick="document.getElementById('topNavbar').classList.remove('theme-monolith')" style="background: #FFF; color: #000; border: none; padding: 6px 12px; cursor: pointer; font-weight: bold; font-family: inherit; text-transform: uppercase;">1. Blanco Aséptico</button>
-        <button onclick="document.getElementById('topNavbar').classList.add('theme-monolith')" style="background: #111; color: #FFF; border: 1px solid #444; padding: 6px 12px; cursor: pointer; font-weight: bold; font-family: inherit; text-transform: uppercase;">2. Monolito Mate</button>
+    <!-- Conmutador de Prueba de la Barra Claymorphism en Experimento -->
+    <div style="position: fixed; bottom: 20px; right: 20px; z-index: 9999; display: flex; gap: 8px; background: rgba(10,10,14,0.92); backdrop-filter: blur(12px); padding: 8px; border: 1px solid rgba(255,255,255,0.18); border-radius: 8px; font-family: monospace; font-size: 11px; box-shadow: 0 10px 25px rgba(0,0,0,0.5);">
+        <button onclick="document.getElementById('topNavbar').classList.remove('style-edge')" style="background: #FFF; color: #000; border: none; padding: 6px 12px; cursor: pointer; font-weight: bold; font-family: inherit; border-radius: 4px;">1. CÁPSULA FLOTANTE 3D</button>
+        <button onclick="document.getElementById('topNavbar').classList.add('style-edge')" style="background: #222; color: #FFF; border: 1px solid #555; padding: 6px 12px; cursor: pointer; font-weight: bold; font-family: inherit; border-radius: 4px;">2. BARRA BORDE A BORDE</button>
+        <button onclick="document.querySelector('.nav-btn-clay').classList.toggle('btn-clay-white')" style="background: #E8E8ED; color: #111; border: 1px solid #AAA; padding: 6px 10px; cursor: pointer; font-weight: bold; font-family: inherit; border-radius: 4px;">ALTERNAR BOTÓN (NEGRO / BLANCO 3D)</button>
     </div>
 
     <!-- Scripts Modulares -->

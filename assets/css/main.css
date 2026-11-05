@@ -4,6 +4,8 @@
     --bg-secondary: #0A0A0C;
     --brand-purple: #6B00FF;
     --accent-neon: #00FF66;
+    --accent-neon-glow: rgba(0, 255, 102, 0.35);
+    --accent-cyan: #00F0FF;
     --text-main: #EAE9E4; 
     --text-muted: rgba(234, 233, 228, 0.6);
     --hairline: 1px solid rgba(255, 255, 255, 0.1);

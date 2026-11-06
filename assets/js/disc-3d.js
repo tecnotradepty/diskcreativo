@@ -23,7 +23,7 @@
         antialias: true,
         powerPreference: 'high-performance'
     });
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
 
     // Grupo con la inclinación perspectiva 3D exacta del isotipo original (disco-3d.png)
     const tiltGroup = new THREE.Group();
@@ -66,11 +66,11 @@
     const hubExtrudeSettings = {
         depth: 0.065,
         bevelEnabled: true,
-        bevelSegments: 5,
+        bevelSegments: 3,
         steps: 1,
         bevelSize: 0.014,
         bevelThickness: 0.014,
-        curveSegments: 120
+        curveSegments: 72
     };
     const hubGeometry = new THREE.ExtrudeGeometry(hubShape, hubExtrudeSettings);
     hubGeometry.center();
@@ -101,11 +101,11 @@
     const bladeExtrudeSettings = {
         depth: 0.055,
         bevelEnabled: true,
-        bevelSegments: 5,
+        bevelSegments: 3,
         steps: 1,
         bevelSize: 0.016,
         bevelThickness: 0.016,
-        curveSegments: 140
+        curveSegments: 80
     };
     const bladeGeometry = new THREE.ExtrudeGeometry(bladeShape, bladeExtrudeSettings);
     bladeGeometry.center();
@@ -359,11 +359,24 @@
     window.addEventListener('resize', resize);
     resize();
 
-    // 6. BUCLE DE ANIMACIÓN (ROTACIÓN PURA Y CONSTANTE, SIN INTERACCIÓN DE MOUSE)
+    // 6. BUCLE DE ANIMACIÓN OPTIMIZADO (PAUSA AUTOMÁTICA FUERA DE PANTALLA)
     const clock = new THREE.Clock();
+    let isVisible = true;
+
+    if ('IntersectionObserver' in window) {
+        const discObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                isVisible = entry.isIntersecting;
+            });
+        }, { rootMargin: '100px' });
+        discObserver.observe(container);
+    }
 
     function animate() {
         requestAnimationFrame(animate);
+
+        // Si el usuario scrolleó fuera del Hero, pausar renderizado para liberar GPU al 100%
+        if (!isVisible) return;
 
         const elapsed = clock.getElapsedTime();
         uniforms.uTime.value = elapsed;

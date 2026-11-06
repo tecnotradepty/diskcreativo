@@ -6,31 +6,33 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!topNavbar) return;
 
     const analogCut = document.querySelector('.analog-cut');
-    let lastScrollY = window.scrollY;
+    let lastScrollY = Math.max(0, window.pageYOffset ?? window.scrollY ?? document.documentElement.scrollTop ?? 0);
     let ticking = false;
 
+    // Calcular umbral dinámico exacto de la línea de cinta analógica
     const getCutThreshold = () => {
         if (analogCut) {
             const rect = analogCut.getBoundingClientRect();
-            return rect.top + window.scrollY - 80;
+            const scrollPos = window.pageYOffset ?? window.scrollY ?? document.documentElement.scrollTop ?? 0;
+            return rect.top + scrollPos - 75;
         }
-        return 650;
+        return 380; // En páginas secundarias como DEX
     };
 
     const updateNavbar = () => {
-        const currentScrollY = window.scrollY;
+        const currentScrollY = Math.max(0, window.pageYOffset ?? window.scrollY ?? document.documentElement.scrollTop ?? 0);
         const cutThreshold = getCutThreshold();
 
-        // 1. Difuminado continuo de Blanco sólido hacia Apple Liquid Glass (0px a 220px)
+        // 1. Morphing Continuo: Arcilla Blanca Sólida -> Apple Liquid Glass (0px a 220px)
         const maxMorphScroll = 220;
         const progress = Math.min(1, Math.max(0, currentScrollY / maxMorphScroll));
         
-        // Modula la opacidad de la capa blanca (1.0 en el tope -> 0.0 a los 220px)
+        // Modula la opacidad de la capa blanca (1.0 en el tope -> 0.0 al scrollear 220px)
         const clayOpacity = (1 - progress).toFixed(3);
         topNavbar.style.setProperty('--clay-opacity', clayOpacity);
 
-        // Clases de estado para transición suave de tipografía y colores
-        if (currentScrollY > 25) {
+        // Clases de estado para transición suave de tipografía y contraste
+        if (progress > 0.45) {
             topNavbar.classList.add('is-glass');
             topNavbar.classList.remove('is-at-top');
         } else {
@@ -38,20 +40,21 @@ document.addEventListener('DOMContentLoaded', () => {
             topNavbar.classList.add('is-at-top');
         }
 
-        // 2. Control de Visibilidad suave según la línea de rayas analógica (.analog-cut)
+        // 2. Control de Visibilidad suave según la cinta analógica (.analog-cut)
         if (currentScrollY >= cutThreshold) {
-            // Ya cruzamos la cinta analógica: ocultar al bajar, mostrar al subir
-            if (currentScrollY > lastScrollY) {
+            const scrollDelta = currentScrollY - lastScrollY;
+            // Solo actuar ante movimiento real para evitar fluctuaciones por micro-scroll
+            if (scrollDelta > 4) {
                 topNavbar.classList.add('nav-hidden');
-            } else if (currentScrollY < lastScrollY) {
+            } else if (scrollDelta < -4) {
                 topNavbar.classList.remove('nav-hidden');
             }
         } else {
-            // Dentro del Hero: permanece siempre visible
+            // Mientras esté en el Hero o por encima del corte: 100% visible
             topNavbar.classList.remove('nav-hidden');
         }
 
-        lastScrollY = Math.max(0, currentScrollY);
+        lastScrollY = currentScrollY;
         ticking = false;
     };
 
@@ -62,6 +65,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }, { passive: true });
 
-    // Inicializar de inmediato al cargar la página
+    window.addEventListener('resize', updateNavbar, { passive: true });
+    window.addEventListener('load', updateNavbar);
+
+    // Ejecución inicial inmediata
     updateNavbar();
 });

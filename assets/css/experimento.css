@@ -60,7 +60,7 @@ html, body {
         /* Fusión suave a los costados hacia negro sólido */
         linear-gradient(to right, #050505 0%, rgba(5,5,5,0) 20%, rgba(5,5,5,0) 80%, #050505 100%),
         /* Fusión suave inferior hacia negro antes de la cinta analógica */
-        linear-gradient(to bottom, transparent 40%, rgba(5,5,5,0.85) 80%, #050505 100%),
+        linear-gradient(to bottom, rgba(5,5,5,0.06) 0%, transparent 40%, rgba(5,5,5,0.85) 80%, #050505 100%),
         /* Fondo original de index */
         url('../images/backgrounds/escenario-lampara.png');
     background-position: center top, center top, center top;
@@ -68,14 +68,17 @@ html, body {
     background-repeat: no-repeat;
     z-index: 1;
     pointer-events: none;
-    filter: brightness(0.92) saturate(1.05);
 }
 
 .stars-container {
-    position: fixed;
-    inset: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
     z-index: 2;
     pointer-events: none;
+    overflow: hidden;
 }
 
 .stars-1 {
@@ -84,7 +87,7 @@ html, body {
     height: 1px;
     background: transparent;
     box-shadow: 15vw 20vh #FFF, 40vw 60vh #FFF, 80vw 15vh #FFF, 25vw 85vh #FFF, 60vw 30vh #FFF, 90vw 70vh #FFF, 10vw 45vh #FFF, 70vw 80vh #FFF;
-    animation: twinkle 40s infinite alternate ease-in-out;
+    opacity: 0.28;
 }
 
 .stars-2 {
@@ -93,12 +96,7 @@ html, body {
     height: 2px;
     background: transparent;
     box-shadow: 35vw 10vh #FFF, 85vw 50vh #FFF, 50vw 85vh #FFF, 15vw 70vh #FFF, 75vw 25vh #FFF;
-    animation: twinkle 60s infinite alternate-reverse ease-in-out;
-}
-
-@keyframes twinkle {
-    0% { opacity: 0.1; }
-    100% { opacity: 0.45; }
+    opacity: 0.22;
 }
 
 /* ─── 02. NAVBAR CLAYMORPHISM TO APPLE LIQUID GLASS (MORPHING CONTINUO) ─── */
@@ -583,19 +581,31 @@ html, body {
 
 .hero-disc-wrapper {
     position: relative;
-    width: clamp(280px, 30vw, 440px);
-    height: clamp(280px, 30vw, 440px);
+    width: clamp(220px, 23vw, 330px);
+    height: clamp(220px, 23vw, 330px);
     display: flex;
     align-items: center;
     justify-content: center;
     user-select: none;
 }
 
+.hero-disc-wrapper::before {
+    content: "";
+    position: absolute;
+    inset: 6%;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0, 0, 0, 0.92) 0%, rgba(0, 0, 0, 0.55) 48%, transparent 72%);
+    transform: translateY(20px);
+    pointer-events: none;
+    z-index: 0;
+}
+
 #threeDiscCanvas {
+    position: relative;
+    z-index: 1;
     width: 100% !important;
     height: 100% !important;
     display: block;
-    filter: drop-shadow(0px 30px 55px rgba(0, 0, 0, 0.95));
     pointer-events: none;
 }
 
@@ -1143,15 +1153,19 @@ html, body {
 /* ─── CUBOS 3D ESPACIALES ─── */
 .floating-ecosystem {
     position: absolute;
-    inset: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: clamp(520px, 72vh, 760px);
     pointer-events: none;
     overflow: hidden;
     z-index: 0;
-    perspective: 3000px;
+    perspective: 1800px;
+    contain: strict;
 }
-.cube-container { position: absolute; transform-style: preserve-3d; filter: drop-shadow(0 15px 40px rgba(0,0,0,0.9)); }
-.cube-object { position: relative; width: 100%; height: 100%; transform-style: preserve-3d; }
-.c-f { position: absolute; width: 100%; height: 100%; border: 1px solid rgba(255, 255, 255, 0.12); background: rgba(15, 15, 20, 0.35); backface-visibility: visible; }
+.cube-container { position: absolute; transform-style: preserve-3d; will-change: transform; }
+.cube-object { position: relative; width: 100%; height: 100%; transform-style: preserve-3d; will-change: transform; }
+.c-f { position: absolute; width: 100%; height: 100%; border: 1px solid rgba(255, 255, 255, 0.12); background: rgba(15, 15, 20, 0.35); backface-visibility: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.55); }
 .f { transform: translateZ(calc(var(--size) / 2)); }
 .bk { transform: rotateY(180deg) translateZ(calc(var(--size) / 2)); }
 .L { transform: rotateY(-90deg) translateZ(calc(var(--size) / 2)); }
@@ -1161,12 +1175,12 @@ html, body {
 @keyframes slowRotate1 { to { transform: rotateX(360deg) rotateY(180deg); } }
 @keyframes slowRotate2 { to { transform: rotateX(-180deg) rotateY(360deg) rotateZ(90deg); } }
 @keyframes slowRotate3 { to { transform: rotateX(90deg) rotateY(-180deg) rotateZ(360deg); } }
-@keyframes spaceDrift { 0%, 100% { transform: translate(0, 0); } 33% { transform: translate(30px, -20px); } 66% { transform: translate(-15px, 25px); } }
-.sym-1 { --size: clamp(8rem, 14vw, 16rem); width: var(--size); height: var(--size); top: 10%; left: 5%; filter: blur(8px) drop-shadow(0 20px 50px rgba(0,0,0,0.95)); z-index: 10; animation: spaceDrift 60s infinite ease-in-out; }
+@keyframes spaceDrift { 0%, 100% { transform: translate3d(0, 0, 0); } 33% { transform: translate3d(20px, -14px, 0); } 66% { transform: translate3d(-12px, 16px, 0); } }
+.sym-1 { --size: clamp(7rem, 12vw, 14rem); width: var(--size); height: var(--size); top: 10%; left: 5%; opacity: 0.28; z-index: 10; animation: spaceDrift 60s infinite ease-in-out; }
 .sym-1 .cube-object { animation: slowRotate1 95s infinite linear; }
-.sym-2 { --size: clamp(3rem, 5.5vw, 6rem); width: var(--size); height: var(--size); top: 25%; right: 15%; opacity: 0.7; animation: spaceDrift 75s infinite ease-in-out reverse -10s; }
+.sym-2 { --size: clamp(2.8rem, 5vw, 5rem); width: var(--size); height: var(--size); top: 22%; right: 12%; opacity: 0.55; animation: spaceDrift 75s infinite ease-in-out reverse -10s; }
 .sym-2 .cube-object { animation: slowRotate2 120s infinite linear -15s; }
-.sym-3 { --size: clamp(2.5rem, 5vw, 5rem); width: var(--size); height: var(--size); bottom: 25%; left: 18%; filter: blur(1px); opacity: 0.6; animation: spaceDrift 90s infinite ease-in-out -25s; }
+.sym-3 { --size: clamp(2.2rem, 4vw, 4rem); width: var(--size); height: var(--size); bottom: 18%; left: 16%; opacity: 0.45; animation: spaceDrift 90s infinite ease-in-out -25s; }
 .sym-3 .cube-object { animation: slowRotate3 105s infinite linear -5s; }
 
 /* ─── FOOTER CORPORATIVO ─── */
@@ -1189,11 +1203,13 @@ html, body {
 /* ─── RESPONSIVE MÓVIL BLINDADO ─── */
 @media (max-width: 900px) {
     .ambient-canvas {
-        height: 100%;
-        min-height: 580px;
-        background-size: 100% 100%, 100% 100%, cover;
-        background-position: center top;
-        filter: brightness(0.88) saturate(1.05);
+        height: clamp(560px, 80vh, 740px);
+        background-size: 100% 100%, 100% 100%, auto 100%;
+        background-position: center top, center top, center top;
+    }
+
+    .floating-ecosystem {
+        height: clamp(560px, 80vh, 740px);
     }
 
     .corp-division-badge { display: none; }
@@ -1260,12 +1276,8 @@ html, body {
     }
 
     .hero-disc-wrapper {
-        width: clamp(220px, 55vw, 320px);
-        height: clamp(220px, 55vw, 320px);
-    }
-
-    .solid-gray-letter {
-        filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.85));
+        width: clamp(175px, 42vw, 235px);
+        height: clamp(175px, 42vw, 235px);
     }
 
     .b2b-block {
@@ -1312,7 +1324,7 @@ html, body {
         justify-content: center;
     }
     .hero-disc-wrapper {
-        width: clamp(190px, 62vw, 250px);
-        height: clamp(190px, 62vw, 250px);
+        width: clamp(150px, 46vw, 195px);
+        height: clamp(150px, 46vw, 195px);
     }
 }

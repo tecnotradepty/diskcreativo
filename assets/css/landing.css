@@ -67,13 +67,13 @@
     z-index: 1; 
 }
 
-/* AISLAMIENTO WEBKIT PARA ACRÍLICO (EVITA RUPTURA EN iOS) */
+/* AISLAMIENTO WEBKIT PARA ACRÍLICO (EVITA RUPTURA EN iOS Y REPAINT EN CHROME) */
 .acrylic-letter {
     font-family: var(--font-display); 
     display: inline-block; 
     position: relative;
-    color: transparent; 
-    filter: drop-shadow(0px 0.1em 0.15em rgba(0, 0, 0, 0.8));
+    color: rgba(0, 0, 0, 0.01); 
+    text-shadow: 0px 0.1em 0.15em rgba(0, 0, 0, 0.82);
     z-index: 10; 
 }
 
@@ -96,13 +96,14 @@
 .overlap-t { z-index: 25 !important; position: relative; }
 
 @keyframes floatLetter { 
-    0%, 100% { transform: translateY(0px); } 
-    50% { transform: translateY(-8px); } 
+    0%, 100% { transform: translate3d(0, 0px, 0); } 
+    50% { transform: translate3d(0, -6px, 0); } 
 }
 
 .float-anim { 
     display: inline-block; 
     animation: floatLetter 8s ease-in-out infinite; 
+    will-change: transform;
 }
 .delay-1 { animation-delay: 0s; } 
 .delay-2 { animation-delay: 1.5s; } 
@@ -204,19 +205,31 @@
 
 .hero-disc-wrapper {
     position: relative;
-    width: clamp(280px, 30vw, 440px);
-    height: clamp(280px, 30vw, 440px);
+    width: clamp(220px, 23vw, 330px);
+    height: clamp(220px, 23vw, 330px);
     display: flex;
     align-items: center;
     justify-content: center;
     user-select: none;
 }
 
+.hero-disc-wrapper::before {
+    content: "";
+    position: absolute;
+    inset: 6%;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0, 0, 0, 0.92) 0%, rgba(0, 0, 0, 0.55) 48%, transparent 72%);
+    transform: translateY(20px);
+    pointer-events: none;
+    z-index: 0;
+}
+
 #threeDiscCanvas {
+    position: relative;
+    z-index: 1;
     width: 100% !important;
     height: 100% !important;
     display: block;
-    filter: drop-shadow(0px 30px 55px rgba(0, 0, 0, 0.95));
     pointer-events: none;
 }
 
@@ -236,21 +249,23 @@
     box-shadow: 0 -10px 40px rgba(0,0,0,0.9), 0 10px 40px rgba(0,0,0,0.9);
 }
 
-/* ─── CUBOS 3D ESPACIALES ─── */
+/* ─── CUBOS 3D ESPACIALES (AISLADOS EN GPU Y CONFINADOS AL HERO) ─── */
 .floating-ecosystem { 
     position: absolute; 
-    inset: 0; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: clamp(520px, 72vh, 760px);
     pointer-events: none; 
     overflow: hidden; 
     z-index: 0; 
-    perspective: 3000px; 
-    contain: paint layout;
+    perspective: 1800px; 
+    contain: strict;
 }
 
 .cube-container { 
     position: absolute; 
     transform-style: preserve-3d; 
-    filter: drop-shadow(0 15px 40px rgba(0,0,0,0.9)); 
     will-change: transform;
 }
 
@@ -267,7 +282,8 @@
     width: 100%; 
     height: 100%; 
     border: 1px solid var(--cube-edge); 
-    backface-visibility: visible; 
+    backface-visibility: hidden; 
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.55);
     opacity: 1; 
 }
 
@@ -283,54 +299,52 @@
 @keyframes slowRotate3 { to { transform: rotateX(90deg) rotateY(-180deg) rotateZ(360deg); } } 
 @keyframes slowRotate4 { to { transform: rotateX(-360deg) rotateZ(-180deg); } } 
 @keyframes spaceDrift { 
-    0%, 100% { transform: translate(0, 0); } 
-    33% { transform: translate(30px, -20px); } 
-    66% { transform: translate(-15px, 25px); } 
+    0%, 100% { transform: translate3d(0, 0, 0); } 
+    33% { transform: translate3d(20px, -14px, 0); } 
+    66% { transform: translate3d(-12px, 16px, 0); } 
 }
 
 .sym-1 { 
-    --size: clamp(8rem, 15vw, 18rem); 
+    --size: clamp(7rem, 12vw, 14rem); 
     width: var(--size); 
     height: var(--size); 
     top: 10%; 
     left: 5%; 
-    filter: blur(8px) drop-shadow(0 20px 50px rgba(0,0,0,0.95)); 
+    opacity: 0.28;
     z-index: 10; 
     animation: spaceDrift 60s infinite ease-in-out; 
 } 
 .sym-1 .cube-object { animation: slowRotate1 95s infinite linear; } 
 
 .sym-2 { 
-    --size: clamp(3rem, 6vw, 6rem); 
+    --size: clamp(2.8rem, 5vw, 5rem); 
     width: var(--size); 
     height: var(--size); 
-    top: 25%; 
-    right: 15%; 
-    opacity: 0.7; 
+    top: 22%; 
+    right: 12%; 
+    opacity: 0.55; 
     animation: spaceDrift 75s infinite ease-in-out reverse -10s; 
 } 
 .sym-2 .cube-object { animation: slowRotate2 120s infinite linear -15s; } 
 
 .sym-3 { 
-    --size: clamp(2.5rem, 5vw, 5rem); 
+    --size: clamp(2.2rem, 4vw, 4rem); 
     width: var(--size); 
     height: var(--size); 
-    bottom: 25%; 
-    left: 18%; 
-    filter: blur(1px); 
-    opacity: 0.6; 
+    bottom: 18%; 
+    left: 16%; 
+    opacity: 0.45; 
     animation: spaceDrift 90s infinite ease-in-out -25s; 
 } 
 .sym-3 .cube-object { animation: slowRotate3 105s infinite linear -5s; } 
 
 .sym-4 { 
-    --size: clamp(1.5rem, 3vw, 3rem); 
+    --size: clamp(1.5rem, 2.8vw, 2.8rem); 
     width: var(--size); 
     height: var(--size); 
     top: 60%; 
-    right: 35%; 
-    filter: blur(2.5px); 
-    opacity: 0.2; 
+    right: 32%; 
+    opacity: 0.18; 
     animation: spaceDrift 80s infinite linear reverse -40s; 
 } 
 .sym-4 .cube-object { animation: slowRotate4 130s infinite linear; }
@@ -674,13 +688,16 @@
     }
 
     .hero-disc-wrapper {
-        width: clamp(220px, 55vw, 320px);
-        height: clamp(220px, 55vw, 320px);
+        width: clamp(175px, 42vw, 235px);
+        height: clamp(175px, 42vw, 235px);
     }
 
-    .solid-gray-letter {
-        filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.85));
-    } 
+    .floating-ecosystem {
+        height: clamp(560px, 80vh, 740px);
+    }
+    .sym-1 { display: none; }
+    .sym-2 { --size: 3rem; top: 18%; right: 6%; opacity: 0.35; }
+    .sym-3 { --size: 2rem; bottom: 18%; left: 6%; opacity: 0.25; } 
 
     .b2b-block { 
         grid-template-columns: 1fr; 
@@ -787,7 +804,7 @@
         justify-content: center;
     }
     .hero-disc-wrapper {
-        width: clamp(190px, 62vw, 250px);
-        height: clamp(190px, 62vw, 250px);
+        width: clamp(150px, 46vw, 195px);
+        height: clamp(150px, 46vw, 195px);
     }
 }

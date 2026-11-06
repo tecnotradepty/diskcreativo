@@ -23,7 +23,7 @@
         antialias: true,
         powerPreference: 'high-performance'
     });
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
+    renderer.setPixelRatio(1);
 
     // Grupo con la inclinación perspectiva 3D exacta del isotipo original (disco-3d.png)
     const tiltGroup = new THREE.Group();
@@ -66,11 +66,11 @@
     const hubExtrudeSettings = {
         depth: 0.065,
         bevelEnabled: true,
-        bevelSegments: 3,
+        bevelSegments: 2,
         steps: 1,
         bevelSize: 0.014,
         bevelThickness: 0.014,
-        curveSegments: 72
+        curveSegments: 48
     };
     const hubGeometry = new THREE.ExtrudeGeometry(hubShape, hubExtrudeSettings);
     hubGeometry.center();
@@ -101,11 +101,11 @@
     const bladeExtrudeSettings = {
         depth: 0.055,
         bevelEnabled: true,
-        bevelSegments: 3,
+        bevelSegments: 2,
         steps: 1,
         bevelSize: 0.016,
         bevelThickness: 0.016,
-        curveSegments: 80
+        curveSegments: 56
     };
     const bladeGeometry = new THREE.ExtrudeGeometry(bladeShape, bladeExtrudeSettings);
     bladeGeometry.center();
@@ -336,7 +336,7 @@
         vertexShader: vertexShader,
         fragmentShader: fragmentShader,
         uniforms: uniforms,
-        side: THREE.DoubleSide
+        side: THREE.FrontSide
     });
 
     const hubMesh = new THREE.Mesh(hubGeometry, discMaterial);
@@ -347,50 +347,76 @@
 
     // 5. RESPONSIVE RESIZE
     function resize() {
-        const width = container.clientWidth || 360;
-        const height = container.clientHeight || 360;
+        const width = container.clientWidth || 300;
+        const height = container.clientHeight || 300;
         renderer.setSize(width, height, false);
         camera.aspect = width / height;
         camera.updateProjectionMatrix();
+        renderer.render(scene, camera);
     }
 
     const resizeObserver = new ResizeObserver(() => resize());
     resizeObserver.observe(container);
-    window.addEventListener('resize', resize);
+    window.addEventListener('resize', resize, { passive: true });
     resize();
 
-    // 6. BUCLE DE ANIMACIÓN OPTIMIZADO (PAUSA AUTOMÁTICA FUERA DE PANTALLA)
-    const clock = new THREE.Clock();
+    // 6. BUCLE DE ANIMACIÓN ULTRA-OPTIMIZADO (MOVIMIENTO SUTIL + PRIORIDAD AL SCROLL)
     let isVisible = true;
+    let isScrolling = false;
+    let scrollTimer = null;
+    let activeTime = 0;
+    let lastFrameTime = performance.now();
 
     if ('IntersectionObserver' in window) {
         const discObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 isVisible = entry.isIntersecting;
             });
-        }, { rootMargin: '100px' });
+        }, { rootMargin: '80px' });
         discObserver.observe(container);
     }
 
-    function animate() {
+    // Ceder el 100% de la GPU/CPU al navegador mientras el usuario hace scroll activo
+    window.addEventListener('scroll', () => {
+        isScrolling = true;
+        if (scrollTimer) clearTimeout(scrollTimer);
+        scrollTimer = setTimeout(() => {
+            isScrolling = false;
+            lastFrameTime = performance.now();
+        }, 90);
+    }, { passive: true });
+
+    function animate(now) {
         requestAnimationFrame(animate);
 
-        // Si el usuario scrolleó fuera del Hero, pausar renderizado para liberar GPU al 100%
-        if (!isVisible) return;
+        // Si está fuera de pantalla o el usuario está scrolleando activamente, no consumir GPU
+        if (!isVisible || isScrolling || document.hidden) {
+            lastFrameTime = now;
+            return;
+        }
 
-        const elapsed = clock.getElapsedTime();
-        uniforms.uTime.value = elapsed;
+        // Cadencia fluida (~32 FPS) para rotación lenta monumental con mínimo uso de recursos
+        const deltaMs = now - lastFrameTime;
+        if (deltaMs < 30) return;
 
-        // Giro continuo y elegante sobre el eje del disco
-        const currentSpin = -elapsed * 0.45;
+        const deltaSec = Math.min(deltaMs / 1000, 0.05);
+        lastFrameTime = now;
+        activeTime += deltaSec;
+
+        uniforms.uTime.value = activeTime;
+
+        // Giro muy sutil y pausado sobre el eje del disco (reducido a ~1/3 de velocidad)
+        const currentSpin = -activeTime * 0.15;
         spinGroup.rotation.z = currentSpin;
         uniforms.uSpinAngle.value = currentSpin;
 
-        // Levitación mecánica vertical muy sutil
-        tiltGroup.position.y = Math.sin(elapsed * 1.4) * 0.06;
+        // Levitación mecánica casi imperceptible (reducida a ~1/3 de amplitud)
+        tiltGroup.position.y = Math.sin(activeTime * 0.7) * 0.02;
 
         renderer.render(scene, camera);
     }
 
-    animate();
+    // Renderizar primer cuadro inmediatamente y arrancar bucle
+    renderer.render(scene, camera);
+    requestAnimationFrame(animate);
 })();

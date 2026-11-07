@@ -550,6 +550,44 @@ html, body {
     font-weight: 600;
 }
 
+.hero-statement-lead {
+    font-size: 1.12em;
+    font-weight: 700;
+    color: #FFFFFF;
+    letter-spacing: -0.2px;
+}
+
+.typewriter-text {
+    font-weight: 400;
+    color: rgba(242, 242, 245, 0.9);
+}
+
+.typewriter-cursor {
+    display: inline-block;
+    color: var(--accent-neon, #00FF66);
+    font-weight: 300;
+    margin-left: 2px;
+    animation: blinkTypeCursor 0.9s steps(1) infinite;
+}
+
+@keyframes blinkTypeCursor {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+.terminal-caret {
+    display: inline-block;
+    color: var(--accent-neon, #00FF66);
+    font-weight: 800;
+    margin-left: 4px;
+    animation: blinkCaret 1.1s steps(1) infinite;
+}
+
+@keyframes blinkCaret {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.2; transform: scale(0.92); }
+}
+
 .hero-actions-row {
     display: flex;
     align-items: center;

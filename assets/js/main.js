@@ -94,4 +94,41 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Ejecución inicial inmediata
     updateNavbar();
+
+    // ─── 3. SCROLL SUAVE CON OFFSET PARA LA NAVBAR ───
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            const targetId = this.getAttribute('href');
+            if (!targetId || targetId === '#' || targetId.length < 2) return;
+            const targetEl = document.querySelector(targetId);
+            if (targetEl) {
+                e.preventDefault();
+                const navOffset = 76;
+                const elementPosition = targetEl.getBoundingClientRect().top + (window.pageYOffset || window.scrollY || 0);
+                window.scrollTo({
+                    top: Math.max(0, elementPosition - navOffset),
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+
+    // ─── 4. EFECTO MÁQUINA DE ESCRIBIR EN EL HERO ───
+    const typewriterEl = document.getElementById('typewriterText');
+    if (typewriterEl) {
+        const phrase = "Somos el digitalizador del corazón de tu negocio.";
+        let charIdx = 0;
+        const typeSpeed = 38; // ms por letra para un ritmo ágil y fluido
+
+        const typeNextChar = () => {
+            if (charIdx < phrase.length) {
+                typewriterEl.textContent += phrase.charAt(charIdx);
+                charIdx++;
+                setTimeout(typeNextChar, typeSpeed);
+            }
+        };
+
+        // Iniciar escritura con breve retardo cinemático
+        setTimeout(typeNextChar, 400);
+    }
 });

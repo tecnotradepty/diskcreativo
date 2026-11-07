@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Disk Creativo | Configurador de Proyecto</title>
-    <meta name="description" content="Configura el alcance de tu proyecto digital con Disk Creativo. Diagnóstico de arquitectura, requerimientos operativos y contacto directo.">
+    <title>Disk Creativo | Inicia tu Proyecto</title>
+    <meta name="description" content="Inicia tu proyecto con Disk Creativo. Cuéntanos tu idea o necesidad operativa y conversemos directamente.">
     <meta name="theme-color" content="#050505">
 
     <!-- Favicon -->
@@ -16,8 +16,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,700&display=swap" rel="stylesheet">
 
     <!-- Estilos Modulares -->
-    <link rel="stylesheet" href="assets/css/main.css?v=21">
-    <link rel="stylesheet" href="assets/css/terminal.css?v=21">
+    <link rel="stylesheet" href="assets/css/main.css?v=22">
+    <link rel="stylesheet" href="assets/css/terminal.css?v=22">
 </head>
 <body>
 
@@ -25,26 +25,22 @@
     <div class="ambient-canvas"></div>
     <div class="minimal-stars"></div>
 
-    <!-- ─── NAVBAR CLAYMORPHISM 3D & APPLE LIQUID GLASS ─── -->
+    <!-- ─── NAVBAR ─── -->
     <nav class="top-navbar nav-claymorphic is-at-top" id="topNavbar">
         <div class="navbar-inner-wrapper">
-            <!-- 1. Logo de la Marca: Colapsado en estado inicial, aparece al scrollear -->
             <a href="index.html" class="navbar-brand">
                 <img src="assets/images/brand/logo-nav.png" alt="Disk Icon" class="brand-icon">
                 <span class="brand-name">DISK<br>CREATIVO</span>
             </a>
 
-            <!-- 2. Botón Inicio -->
             <a href="index.html" class="nav-link nav-link-inicio">
                 <span>Inicio</span>
             </a>
 
-            <!-- 3. Enlace Inicia tu Proyecto -->
             <a href="dex.html" class="nav-link nav-link-multiline active">
                 <span>Inicia tu<br>Proyecto</span>
             </a>
 
-            <!-- 4. Botón Contacto -->
             <a href="https://wa.me/50768529324" target="_blank" rel="noopener noreferrer" class="nav-btn-clay">
                 <span>CONTACTO</span>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -52,284 +48,77 @@
         </div>
     </nav>
 
-    <!-- ─── CONTENEDOR PRINCIPAL MACOS STUDIO ─── -->
+    <!-- ─── VENTANA MACOS BLANCA MINIMALISTA ─── -->
     <main class="dex-container">
         
-        <div class="macos-window" id="macosWindow">
+        <div class="macos-window">
             
-            <!-- Barra de Título Nativa macOS Sequoia -->
+            <!-- Barra de título macOS limpia -->
             <header class="macos-titlebar">
-                <div class="macos-titlebar-left">
-                    <div class="macos-traffic-lights" aria-hidden="true">
-                        <span class="traffic-light close"></span>
-                        <span class="traffic-light minimize"></span>
-                        <span class="traffic-light expand"></span>
-                    </div>
-                    <div class="macos-toolbar-divider"></div>
-                    <div class="macos-sidebar-icon" title="Panel de Resumen">
-                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="3" y="3" width="18" height="18" rx="3"></rect>
-                            <line x1="9" y1="3" x2="9" y2="21"></line>
-                        </svg>
-                    </div>
+                <div class="macos-traffic-lights" aria-hidden="true">
+                    <span class="traffic-light close"></span>
+                    <span class="traffic-light minimize"></span>
+                    <span class="traffic-light expand"></span>
                 </div>
-
-                <div class="macos-window-title">
-                    <svg class="title-folder-icon" width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M10 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z"/>
-                    </svg>
-                    <span>Disk Studio — Configuración de Proyecto</span>
-                </div>
-
-                <div class="macos-titlebar-right">
-                    <span class="macos-status-badge">
-                        <span class="status-dot"></span>
-                        Recepción Directa
-                    </span>
-                </div>
+                <span class="macos-title">Nuevo Proyecto</span>
             </header>
 
-            <!-- Cuerpo Split-View de macOS (Sidebar + Inspector Principal) -->
-            <div class="macos-body">
+            <!-- Cuerpo del formulario -->
+            <div class="macos-content">
                 
-                <!-- Sidebar Izquierdo: Guía y Resumen en Tiempo Real -->
-                <aside class="macos-sidebar">
-                    <div class="sidebar-section">
-                        <span class="sidebar-group-title">Estructura del Brief</span>
-                        <ul class="sidebar-nav-list">
-                            <li class="sidebar-nav-item active" data-step="1">
-                                <span class="step-badge">1</span>
-                                <div class="step-info">
-                                    <span class="step-name">Solución Digital</span>
-                                    <span class="step-desc">Qué vamos a construir</span>
-                                </div>
-                            </li>
-                            <li class="sidebar-nav-item" data-step="2">
-                                <span class="step-badge">2</span>
-                                <div class="step-info">
-                                    <span class="step-name">Diagnóstico</span>
-                                    <span class="step-desc">Etapa y prioridad actual</span>
-                                </div>
-                            </li>
-                            <li class="sidebar-nav-item" data-step="3">
-                                <span class="step-badge">3</span>
-                                <div class="step-info">
-                                    <span class="step-name">Tu Negocio</span>
-                                    <span class="step-desc">Contexto y requerimientos</span>
-                                </div>
-                            </li>
-                            <li class="sidebar-nav-item" data-step="4">
-                                <span class="step-badge">4</span>
-                                <div class="step-info">
-                                    <span class="step-name">Presupuesto</span>
-                                    <span class="step-desc">Rango de inversión</span>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <!-- Tarjeta de Resumen en Vivo -->
-                    <div class="macos-live-card">
-                        <div class="live-card-header">
-                            <span>Resumen de Solicitud</span>
-                            <span class="live-tag">En vivo</span>
-                        </div>
-                        <div class="live-card-rows">
-                            <div class="live-row">
-                                <span class="live-label">Solución</span>
-                                <span class="live-val" id="sum_solucion">Sin seleccionar</span>
-                            </div>
-                            <div class="live-row">
-                                <span class="live-label">Etapa</span>
-                                <span class="live-val" id="sum_etapa">Sin seleccionar</span>
-                            </div>
-                            <div class="live-row">
-                                <span class="live-label">Prioridad</span>
-                                <span class="live-val" id="sum_prioridad">Sin seleccionar</span>
-                            </div>
-                            <div class="live-row">
-                                <span class="live-label">Inversión</span>
-                                <span class="live-val" id="sum_presupuesto">Por definir</span>
-                            </div>
-                        </div>
-                        <div class="live-card-footer">
-                            Al finalizar, se abrirá una conversación directa en WhatsApp con tu resumen estructurado.
-                        </div>
-                    </div>
-                </aside>
-
-                <!-- Área Principal del Configurador -->
-                <div class="macos-workspace">
-                    
-                    <div class="workspace-header">
-                        <h1>Configura tu Proyecto</h1>
-                        <p>Selecciona los parámetros que mejor describan lo que tu negocio necesita para preparar una propuesta técnica a medida.</p>
-                    </div>
-
-                    <form id="auditForm" class="macos-form">
-                        
-                        <!-- PASO 1: TIPO DE SOLUCIÓN -->
-                        <section class="macos-section" id="sec_solucion">
-                            <div class="section-title-row">
-                                <span class="section-num">01</span>
-                                <div>
-                                    <h2>¿Qué necesitas construir o implementar?</h2>
-                                    <p class="section-sub">Elige la categoría principal de tu proyecto.</p>
-                                </div>
-                            </div>
-
-                            <input type="hidden" id="q_solucion" value="Sitio Web Corporativo / Landing Page" required>
-
-                            <div class="macos-cards-grid" data-target="q_solucion" data-summary="sum_solucion">
-                                <button type="button" class="macos-option-card selected" data-value="Sitio Web Corporativo / Landing Page">
-                                    <div class="card-top">
-                                        <div class="card-icon">
-                                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-                                        </div>
-                                        <span class="card-check"></span>
-                                    </div>
-                                    <span class="card-title">Sitio Web / Landing Page</span>
-                                    <span class="card-desc">Presencia corporativa, portafolio comercial o página de alta conversión para captar clientes.</span>
-                                </button>
-
-                                <button type="button" class="macos-option-card" data-value="Tienda Online / E-Commerce">
-                                    <div class="card-top">
-                                        <div class="card-icon">
-                                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-                                        </div>
-                                        <span class="card-check"></span>
-                                    </div>
-                                    <span class="card-title">Tienda Online / E-Commerce</span>
-                                    <span class="card-desc">Catálogo autogestionable, carrito de compras, pagos en línea y gestión de inventario.</span>
-                                </button>
-
-                                <button type="button" class="macos-option-card" data-value="Software a Medida / Plataforma Web">
-                                    <div class="card-top">
-                                        <div class="card-icon">
-                                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
-                                        </div>
-                                        <span class="card-check"></span>
-                                    </div>
-                                    <span class="card-title">Software a Medida / SaaS</span>
-                                    <span class="card-desc">Sistemas internos, paneles de administración, portales de clientes o agendamiento avanzado.</span>
-                                </button>
-
-                                <button type="button" class="macos-option-card" data-value="Automatización e Integración de Procesos">
-                                    <div class="card-top">
-                                        <div class="card-icon">
-                                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/><line x1="4" y1="4" x2="9" y2="9"/></svg>
-                                        </div>
-                                        <span class="card-check"></span>
-                                    </div>
-                                    <span class="card-title">Automatización Operativa</span>
-                                    <span class="card-desc">Conexión de sistemas existentes, flujos de atención, cotizadores o digitalización de procesos.</span>
-                                </button>
-                            </div>
-                        </section>
-
-                        <!-- PASO 2: DIAGNÓSTICO Y PRIORIDAD -->
-                        <section class="macos-section" id="sec_diagnostico">
-                            <div class="section-title-row">
-                                <span class="section-num">02</span>
-                                <div>
-                                    <h2>Situación actual y objetivo principal</h2>
-                                    <p class="section-sub">Ayúdanos a entender el punto de partida de tu empresa.</p>
-                                </div>
-                            </div>
-
-                            <!-- Subgrupo A: Punto de partida -->
-                            <div class="macos-field-group">
-                                <label class="macos-label">¿En qué etapa se encuentra tu proyecto?</label>
-                                <input type="hidden" id="q_etapa" value="Proyecto nuevo desde cero">
-                                <div class="macos-pills-row" data-target="q_etapa" data-summary="sum_etapa">
-                                    <button type="button" class="macos-pill selected" data-value="Proyecto nuevo desde cero">Proyecto nuevo desde cero</button>
-                                    <button type="button" class="macos-pill" data-value="Rediseño o mejora de web actual">Rediseño de web actual</button>
-                                    <button type="button" class="macos-pill" data-value="Digitalizar operación manual (WhatsApp / Excel)">Digitalizar operación manual</button>
-                                    <button type="button" class="macos-pill" data-value="Escalar o integrar sistema existente">Escalar sistema existente</button>
-                                </div>
-                            </div>
-
-                            <!-- Subgrupo B: Prioridad / Dolor principal -->
-                            <div class="macos-field-group">
-                                <label class="macos-label">¿Cuál es el resultado más importante que buscas lograr?</label>
-                                <input type="hidden" id="q_prioridad" value="Captar más clientes y aumentar ventas">
-                                <div class="macos-pills-row" data-target="q_prioridad" data-summary="sum_prioridad">
-                                    <button type="button" class="macos-pill selected" data-value="Captar más clientes y aumentar ventas">Captar más clientes y ventas</button>
-                                    <button type="button" class="macos-pill" data-value="Consolidar una imagen corporativa sólida">Elevar imagen corporativa</button>
-                                    <button type="button" class="macos-pill" data-value="Ahorrar tiempo automatizando tareas manuales">Automatizar tareas manuales</button>
-                                    <button type="button" class="macos-pill" data-value="Centralizar reservas, cobros o clientes">Centralizar reservas o cobros</button>
-                                </div>
-                            </div>
-                        </section>
-
-                        <!-- PASO 3: DATOS Y PROFUNDIZACIÓN DEL PROYECTO -->
-                        <section class="macos-section" id="sec_negocio">
-                            <div class="section-title-row">
-                                <span class="section-num">03</span>
-                                <div>
-                                    <h2>Sobre tu negocio y requerimientos</h2>
-                                    <p class="section-sub">Cuéntanos quién eres y qué necesitas que haga la herramienta.</p>
-                                </div>
-                            </div>
-
-                            <div class="macos-inputs-row">
-                                <div class="macos-field-group">
-                                    <label class="macos-label" for="q_nombre">Tu Nombre / Empresa <span class="req-dot">*</span></label>
-                                    <input type="text" id="q_nombre" class="macos-input" placeholder="Ej. Andrés Gómez — Grupo Comercial" required>
-                                </div>
-
-                                <div class="macos-field-group">
-                                    <label class="macos-label" for="q_sector">Sector o Actividad <span class="req-dot">*</span></label>
-                                    <input type="text" id="q_sector" class="macos-input" placeholder="Ej. Servicios, Comercio, Bienes Raíces, Salud..." required>
-                                </div>
-                            </div>
-
-                            <div class="macos-field-group">
-                                <label class="macos-label" for="q_detalles">Detalles del proyecto o necesidades específicas <span class="req-dot">*</span></label>
-                                <textarea id="q_detalles" class="macos-textarea" rows="4" placeholder="Explícanos brevemente cómo funciona tu operación hoy, qué problema necesitas resolver o qué funciones clave debería incluir tu proyecto..." required></textarea>
-                            </div>
-                        </section>
-
-                        <!-- PASO 4: INVERSIÓN ESTIMADA -->
-                        <section class="macos-section" id="sec_presupuesto">
-                            <div class="section-title-row">
-                                <span class="section-num">04</span>
-                                <div>
-                                    <h2>Rango de inversión estimado</h2>
-                                    <p class="section-sub">Nos permite proponerte una arquitectura técnica acorde a tu presupuesto.</p>
-                                </div>
-                            </div>
-
-                            <input type="hidden" id="q_presupuesto" value="$600 – $1,200 USD">
-                            <div class="macos-pills-row" data-target="q_presupuesto" data-summary="sum_presupuesto">
-                                <button type="button" class="macos-pill" data-value="$300 – $600 USD">$300 – $600 USD</button>
-                                <button type="button" class="macos-pill selected" data-value="$600 – $1,200 USD">$600 – $1,200 USD</button>
-                                <button type="button" class="macos-pill" data-value="$1,200 – $2,500 USD">$1,200 – $2,500 USD</button>
-                                <button type="button" class="macos-pill" data-value="$2,500+ USD">$2,500+ USD</button>
-                                <button type="button" class="macos-pill" data-value="Por definir según propuesta">Necesito asesoría para definirlo</button>
-                            </div>
-                        </section>
-
-                        <!-- VISTA PREVIA DEL MENSAJE Y ENVÍO -->
-                        <div class="macos-submit-bar">
-                            <div class="submit-preview-box">
-                                <div class="preview-header">
-                                    <span>Vista previa del mensaje corporativo para WhatsApp</span>
-                                </div>
-                                <pre id="whatsappPreview" class="preview-content"></pre>
-                            </div>
-
-                            <div class="submit-actions">
-                                <span class="submit-note">Atención directa por nuestro equipo en Ciudad de Panamá.</span>
-                                <button type="submit" class="macos-btn-primary">
-                                    <span>Continuar en WhatsApp</span>
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-                                </button>
-                            </div>
-                        </div>
-
-                    </form>
+                <div class="macos-intro">
+                    <h1>Inicia tu proyecto</h1>
+                    <p>Cuéntanos qué necesitas construir o resolver en tu negocio.</p>
                 </div>
+
+                <form id="auditForm" class="macos-form">
+                    
+                    <!-- 1. Qué necesita -->
+                    <div class="field-block">
+                        <label class="field-label">¿Qué buscas desarrollar?</label>
+                        <input type="hidden" id="q_solucion" value="Sitio Web / Landing Page">
+                        <div class="segmented-group" data-target="q_solucion">
+                            <button type="button" class="seg-btn active" data-value="Sitio Web / Landing Page">Web / Landing</button>
+                            <button type="button" class="seg-btn" data-value="E-Commerce / Tienda Online">E-Commerce</button>
+                            <button type="button" class="seg-btn" data-value="Software a Medida / Sistema">Software a Medida</button>
+                            <button type="button" class="seg-btn" data-value="Automatización">Automatización</button>
+                        </div>
+                    </div>
+
+                    <!-- 2. Nombre / Empresa -->
+                    <div class="field-block">
+                        <label class="field-label" for="q_nombre">Nombre o empresa</label>
+                        <input type="text" id="q_nombre" class="macos-input" placeholder="Tu nombre o el de tu negocio" required>
+                    </div>
+
+                    <!-- 3. Profundización libre -->
+                    <div class="field-block">
+                        <label class="field-label" for="q_detalles">Sobre el proyecto</label>
+                        <textarea id="q_detalles" class="macos-textarea" rows="4" placeholder="Describe tu idea, cómo funciona tu negocio hoy o qué problema específico necesitas resolver..." required></textarea>
+                    </div>
+
+                    <!-- 4. Presupuesto -->
+                    <div class="field-block">
+                        <label class="field-label">Presupuesto estimado (USD)</label>
+                        <input type="hidden" id="q_presupuesto" value="$600 – $1,200">
+                        <div class="segmented-group" data-target="q_presupuesto">
+                            <button type="button" class="seg-btn" data-value="$300 – $600">$300 – $600</button>
+                            <button type="button" class="seg-btn active" data-value="$600 – $1,200">$600 – $1,200</button>
+                            <button type="button" class="seg-btn" data-value="$1,200 – $2,500">$1,200 – $2,500</button>
+                            <button type="button" class="seg-btn" data-value="$2,500+">$2,500+</button>
+                            <button type="button" class="seg-btn" data-value="Por definir">Por definir</button>
+                        </div>
+                    </div>
+
+                    <!-- Acción final -->
+                    <div class="macos-footer">
+                        <button type="submit" class="macos-submit-btn">
+                            <span>Continuar en WhatsApp</span>
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </button>
+                    </div>
+
+                </form>
 
             </div>
         </div>
@@ -337,7 +126,7 @@
     </main>
 
     <!-- Scripts Modulares -->
-    <script src="assets/js/main.js?v=21"></script>
-    <script src="assets/js/terminal.js?v=21"></script>
+    <script src="assets/js/main.js?v=22"></script>
+    <script src="assets/js/terminal.js?v=22"></script>
 </body>
 </html>

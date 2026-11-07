@@ -119,11 +119,21 @@ body {
 .minimal-stars::after {
     content: ""; 
     position: absolute; 
-    width: 2px; 
-    height: 2px; 
+    width: 1px; 
+    height: 1px; 
     background: transparent;
-    box-shadow: 15vw 10vh rgba(255,255,255,0.5), 85vw 25vh rgba(255,255,255,0.3), 45vw 40vh rgba(255,255,255,0.6), 10vw 60vh rgba(255,255,255,0.4), 75vw 70vh rgba(255,255,255,0.5), 90vw 15vh rgba(255,255,255,0.2), 25vw 85vh rgba(255,255,255,0.4), 65vw 90vh rgba(255,255,255,0.3), 5vw 35vh rgba(255,255,255,0.5), 50vw 15vh rgba(255,255,255,0.2);
-    opacity: 0.55;
+    box-shadow: 
+        15vw 10vh rgba(255,255,255,0.22), 
+        85vw 25vh rgba(255,255,255,0.18), 
+        45vw 40vh rgba(255,255,255,0.24), 
+        10vw 60vh rgba(255,255,255,0.16), 
+        75vw 70vh rgba(255,255,255,0.20), 
+        90vw 15vh rgba(255,255,255,0.15), 
+        25vw 85vh rgba(255,255,255,0.19), 
+        65vw 90vh rgba(255,255,255,0.16), 
+        5vw 35vh rgba(255,255,255,0.21), 
+        50vw 15vh rgba(255,255,255,0.17);
+    opacity: 0.8;
 }
 
 /* ─── 02. NAVBAR DINÁMICA CLAYMORPHISM A LIQUID GLASS (TRANSICIÓN DE ESTADOS) ─── */

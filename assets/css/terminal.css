@@ -1,3 +1,89 @@
+/* ─── FONDO: NEGRO PROFUNDO CON PUNTITOS BLANCOS APENAS PERCEPTIBLES ─── */
+.space-dots-bg {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #050507;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.space-dot-layer {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.space-dot-layer.layer-a::after {
+    content: "";
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    background: transparent;
+    box-shadow:
+        4vw 7vh rgba(255, 255, 255, 0.22),
+        11vw 18vh rgba(255, 255, 255, 0.17),
+        19vw 84vh rgba(255, 255, 255, 0.20),
+        27vw 32vh rgba(255, 255, 255, 0.15),
+        34vw 68vh rgba(255, 255, 255, 0.23),
+        42vw 12vh rgba(255, 255, 255, 0.18),
+        49vw 91vh rgba(255, 255, 255, 0.21),
+        58vw 41vh rgba(255, 255, 255, 0.16),
+        66vw 77vh rgba(255, 255, 255, 0.24),
+        73vw 23vh rgba(255, 255, 255, 0.18),
+        81vw 60vh rgba(255, 255, 255, 0.22),
+        89vw 15vh rgba(255, 255, 255, 0.17),
+        95vw 86vh rgba(255, 255, 255, 0.20),
+        7vw 52vh rgba(255, 255, 255, 0.15),
+        15vw 95vh rgba(255, 255, 255, 0.22),
+        23vw 4vh rgba(255, 255, 255, 0.17),
+        31vw 55vh rgba(255, 255, 255, 0.21),
+        38vw 89vh rgba(255, 255, 255, 0.14),
+        46vw 27vh rgba(255, 255, 255, 0.20),
+        54vw 63vh rgba(255, 255, 255, 0.17),
+        62vw 6vh rgba(255, 255, 255, 0.23),
+        70vw 49vh rgba(255, 255, 255, 0.16),
+        77vw 93vh rgba(255, 255, 255, 0.21),
+        85vw 36vh rgba(255, 255, 255, 0.18),
+        92vw 71vh rgba(255, 255, 255, 0.24),
+        2vw 39vh rgba(255, 255, 255, 0.16),
+        17vw 73vh rgba(255, 255, 255, 0.20),
+        29vw 16vh rgba(255, 255, 255, 0.18),
+        51vw 4vh rgba(255, 255, 255, 0.15),
+        64vw 88vh rgba(255, 255, 255, 0.21),
+        83vw 8vh rgba(255, 255, 255, 0.19),
+        97vw 44vh rgba(255, 255, 255, 0.17);
+}
+
+.space-dot-layer.layer-b::after {
+    content: "";
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    background: transparent;
+    box-shadow:
+        8vw 28vh rgba(255, 255, 255, 0.13),
+        14vw 62vh rgba(255, 255, 255, 0.16),
+        22vw 46vh rgba(255, 255, 255, 0.12),
+        36vw 8vh rgba(255, 255, 255, 0.14),
+        44vw 79vh rgba(255, 255, 255, 0.16),
+        52vw 35vh rgba(255, 255, 255, 0.12),
+        60vw 96vh rgba(255, 255, 255, 0.15),
+        68vw 19vh rgba(255, 255, 255, 0.13),
+        75vw 66vh rgba(255, 255, 255, 0.18),
+        87vw 81vh rgba(255, 255, 255, 0.12),
+        93vw 30vh rgba(255, 255, 255, 0.15),
+        5vw 82vh rgba(255, 255, 255, 0.11),
+        26vw 90vh rgba(255, 255, 255, 0.14),
+        40vw 48vh rgba(255, 255, 255, 0.17),
+        56vw 15vh rgba(255, 255, 255, 0.13),
+        71vw 85vh rgba(255, 255, 255, 0.15),
+        84vw 53vh rgba(255, 255, 255, 0.12);
+}
+
 /* ─── VENTANA MACOS BLANCA MINIMALISTA ─── */
 
 .dex-container {

@@ -38,14 +38,16 @@ document.addEventListener('DOMContentLoaded', () => {
             lastClayOpacity = clayOpacity;
         }
 
-        // Clases de estado para transición suave de tipografía y contraste
-        if (progress > 0.45) {
-            if (!topNavbar.classList.contains('is-glass')) {
+        // Clases de estado para transición suave de tipografía, logo deslizante y contraste
+        if (currentScrollY > 35) {
+            if (!topNavbar.classList.contains('is-scrolled')) {
+                topNavbar.classList.add('is-scrolled');
                 topNavbar.classList.add('is-glass');
                 topNavbar.classList.remove('is-at-top');
             }
         } else {
             if (!topNavbar.classList.contains('is-at-top')) {
+                topNavbar.classList.remove('is-scrolled');
                 topNavbar.classList.remove('is-glass');
                 topNavbar.classList.add('is-at-top');
             }

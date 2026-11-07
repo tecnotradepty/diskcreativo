@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             }
                         });
 
-                        toggleBtn.textContent = isExpanded ? '[ MOSTRAR MENOS ]' : '[ MOSTRAR MÁS PROYECTOS ]';
+                        toggleBtn.textContent = isExpanded ? 'Mostrar menos ↑' : 'Mostrar más proyectos ↓';
                     });
                 }
 

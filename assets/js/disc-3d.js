@@ -23,7 +23,7 @@
         antialias: true,
         powerPreference: 'high-performance'
     });
-    renderer.setPixelRatio(1);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
 
     // Grupo con la inclinación perspectiva 3D exacta del isotipo original (disco-3d.png)
     const tiltGroup = new THREE.Group();
@@ -66,11 +66,11 @@
     const hubExtrudeSettings = {
         depth: 0.065,
         bevelEnabled: true,
-        bevelSegments: 2,
+        bevelSegments: 3,
         steps: 1,
         bevelSize: 0.014,
         bevelThickness: 0.014,
-        curveSegments: 48
+        curveSegments: 64
     };
     const hubGeometry = new THREE.ExtrudeGeometry(hubShape, hubExtrudeSettings);
     hubGeometry.center();
@@ -101,11 +101,11 @@
     const bladeExtrudeSettings = {
         depth: 0.055,
         bevelEnabled: true,
-        bevelSegments: 2,
+        bevelSegments: 3,
         steps: 1,
         bevelSize: 0.016,
         bevelThickness: 0.016,
-        curveSegments: 56
+        curveSegments: 80
     };
     const bladeGeometry = new THREE.ExtrudeGeometry(bladeShape, bladeExtrudeSettings);
     bladeGeometry.center();
@@ -395,9 +395,9 @@
             return;
         }
 
-        // Cadencia fluida (~32 FPS) para rotación lenta monumental con mínimo uso de recursos
+        // Cadencia fluida a 60 FPS con mínimo uso de recursos
         const deltaMs = now - lastFrameTime;
-        if (deltaMs < 30) return;
+        if (deltaMs < 14) return;
 
         const deltaSec = Math.min(deltaMs / 1000, 0.05);
         lastFrameTime = now;
@@ -405,13 +405,13 @@
 
         uniforms.uTime.value = activeTime;
 
-        // Giro muy sutil y pausado sobre el eje del disco (reducido a ~1/3 de velocidad)
-        const currentSpin = -activeTime * 0.15;
+        // Giro armónico continuo sobre el eje del disco
+        const currentSpin = -activeTime * 0.32;
         spinGroup.rotation.z = currentSpin;
         uniforms.uSpinAngle.value = currentSpin;
 
-        // Levitación mecánica casi imperceptible (reducida a ~1/3 de amplitud)
-        tiltGroup.position.y = Math.sin(activeTime * 0.7) * 0.02;
+        // Levitación mecánica suave
+        tiltGroup.position.y = Math.sin(activeTime * 0.85) * 0.025;
 
         renderer.render(scene, camera);
     }

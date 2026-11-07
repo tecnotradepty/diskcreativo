@@ -23,8 +23,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,700&display=swap" rel="stylesheet">
 
     <!-- Estilos Modulares -->
-    <link rel="stylesheet" href="assets/css/main.css?v=13">
-    <link rel="stylesheet" href="assets/css/landing.css?v=13">
+    <link rel="stylesheet" href="assets/css/main.css?v=18">
+    <link rel="stylesheet" href="assets/css/landing.css?v=18">
 </head>
 <body>
 
@@ -46,18 +46,28 @@
     </div>
 
     <!-- ─── 02. NAVBAR CLAYMORPHISM 3D & APPLE LIQUID GLASS ─── -->
-    <nav class="top-navbar nav-claymorphic" id="topNavbar">
-        <a href="#inicio" class="navbar-brand">
-            <img src="assets/images/brand/logo-nav.png" alt="Disk Icon" class="brand-icon">
-            <span class="brand-name">DISK CREATIVO</span>
-        </a>
+    <nav class="top-navbar nav-claymorphic is-at-top" id="topNavbar">
+        <div class="navbar-inner-wrapper">
+            <!-- 1. Logo de la Marca: Colapsado en estado inicial, aparece al scrollear -->
+            <a href="#inicio" class="navbar-brand">
+                <img src="assets/images/brand/logo-nav.png" alt="Disk Icon" class="brand-icon">
+                <span class="brand-name">DISK<br>CREATIVO</span>
+            </a>
 
-        <div class="navbar-links">
-            <a href="#inicio" class="nav-link active">Inicio</a>
-            <a href="dex.html" class="nav-link">Inicia tu Proyecto</a>
+            <!-- 2. Botón Inicio -->
+            <a href="#inicio" class="nav-link nav-link-inicio active">
+                <span>Inicio</span>
+            </a>
+
+            <!-- 3. Enlace Inicia tu Proyecto -->
+            <a href="dex.html" class="nav-link nav-link-multiline">
+                <span>Inicia tu<br>Proyecto</span>
+            </a>
+
+            <!-- 4. Botón Contacto -->
             <a href="https://wa.me/50768529324" target="_blank" rel="noopener noreferrer" class="nav-btn-clay">
-                <span>Contacto</span>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                <span>CONTACTO</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
         </div>
     </nav>
@@ -97,8 +107,8 @@
                         <span>Configurar Proyecto</span>
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                     </a>
-                    <a href="#identidad" class="hero-action-secondary">
-                        Explorar Manifiesto ↓
+                    <a href="#proyectos" class="hero-action-secondary">
+                        Explorar Proyectos ↓
                     </a>
                 </div>
             </div>
@@ -151,7 +161,7 @@
             </section>
 
             <!-- Sección: El Producto y Portafolio -->
-            <section class="b2b-block portfolio-block">
+            <section class="b2b-block portfolio-block" id="proyectos">
                 
                 <div class="projects-header">
                     <h2 class="projects-title">Portafolio</h2>
@@ -174,9 +184,9 @@
                     <div style="grid-column: 1/-1; padding: 3rem; text-align:center; color: var(--text-muted);">Iniciando lectura de servidor...</div>
                 </div>
 
-                <!-- Paginación Brutalista -->
+                <!-- Paginación Smooth -->
                 <div class="portfolio-toggle-container" id="toggleContainer" style="display: none;">
-                    <button id="toggleProjectsBtn" class="btn-toggle-portfolio">[ MOSTRAR MÁS PROYECTOS ]</button>
+                    <button id="toggleProjectsBtn" class="btn-toggle-portfolio">Mostrar más proyectos ↓</button>
                 </div>
 
             </section>
@@ -216,8 +226,8 @@
 
     <!-- Scripts Modulares -->
     <script src="assets/js/three.min.js"></script>
-    <script src="assets/js/disc-3d.js?v=13"></script>
-    <script src="assets/js/main.js?v=13"></script>
-    <script src="assets/js/portfolio.js?v=13"></script>
+    <script src="assets/js/disc-3d.js?v=18"></script>
+    <script src="assets/js/main.js?v=18"></script>
+    <script src="assets/js/portfolio.js?v=18"></script>
 </body>
 </html>

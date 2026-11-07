@@ -23,7 +23,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,700&display=swap" rel="stylesheet">
 
     <!-- Hoja de Estilos del Prototipo -->
-    <link rel="stylesheet" href="assets/css/experimento.css?v=13">
+    <link rel="stylesheet" href="assets/css/experimento.css?v=17">
 </head>
 <body>
 
@@ -43,19 +43,29 @@
         <div class="stars-2"></div>
     </div>
 
-    <!-- ─── 02. NAVBAR CLAYMORPHISM 3D BLACK MIRROR ─── -->
-    <nav class="top-navbar nav-claymorphic" id="topNavbar">
-        <a href="#inicio" class="navbar-brand">
-            <img src="assets/images/brand/logo-nav.png" alt="Disk Icon" class="brand-icon">
-            <span class="brand-name">DISK CREATIVO</span>
-        </a>
+    <!-- ─── 02. NAVBAR CLAYMORPHISM 3D BLACK MIRROR (PROTOTIPO DESLIZABLE) ─── -->
+    <nav class="top-navbar nav-claymorphic is-at-top" id="topNavbar">
+        <div class="navbar-inner-wrapper">
+            <!-- 1. Logo de la Marca: Colapsado en estado inicial, aparece al scrollear -->
+            <a href="#inicio" class="navbar-brand">
+                <img src="assets/images/brand/logo-nav.png" alt="Disk Icon" class="brand-icon">
+                <span class="brand-name">DISK<br>CREATIVO</span>
+            </a>
 
-        <div class="navbar-links">
-            <a href="#inicio" class="nav-link active">Inicio</a>
-            <a href="dex.html" class="nav-link">Inicia tu Proyecto</a>
+            <!-- 2. Botón Inicio -->
+            <a href="#inicio" class="nav-link nav-link-inicio active">
+                <span>Inicio</span>
+            </a>
+
+            <!-- 3. Enlace Inicia tu Proyecto -->
+            <a href="dex.html" class="nav-link nav-link-multiline">
+                <span>Inicia tu<br>Proyecto</span>
+            </a>
+
+            <!-- 4. Botón Contacto -->
             <a href="https://wa.me/50768529324" target="_blank" rel="noopener noreferrer" class="nav-btn-clay">
-                <span>Contacto</span>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                <span>CONTACTO</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
         </div>
     </nav>
@@ -100,8 +110,8 @@
                         <span>Configurar Proyecto</span>
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                     </a>
-                    <a href="#identidad" class="hero-action-secondary">
-                        Explorar Manifiesto ↓
+                    <a href="#proyectos" class="hero-action-secondary">
+                        Explorar Proyectos ↓
                     </a>
                 </div>
             </div>
@@ -322,15 +332,14 @@
 
     <!-- Conmutador de Prueba de la Barra Claymorphism en Experimento -->
     <div style="position: fixed; bottom: 20px; right: 20px; z-index: 9999; display: flex; gap: 8px; background: rgba(10,10,14,0.92); backdrop-filter: blur(12px); padding: 8px; border: 1px solid rgba(255,255,255,0.18); border-radius: 8px; font-family: monospace; font-size: 11px; box-shadow: 0 10px 25px rgba(0,0,0,0.5);">
-        <button onclick="document.getElementById('topNavbar').classList.toggle('nav-frosted')" style="background: linear-gradient(135deg, #FFF, #AAA); color: #000; border: none; padding: 6px 12px; cursor: pointer; font-weight: bold; font-family: inherit; border-radius: 4px;">TEST: BLANCO DIFUMINADO FROSTED</button>
+        <button onclick="document.getElementById('topNavbar').classList.toggle('is-scrolled'); document.getElementById('topNavbar').classList.toggle('is-at-top');" style="background: linear-gradient(135deg, #FFF, #00FF66); color: #000; border: none; padding: 6px 12px; cursor: pointer; font-weight: bold; font-family: inherit; border-radius: 4px;">⚡ TEST INTERACTIVO: ESTADO INICIAL ⮂ FINAL</button>
         <button onclick="document.getElementById('topNavbar').classList.toggle('style-edge')" style="background: #222; color: #FFF; border: 1px solid #555; padding: 6px 12px; cursor: pointer; font-weight: bold; font-family: inherit; border-radius: 4px;">CÁPSULA / BORDE A BORDE</button>
-        <button onclick="document.querySelector('.nav-btn-clay').classList.toggle('btn-clay-white')" style="background: #E8E8ED; color: #111; border: 1px solid #AAA; padding: 6px 10px; cursor: pointer; font-weight: bold; font-family: inherit; border-radius: 4px;">BOTÓN (NEGRO / BLANCO)</button>
     </div>
 
     <!-- Scripts Modulares -->
     <script src="assets/js/three.min.js"></script>
-    <script src="assets/js/disc-3d.js?v=13"></script>
-    <script src="assets/js/main.js?v=13"></script>
-    <script src="assets/js/portfolio.js?v=13"></script>
+    <script src="assets/js/disc-3d.js?v=14"></script>
+    <script src="assets/js/main.js?v=14"></script>
+    <script src="assets/js/portfolio.js?v=14"></script>
 </body>
 </html>

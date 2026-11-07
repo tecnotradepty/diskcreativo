@@ -100,66 +100,52 @@ html, body {
 }
 
 /* ─── 02. NAVBAR CLAYMORPHISM TO APPLE LIQUID GLASS (MORPHING CONTINUO) ─── */
+/* ─── 02. NAVBAR DINÁMICA CLAYMORPHISM A LIQUID GLASS (TRANSICIÓN DE ESTADOS) ─── */
 .top-navbar {
     position: fixed;
     top: 20px;
     left: 50%;
     transform: translate(-50%, 0);
-    width: min(92%, 840px);
-    height: 58px;
+    height: 60px;
     border-radius: 100px;
-    
-    /* Base Apple Liquid Glass: Brillo cáustico con gradiente no uniforme */
-    background: 
-        radial-gradient(130% 120% at 50% -20%, rgba(255, 255, 255, 0.24) 0%, rgba(255, 255, 255, 0.05) 55%, rgba(255, 255, 255, 0.01) 100%),
-        linear-gradient(135deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.03) 50%, rgba(255, 255, 255, 0.08) 100%);
-
-    /* Borde fino reflectante estilo Apple (sin blanco grueso) */
-    border: 1px solid rgba(255, 255, 255, 0.22);
-    border-top: 1px solid rgba(255, 255, 255, 0.45);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-
-    /* Refracción óptica Liquid Glass con supersaturación viva estilo Apple */
-    backdrop-filter: blur(28px) saturate(210%) brightness(1.1);
-    -webkit-backdrop-filter: blur(28px) saturate(210%) brightness(1.1);
-
-    /* Sombras multicapa: Cáustica interna + difuminado exterior */
-    box-shadow: 
-        inset 0 1.5px 2px 0 rgba(255, 255, 255, 0.45),
-        inset 0 0 18px rgba(255, 255, 255, 0.06),
-        0 20px 45px -8px rgba(0, 0, 0, 0.55),
-        0 8px 16px rgba(0, 0, 0, 0.22);
-
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 0 1rem 0 1.5rem;
+    padding: 0 6px;
     z-index: 2000;
-    overflow: hidden;
-
-    /* Animación ultrasuave y cinematográfica al subir o bajar (0.85s con ease-out-expo) */
+    will-change: transform, opacity, background, box-shadow, width;
     transition: 
-        transform 0.85s cubic-bezier(0.19, 1, 0.22, 1),
-        opacity 0.72s cubic-bezier(0.19, 1, 0.22, 1);
-    will-change: transform, opacity;
+        width 0.48s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+        opacity 0.4s ease,
+        background 0.35s ease,
+        border-color 0.35s ease,
+        box-shadow 0.35s ease;
 }
 
-/* Capa de Arcilla Blanca sólida que se desvanece de forma continua a medida que scrolleas */
-.top-navbar::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    background: linear-gradient(172deg, #FFFFFF 0%, #F5F5F9 52%, #E6E6EE 100%);
+/* Estado Inicial (Arriba del todo / Scroll = 0): Cápsula blanca compacta ajustada */
+.top-navbar.is-at-top {
+    width: min(94vw, 440px);
+    background: linear-gradient(180deg, #FFFFFF 0%, #EDEDF4 100%);
     border: 1px solid rgba(255, 255, 255, 0.95);
     box-shadow: 
         inset 0 2.5px 3.5px rgba(255, 255, 255, 1),
-        inset 2px 0 3px rgba(255, 255, 255, 0.8),
-        inset 0 -3.5px 6px rgba(0, 0, 0, 0.09);
-    opacity: var(--clay-opacity, 1);
-    pointer-events: none;
-    z-index: 1;
-    transition: opacity 0.15s ease-out;
+        inset 0 -3px 5px rgba(0, 0, 0, 0.08),
+        0 14px 35px rgba(0, 0, 0, 0.30);
+}
+
+/* Estado Scrolleado (Al bajar): Cápsula negra equilibrada de 580px */
+.top-navbar.is-scrolled,
+.top-navbar:not(.is-at-top) {
+    width: min(94vw, 580px);
+    background: linear-gradient(180deg, #1C1C22 0%, #101014 100%);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-top: 1px solid rgba(255, 255, 255, 0.35);
+    box-shadow: 
+        inset 0 1.5px 2px rgba(255, 255, 255, 0.22),
+        inset 0 -2.5px 5px rgba(0, 0, 0, 0.85),
+        0 18px 45px rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
 }
 
 /* Estado Oculto (Al scrollear hacia abajo tras pasar la línea de rayas analógica) */
@@ -169,136 +155,189 @@ html, body {
     pointer-events: none !important;
 }
 
-/* Todos los elementos interactivos se colocan por encima de la capa ::before */
-.navbar-brand, .navbar-links {
+/* Contenedor Interior: Distribución balanceada de extremo a extremo */
+.navbar-inner-wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    overflow: hidden;
     position: relative;
     z-index: 2;
+    padding: 0 4px;
 }
 
+/* ─── 1. LOGO DE LA MARCA (COLLAPSIBLE / DESLIZANTE) ─── */
 .navbar-brand {
     display: flex;
     align-items: center;
-    gap: 10px;
-    font-family: var(--font-sans);
-    font-size: 0.86rem;
-    font-weight: 700;
-    color: #FFFFFF;
-    letter-spacing: 1.8px;
+    gap: 8px;
     text-decoration: none;
-    text-transform: uppercase;
-    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.75);
-    transition: color 0.3s ease, text-shadow 0.3s ease;
+    white-space: nowrap;
+    overflow: hidden;
+    flex-shrink: 0;
 }
 
+/* En el estado inicial: Totalmente removido del flujo para que Inicio esté 100% a la izquierda sin huecos */
 .top-navbar.is-at-top .navbar-brand {
-    color: #121216;
-    text-shadow: none;
+    display: none !important;
+}
+
+/* En el estado scrolleado: Se despliega suavemente a la izquierda */
+.top-navbar.is-scrolled .navbar-brand,
+.top-navbar:not(.is-at-top) .navbar-brand {
+    display: flex !important;
+    max-width: 135px;
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: auto;
+    animation: navBrandReveal 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes navBrandReveal {
+    0% {
+        opacity: 0;
+        transform: translateX(-24px);
+        max-width: 0;
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+        max-width: 135px;
+    }
 }
 
 .brand-icon {
     height: 22px;
     width: auto;
     object-fit: contain;
-    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.35));
-    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.4));
+    flex-shrink: 0;
 }
 
-.navbar-brand:hover .brand-icon {
-    transform: rotate(40deg);
-}
-
-.navbar-links {
-    display: flex;
-    gap: 0.6rem;
-    align-items: center;
-}
-
-/* Enlaces estilo píldora táctil suave con transición de color adaptativa */
-.nav-link {
-    color: rgba(255, 255, 255, 0.85);
-    text-decoration: none;
+.brand-name {
     font-family: var(--font-sans);
-    font-size: 0.78rem;
-    font-weight: 500;
-    letter-spacing: 0.4px;
-    padding: 0.45rem 1.15rem;
-    border-radius: 50px;
-    transition: all 0.25s ease;
-    position: relative;
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
-}
-
-.top-navbar.is-at-top .nav-link {
-    color: #555562;
-    text-shadow: none;
-}
-
-.nav-link:hover {
+    font-size: 0.72rem;
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: 1.2px;
     color: #FFFFFF;
-    background: rgba(255, 255, 255, 0.15);
+    text-transform: uppercase;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
+    display: inline-block;
 }
 
-.top-navbar.is-at-top .nav-link:hover {
-    color: #0A0A0F;
-    background: rgba(0, 0, 0, 0.04);
-}
-
-/* Enlace activo con hendidura táctil que se adapta al Liquid Glass */
-.nav-link.active {
-    color: #FFFFFF;
-    font-weight: 600;
-    background: rgba(255, 255, 255, 0.2);
-    box-shadow: 
-        inset 0 1px 2px rgba(255, 255, 255, 0.4),
-        inset 0 -1px 1px rgba(0, 0, 0, 0.2);
-}
-
-.top-navbar.is-at-top .nav-link.active {
-    color: #0A0A0F;
-    background: rgba(0, 0, 0, 0.05);
-    box-shadow: 
-        inset 0 1.5px 3px rgba(0, 0, 0, 0.12),
-        inset 0 -1px 1px rgba(255, 255, 255, 0.9);
-}
-
-/* Botón 3D Claymorphism / Tecla Táctil */
-.nav-btn-clay {
-    background: linear-gradient(180deg, #26262B 0%, #111114 100%);
-    color: #FFFFFF;
-    border-radius: 50px;
-    padding: 0.52rem 1.3rem;
-    font-family: var(--font-sans);
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.8px;
+/* ─── 2. BOTÓN INICIO (HENDIDURA 3D ESCULPIDA) ─── */
+.nav-link.nav-link-inicio {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-family: var(--font-sans);
+    border-radius: 999px;
+    flex-shrink: 0;
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* En Estado Inicial (Blanco): Hendidura generosa ocupando la izquierda */
+.top-navbar.is-at-top .nav-link.nav-link-inicio {
+    width: 108px;
+    height: 48px;
+    background: linear-gradient(180deg, #DCE0E7 0%, #E8EBF0 100%);
+    box-shadow: 
+        inset 0 2px 4px rgba(0, 0, 0, 0.16),
+        inset 0 -1.5px 2px rgba(255, 255, 255, 0.95);
+    color: #0E0E12;
+    font-size: 0.98rem;
+    font-weight: 700;
+}
+
+/* En Estado Scrolleado (Negro): Hendidura oscura y estilizada */
+.top-navbar.is-scrolled .nav-link.nav-link-inicio,
+.top-navbar:not(.is-at-top) .nav-link.nav-link-inicio {
+    width: 86px;
+    height: 44px;
+    background: linear-gradient(180deg, #2A2A32 0%, #1F1F25 100%);
+    box-shadow: 
+        inset 0 2px 4px rgba(0, 0, 0, 0.75),
+        inset 0 -1px 1.5px rgba(255, 255, 255, 0.12);
+    color: #FFFFFF;
+    font-size: 0.86rem;
+    font-weight: 600;
+}
+
+/* ─── 3. BOTÓN 'INICIA TU PROYECTO' ─── */
+.nav-link.nav-link-multiline {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-family: var(--font-sans);
+    font-size: 0.82rem;
+    line-height: 1.15;
+    text-align: left;
+    flex-shrink: 0;
+    transition: color 0.35s ease, opacity 0.35s ease;
+}
+
+.top-navbar.is-at-top .nav-link.nav-link-multiline {
+    color: #1A1A22;
+    font-weight: 600;
+}
+
+.top-navbar.is-scrolled .nav-link.nav-link-multiline,
+.top-navbar:not(.is-at-top) .nav-link.nav-link-multiline {
+    color: #FFFFFF;
+    font-weight: 500;
+}
+
+.nav-link.nav-link-multiline:hover {
+    opacity: 0.8;
+}
+
+/* ─── 4. BOTÓN CONTACTO (CÁPSULA TÁCTIL NEGRA) ─── */
+.nav-btn-clay {
+    height: 48px;
+    padding: 0 1.5rem;
+    background: linear-gradient(180deg, #1C1C20 0%, #0E0E11 100%);
+    color: #FFFFFF;
+    border-radius: 999px;
+    font-family: var(--font-sans);
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 1.4px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     gap: 8px;
     text-transform: uppercase;
     text-decoration: none;
     border: 1px solid rgba(255, 255, 255, 0.18);
+    border-top: 1px solid rgba(255, 255, 255, 0.35);
     box-shadow: 
-        inset 0 1px 1.5px rgba(255, 255, 255, 0.4),
-        inset 0 -2px 4px rgba(0, 0, 0, 0.65),
-        0 5px 12px rgba(0, 0, 0, 0.35);
-    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        inset 0 1px 1px rgba(255, 255, 255, 0.3),
+        inset 0 -2px 4px rgba(0, 0, 0, 0.8),
+        0 4px 14px rgba(0, 0, 0, 0.35);
+    transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
     cursor: pointer;
+    flex-shrink: 0;
 }
 
 .nav-btn-clay svg {
-    width: 12px;
-    height: 12px;
+    width: 13px;
+    height: 13px;
     transition: transform 0.25s ease;
 }
 
 .nav-btn-clay:hover {
     transform: translateY(-1.5px);
-    background: linear-gradient(180deg, #323238 0%, #18181D 100%);
+    background: linear-gradient(180deg, #2A2A30 0%, #151518 100%);
     color: #FFFFFF;
     box-shadow: 
-        inset 0 1px 1.5px rgba(255, 255, 255, 0.5),
-        inset 0 -2px 4px rgba(0, 0, 0, 0.65),
-        0 8px 20px rgba(0, 0, 0, 0.45);
+        inset 0 1px 1.5px rgba(255, 255, 255, 0.4),
+        inset 0 -2px 4px rgba(0, 0, 0, 0.8),
+        0 8px 22px rgba(0, 0, 0, 0.5);
 }
 
 .nav-btn-clay:hover svg {
@@ -308,7 +347,7 @@ html, body {
 .nav-btn-clay:active {
     transform: translateY(1.5px);
     box-shadow: 
-        inset 0 2px 4px rgba(0, 0, 0, 0.8),
+        inset 0 2px 4px rgba(0, 0, 0, 0.9),
         0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
@@ -518,57 +557,98 @@ html, body {
     flex-wrap: wrap;
 }
 
+/* Botón Primario: Cápsula Claymorphism 3D Smooth */
 .hero-action-primary {
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    background: #FFFFFF;
-    color: #000000;
+    background: linear-gradient(180deg, #FFFFFF 0%, #EAEAEF 100%);
+    color: #0E0E12;
     font-family: var(--font-sans);
     font-weight: 600;
-    font-size: 0.85rem;
-    padding: 0.95rem 1.8rem;
+    font-size: 0.82rem;
+    padding: 0.85rem 1.7rem;
     text-transform: uppercase;
-    letter-spacing: 1.5px;
+    letter-spacing: 0.8px;
     text-decoration: none;
-    border: 1px solid #FFFFFF;
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    box-shadow: 0 10px 25px rgba(255, 255, 255, 0.12);
+    border-radius: 100px;
+    border: 1px solid rgba(255, 255, 255, 0.95);
+    transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 
+        inset 0 1.5px 2px rgba(255, 255, 255, 1),
+        inset 0 -2.5px 4px rgba(0, 0, 0, 0.12),
+        0 8px 24px -2px rgba(0, 0, 0, 0.45),
+        0 2px 6px rgba(255, 255, 255, 0.08);
 }
 
 .hero-action-primary svg {
-    width: 16px;
-    height: 16px;
-    transition: transform 0.3s;
+    width: 15px;
+    height: 15px;
+    transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .hero-action-primary:hover {
-    background: var(--accent-neon);
-    border-color: var(--accent-neon);
-    color: #000;
+    background: linear-gradient(180deg, #FFFFFF 0%, #F5F5FA 100%);
+    color: #000000;
     transform: translateY(-2px);
-    box-shadow: 0 12px 30px rgba(0, 255, 102, 0.25);
+    box-shadow: 
+        inset 0 1.5px 2px rgba(255, 255, 255, 1),
+        inset 0 -2px 3px rgba(0, 0, 0, 0.1),
+        0 14px 30px -4px rgba(255, 255, 255, 0.2),
+        0 8px 20px rgba(0, 0, 0, 0.5);
 }
+
 .hero-action-primary:hover svg {
     transform: translateX(4px);
 }
 
+.hero-action-primary:active {
+    transform: translateY(1px);
+    box-shadow: 
+        inset 0 2px 4px rgba(0, 0, 0, 0.2),
+        0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* Botón Secundario: Cápsula Frosted Liquid Glass */
 .hero-action-secondary {
-    font-family: var(--font-code);
-    font-size: 0.78rem;
-    letter-spacing: 1.5px;
-    color: var(--text-muted);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-sans);
+    font-size: 0.80rem;
+    font-weight: 500;
+    letter-spacing: 0.6px;
+    color: rgba(255, 255, 255, 0.88);
     text-transform: uppercase;
     text-decoration: none;
-    padding: 0.95rem 1.4rem;
-    border: var(--hairline);
-    background: rgba(255, 255, 255, 0.02);
-    transition: all 0.3s;
+    padding: 0.85rem 1.6rem;
+    border-radius: 100px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-top: 1px solid rgba(255, 255, 255, 0.35);
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 
+        inset 0 1px 1.5px rgba(255, 255, 255, 0.15),
+        0 4px 16px rgba(0, 0, 0, 0.25);
+    transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
 }
+
 .hero-action-secondary:hover {
-    color: #FFF;
-    border-color: rgba(255, 255, 255, 0.3);
-    background: rgba(255, 255, 255, 0.06);
+    color: #FFFFFF;
+    border-color: rgba(255, 255, 255, 0.38);
+    background: rgba(255, 255, 255, 0.11);
+    transform: translateY(-2px);
+    box-shadow: 
+        inset 0 1px 2px rgba(255, 255, 255, 0.25),
+        0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+.hero-action-secondary:active {
+    transform: translateY(1px);
+    box-shadow: 
+        inset 0 1px 3px rgba(0, 0, 0, 0.3),
+        0 2px 6px rgba(0, 0, 0, 0.2);
 }
 
 /* Columna Derecha: Tótem Isotipo 3D Real (Three.js WebGL) */
@@ -1103,22 +1183,30 @@ html, body {
 }
 
 .btn-toggle-portfolio {
-    background: transparent;
+    background: rgba(255, 255, 255, 0.04); 
     color: var(--text-main);
-    border: var(--line-solid-white);
-    padding: 1rem 2.5rem;
-    font-family: var(--font-code);
-    font-size: 0.8rem;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-top: 1px solid rgba(255, 255, 255, 0.35);
+    padding: 0.85rem 2.2rem;
+    border-radius: 100px;
+    font-family: var(--font-sans); 
+    font-size: 0.78rem; 
+    font-weight: 600;
+    letter-spacing: 1.2px;
+    text-transform: uppercase; 
+    cursor: pointer; 
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.15), 0 4px 16px rgba(0, 0, 0, 0.3);
+    transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .btn-toggle-portfolio:hover {
-    background: var(--text-main);
-    color: var(--bg-primary);
-    box-shadow: 0 0 25px rgba(255,255,255,0.2);
+    background: rgba(255, 255, 255, 0.12); 
+    color: #FFFFFF;
+    border-color: rgba(255, 255, 255, 0.38);
+    transform: translateY(-2px);
+    box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.25), 0 8px 24px rgba(0, 0, 0, 0.4);
 }
 
 /* ─── BANNER CTA FINAL ─── */
@@ -1219,15 +1307,65 @@ html, body {
 
     .top-navbar { 
         top: 12px;
-        width: 95%; 
-        height: 52px; 
-        padding: 0 0.6rem 0 1rem;
+        height: 50px; 
+        padding: 0 4px;
     }
-    .navbar-brand { font-size: 0.74rem; gap: 6px; }
-    .brand-icon { height: 18px; }
-    .navbar-links { gap: 0.25rem; }
-    .nav-link { font-size: 0.68rem; padding: 0.35rem 0.65rem; }
-    .nav-btn-clay { padding: 0.42rem 0.85rem; font-size: 0.68rem; gap: 4px; }
+    .top-navbar.is-at-top {
+        width: min(92vw, 320px) !important;
+    }
+    .top-navbar.is-scrolled,
+    .top-navbar:not(.is-at-top) {
+        width: min(94vw, 365px) !important;
+    }
+    .top-navbar.is-at-top .navbar-brand {
+        display: none !important;
+    }
+    .top-navbar.is-scrolled .navbar-brand,
+    .top-navbar:not(.is-at-top) .navbar-brand {
+        display: flex !important;
+        max-width: 90px !important; 
+        gap: 4px; 
+        animation: navBrandRevealMobile 0.38s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    @keyframes navBrandRevealMobile {
+        0% { opacity: 0; transform: translateX(-16px); max-width: 0; }
+        100% { opacity: 1; transform: translateX(0); max-width: 90px; }
+    }
+    .top-navbar.is-at-top .nav-link.nav-link-inicio { 
+        width: 82px;
+        height: 38px;
+        font-size: 0.82rem; 
+        padding: 0;
+    }
+    .top-navbar.is-scrolled .nav-link.nav-link-inicio,
+    .top-navbar:not(.is-at-top) .nav-link.nav-link-inicio { 
+        width: 66px;
+        height: 36px;
+        font-size: 0.74rem; 
+        padding: 0;
+    }
+    .nav-link.nav-link-multiline { 
+        font-size: 0.66rem; 
+        line-height: 1.1;
+    }
+    .brand-icon { 
+        height: 17px; 
+    }
+    .brand-name { 
+        font-size: 0.54rem; 
+        letter-spacing: 0.8px;
+    }
+    .nav-btn-clay { 
+        height: 38px;
+        padding: 0 0.95rem; 
+        font-size: 0.65rem; 
+        letter-spacing: 0.8px;
+        gap: 4px; 
+    }
+    .nav-btn-clay svg {
+        width: 10px;
+        height: 10px;
+    }
 
     .hero-section.hero-compact {
         min-height: auto;

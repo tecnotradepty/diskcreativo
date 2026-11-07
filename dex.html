@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Disk Creativo | Compilar Proyecto</title>
-    <meta name="description" content="Compilador y auditoría interactiva de proyectos B2B de Disk Creativo. Diagnóstico operativo, definición de alcance y cotización directa.">
+    <title>Disk Creativo | Configurador de Proyecto</title>
+    <meta name="description" content="Configura el alcance de tu proyecto digital con Disk Creativo. Diagnóstico de arquitectura, requerimientos operativos y contacto directo.">
     <meta name="theme-color" content="#050505">
 
     <!-- Favicon -->
@@ -13,11 +13,11 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,700&display=swap" rel="stylesheet">
 
     <!-- Estilos Modulares -->
-    <link rel="stylesheet" href="assets/css/main.css?v=20">
-    <link rel="stylesheet" href="assets/css/terminal.css?v=20">
+    <link rel="stylesheet" href="assets/css/main.css?v=21">
+    <link rel="stylesheet" href="assets/css/terminal.css?v=21">
 </head>
 <body>
 
@@ -25,7 +25,7 @@
     <div class="ambient-canvas"></div>
     <div class="minimal-stars"></div>
 
-    <!-- ─── 02. NAVBAR CLAYMORPHISM 3D & APPLE LIQUID GLASS ─── -->
+    <!-- ─── NAVBAR CLAYMORPHISM 3D & APPLE LIQUID GLASS ─── -->
     <nav class="top-navbar nav-claymorphic is-at-top" id="topNavbar">
         <div class="navbar-inner-wrapper">
             <!-- 1. Logo de la Marca: Colapsado en estado inicial, aparece al scrollear -->
@@ -52,146 +52,292 @@
         </div>
     </nav>
 
-    <!-- Ventana OS Terminal -->
+    <!-- ─── CONTENEDOR PRINCIPAL MACOS STUDIO ─── -->
     <main class="dex-container">
-        <div class="os-window">
+        
+        <div class="macos-window" id="macosWindow">
             
-            <div class="os-titlebar">
-                <div class="os-dots">
-                    <div class="dot red"></div>
-                    <div class="dot yellow"></div>
-                    <div class="dot green"></div>
+            <!-- Barra de Título Nativa macOS Sequoia -->
+            <header class="macos-titlebar">
+                <div class="macos-titlebar-left">
+                    <div class="macos-traffic-lights" aria-hidden="true">
+                        <span class="traffic-light close"></span>
+                        <span class="traffic-light minimize"></span>
+                        <span class="traffic-light expand"></span>
+                    </div>
+                    <div class="macos-toolbar-divider"></div>
+                    <div class="macos-sidebar-icon" title="Panel de Resumen">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="3" width="18" height="18" rx="3"></rect>
+                            <line x1="9" y1="3" x2="9" y2="21"></line>
+                        </svg>
+                    </div>
                 </div>
-                <div class="os-title">disk_os@root:~/compilador_b2b</div>
-            </div>
 
-            <div class="os-content">
-                <div class="terminal-intro">
-                    <p>Last login: <span id="timeNode"></span> on console</p>
-                    <p>Disk Creativo OS (v1.0.4) - Enterprise Qualifier Module</p>
-                    <p class="sys-success">System ready. Please provide architectural parameters.</p>
+                <div class="macos-window-title">
+                    <svg class="title-folder-icon" width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M10 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z"/>
+                    </svg>
+                    <span>Disk Studio — Configuración de Proyecto</span>
                 </div>
 
-                <form id="auditForm" class="audit-form">
+                <div class="macos-titlebar-right">
+                    <span class="macos-status-badge">
+                        <span class="status-dot"></span>
+                        Recepción Directa
+                    </span>
+                </div>
+            </header>
+
+            <!-- Cuerpo Split-View de macOS (Sidebar + Inspector Principal) -->
+            <div class="macos-body">
+                
+                <!-- Sidebar Izquierdo: Guía y Resumen en Tiempo Real -->
+                <aside class="macos-sidebar">
+                    <div class="sidebar-section">
+                        <span class="sidebar-group-title">Estructura del Brief</span>
+                        <ul class="sidebar-nav-list">
+                            <li class="sidebar-nav-item active" data-step="1">
+                                <span class="step-badge">1</span>
+                                <div class="step-info">
+                                    <span class="step-name">Solución Digital</span>
+                                    <span class="step-desc">Qué vamos a construir</span>
+                                </div>
+                            </li>
+                            <li class="sidebar-nav-item" data-step="2">
+                                <span class="step-badge">2</span>
+                                <div class="step-info">
+                                    <span class="step-name">Diagnóstico</span>
+                                    <span class="step-desc">Etapa y prioridad actual</span>
+                                </div>
+                            </li>
+                            <li class="sidebar-nav-item" data-step="3">
+                                <span class="step-badge">3</span>
+                                <div class="step-info">
+                                    <span class="step-name">Tu Negocio</span>
+                                    <span class="step-desc">Contexto y requerimientos</span>
+                                </div>
+                            </li>
+                            <li class="sidebar-nav-item" data-step="4">
+                                <span class="step-badge">4</span>
+                                <div class="step-info">
+                                    <span class="step-name">Presupuesto</span>
+                                    <span class="step-desc">Rango de inversión</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Tarjeta de Resumen en Vivo -->
+                    <div class="macos-live-card">
+                        <div class="live-card-header">
+                            <span>Resumen de Solicitud</span>
+                            <span class="live-tag">En vivo</span>
+                        </div>
+                        <div class="live-card-rows">
+                            <div class="live-row">
+                                <span class="live-label">Solución</span>
+                                <span class="live-val" id="sum_solucion">Sin seleccionar</span>
+                            </div>
+                            <div class="live-row">
+                                <span class="live-label">Etapa</span>
+                                <span class="live-val" id="sum_etapa">Sin seleccionar</span>
+                            </div>
+                            <div class="live-row">
+                                <span class="live-label">Prioridad</span>
+                                <span class="live-val" id="sum_prioridad">Sin seleccionar</span>
+                            </div>
+                            <div class="live-row">
+                                <span class="live-label">Inversión</span>
+                                <span class="live-val" id="sum_presupuesto">Por definir</span>
+                            </div>
+                        </div>
+                        <div class="live-card-footer">
+                            Al finalizar, se abrirá una conversación directa en WhatsApp con tu resumen estructurado.
+                        </div>
+                    </div>
+                </aside>
+
+                <!-- Área Principal del Configurador -->
+                <div class="macos-workspace">
                     
-                    <!-- Bloque 1: Identidad Comercial -->
-                    <div class="form-block">
-                        <span class="block-header">Identidad Comercial</span>
+                    <div class="workspace-header">
+                        <h1>Configura tu Proyecto</h1>
+                        <p>Selecciona los parámetros que mejor describan lo que tu negocio necesita para preparar una propuesta técnica a medida.</p>
+                    </div>
+
+                    <form id="auditForm" class="macos-form">
                         
-                        <div class="form-group">
-                            <label class="form-label" for="q_nombre"><span class="prompt-symbol">~ $</span> Nombre del Negocio / Marca:</label>
-                            <input type="text" id="q_nombre" class="terminal-input" placeholder="Ingresa el nombre aquí" required>
+                        <!-- PASO 1: TIPO DE SOLUCIÓN -->
+                        <section class="macos-section" id="sec_solucion">
+                            <div class="section-title-row">
+                                <span class="section-num">01</span>
+                                <div>
+                                    <h2>¿Qué necesitas construir o implementar?</h2>
+                                    <p class="section-sub">Elige la categoría principal de tu proyecto.</p>
+                                </div>
+                            </div>
+
+                            <input type="hidden" id="q_solucion" value="Sitio Web Corporativo / Landing Page" required>
+
+                            <div class="macos-cards-grid" data-target="q_solucion" data-summary="sum_solucion">
+                                <button type="button" class="macos-option-card selected" data-value="Sitio Web Corporativo / Landing Page">
+                                    <div class="card-top">
+                                        <div class="card-icon">
+                                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                                        </div>
+                                        <span class="card-check"></span>
+                                    </div>
+                                    <span class="card-title">Sitio Web / Landing Page</span>
+                                    <span class="card-desc">Presencia corporativa, portafolio comercial o página de alta conversión para captar clientes.</span>
+                                </button>
+
+                                <button type="button" class="macos-option-card" data-value="Tienda Online / E-Commerce">
+                                    <div class="card-top">
+                                        <div class="card-icon">
+                                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                                        </div>
+                                        <span class="card-check"></span>
+                                    </div>
+                                    <span class="card-title">Tienda Online / E-Commerce</span>
+                                    <span class="card-desc">Catálogo autogestionable, carrito de compras, pagos en línea y gestión de inventario.</span>
+                                </button>
+
+                                <button type="button" class="macos-option-card" data-value="Software a Medida / Plataforma Web">
+                                    <div class="card-top">
+                                        <div class="card-icon">
+                                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+                                        </div>
+                                        <span class="card-check"></span>
+                                    </div>
+                                    <span class="card-title">Software a Medida / SaaS</span>
+                                    <span class="card-desc">Sistemas internos, paneles de administración, portales de clientes o agendamiento avanzado.</span>
+                                </button>
+
+                                <button type="button" class="macos-option-card" data-value="Automatización e Integración de Procesos">
+                                    <div class="card-top">
+                                        <div class="card-icon">
+                                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/><line x1="4" y1="4" x2="9" y2="9"/></svg>
+                                        </div>
+                                        <span class="card-check"></span>
+                                    </div>
+                                    <span class="card-title">Automatización Operativa</span>
+                                    <span class="card-desc">Conexión de sistemas existentes, flujos de atención, cotizadores o digitalización de procesos.</span>
+                                </button>
+                            </div>
+                        </section>
+
+                        <!-- PASO 2: DIAGNÓSTICO Y PRIORIDAD -->
+                        <section class="macos-section" id="sec_diagnostico">
+                            <div class="section-title-row">
+                                <span class="section-num">02</span>
+                                <div>
+                                    <h2>Situación actual y objetivo principal</h2>
+                                    <p class="section-sub">Ayúdanos a entender el punto de partida de tu empresa.</p>
+                                </div>
+                            </div>
+
+                            <!-- Subgrupo A: Punto de partida -->
+                            <div class="macos-field-group">
+                                <label class="macos-label">¿En qué etapa se encuentra tu proyecto?</label>
+                                <input type="hidden" id="q_etapa" value="Proyecto nuevo desde cero">
+                                <div class="macos-pills-row" data-target="q_etapa" data-summary="sum_etapa">
+                                    <button type="button" class="macos-pill selected" data-value="Proyecto nuevo desde cero">Proyecto nuevo desde cero</button>
+                                    <button type="button" class="macos-pill" data-value="Rediseño o mejora de web actual">Rediseño de web actual</button>
+                                    <button type="button" class="macos-pill" data-value="Digitalizar operación manual (WhatsApp / Excel)">Digitalizar operación manual</button>
+                                    <button type="button" class="macos-pill" data-value="Escalar o integrar sistema existente">Escalar sistema existente</button>
+                                </div>
+                            </div>
+
+                            <!-- Subgrupo B: Prioridad / Dolor principal -->
+                            <div class="macos-field-group">
+                                <label class="macos-label">¿Cuál es el resultado más importante que buscas lograr?</label>
+                                <input type="hidden" id="q_prioridad" value="Captar más clientes y aumentar ventas">
+                                <div class="macos-pills-row" data-target="q_prioridad" data-summary="sum_prioridad">
+                                    <button type="button" class="macos-pill selected" data-value="Captar más clientes y aumentar ventas">Captar más clientes y ventas</button>
+                                    <button type="button" class="macos-pill" data-value="Consolidar una imagen corporativa sólida">Elevar imagen corporativa</button>
+                                    <button type="button" class="macos-pill" data-value="Ahorrar tiempo automatizando tareas manuales">Automatizar tareas manuales</button>
+                                    <button type="button" class="macos-pill" data-value="Centralizar reservas, cobros o clientes">Centralizar reservas o cobros</button>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- PASO 3: DATOS Y PROFUNDIZACIÓN DEL PROYECTO -->
+                        <section class="macos-section" id="sec_negocio">
+                            <div class="section-title-row">
+                                <span class="section-num">03</span>
+                                <div>
+                                    <h2>Sobre tu negocio y requerimientos</h2>
+                                    <p class="section-sub">Cuéntanos quién eres y qué necesitas que haga la herramienta.</p>
+                                </div>
+                            </div>
+
+                            <div class="macos-inputs-row">
+                                <div class="macos-field-group">
+                                    <label class="macos-label" for="q_nombre">Tu Nombre / Empresa <span class="req-dot">*</span></label>
+                                    <input type="text" id="q_nombre" class="macos-input" placeholder="Ej. Andrés Gómez — Grupo Comercial" required>
+                                </div>
+
+                                <div class="macos-field-group">
+                                    <label class="macos-label" for="q_sector">Sector o Actividad <span class="req-dot">*</span></label>
+                                    <input type="text" id="q_sector" class="macos-input" placeholder="Ej. Servicios, Comercio, Bienes Raíces, Salud..." required>
+                                </div>
+                            </div>
+
+                            <div class="macos-field-group">
+                                <label class="macos-label" for="q_detalles">Detalles del proyecto o necesidades específicas <span class="req-dot">*</span></label>
+                                <textarea id="q_detalles" class="macos-textarea" rows="4" placeholder="Explícanos brevemente cómo funciona tu operación hoy, qué problema necesitas resolver o qué funciones clave debería incluir tu proyecto..." required></textarea>
+                            </div>
+                        </section>
+
+                        <!-- PASO 4: INVERSIÓN ESTIMADA -->
+                        <section class="macos-section" id="sec_presupuesto">
+                            <div class="section-title-row">
+                                <span class="section-num">04</span>
+                                <div>
+                                    <h2>Rango de inversión estimado</h2>
+                                    <p class="section-sub">Nos permite proponerte una arquitectura técnica acorde a tu presupuesto.</p>
+                                </div>
+                            </div>
+
+                            <input type="hidden" id="q_presupuesto" value="$600 – $1,200 USD">
+                            <div class="macos-pills-row" data-target="q_presupuesto" data-summary="sum_presupuesto">
+                                <button type="button" class="macos-pill" data-value="$300 – $600 USD">$300 – $600 USD</button>
+                                <button type="button" class="macos-pill selected" data-value="$600 – $1,200 USD">$600 – $1,200 USD</button>
+                                <button type="button" class="macos-pill" data-value="$1,200 – $2,500 USD">$1,200 – $2,500 USD</button>
+                                <button type="button" class="macos-pill" data-value="$2,500+ USD">$2,500+ USD</button>
+                                <button type="button" class="macos-pill" data-value="Por definir según propuesta">Necesito asesoría para definirlo</button>
+                            </div>
+                        </section>
+
+                        <!-- VISTA PREVIA DEL MENSAJE Y ENVÍO -->
+                        <div class="macos-submit-bar">
+                            <div class="submit-preview-box">
+                                <div class="preview-header">
+                                    <span>Vista previa del mensaje corporativo para WhatsApp</span>
+                                </div>
+                                <pre id="whatsappPreview" class="preview-content"></pre>
+                            </div>
+
+                            <div class="submit-actions">
+                                <span class="submit-note">Atención directa por nuestro equipo en Ciudad de Panamá.</span>
+                                <button type="submit" class="macos-btn-primary">
+                                    <span>Continuar en WhatsApp</span>
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                                </button>
+                            </div>
                         </div>
 
-                        <div class="form-group">
-                            <label class="form-label" for="q_sector"><span class="prompt-symbol">~ $</span> Sector o Tipo de Negocio:</label>
-                            <select id="q_sector" class="terminal-input" required>
-                                <option value="" disabled selected>Selecciona un sector</option>
-                                <option value="Tattoo & Body Art">Tattoo / Arte Corporal</option>
-                                <option value="Automotriz">Automotriz (Ventas, Detailing, Taller)</option>
-                                <option value="Gastronomía">Gastronomía / Restaurantes</option>
-                                <option value="Servicios Profesionales">Servicios Profesionales / Consultoría</option>
-                                <option value="Retail & Moda">Retail / Moda / Tienda Física</option>
-                                <option value="Bienes Raíces">Real Estate / Bienes Raíces</option>
-                                <option value="Tecnología & SaaS">Tech / Startups / Software</option>
-                                <option value="Otro">Otro Sector</option>
-                            </select>
-                        </div>
+                    </form>
+                </div>
 
-                        <div class="form-group">
-                            <label class="form-label" for="q_modelo"><span class="prompt-symbol">~ $</span> Modelo de Ingresos Principal:</label>
-                            <select id="q_modelo" class="terminal-input" required>
-                                <option value="" disabled selected>Selecciona el modelo de negocio</option>
-                                <option value="B2B (Business to Business)">B2B (Venta a otras empresas)</option>
-                                <option value="B2C (Venta Directa al Consumidor)">B2C (Venta directa al cliente final)</option>
-                                <option value="Suscripción / Membresías">Suscripciones / Membresías recurrentes</option>
-                                <option value="E-commerce Puro">E-commerce / Venta 100% online</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <!-- Bloque 2: Diagnóstico Operativo -->
-                    <div class="form-block">
-                        <span class="block-header">Diagnóstico Operativo</span>
-                        
-                        <div class="form-group">
-                            <label class="form-label" for="q_infra"><span class="prompt-symbol">~ $</span> Infraestructura Actual (Qué tienes hecho):</label>
-                            <select id="q_infra" class="terminal-input" required>
-                                <option value="" disabled selected>Selecciona tu estado actual</option>
-                                <option value="Solo Redes Sociales">Solo existimos en Instagram / TikTok / Redes</option>
-                                <option value="Web Básica Obsoleta">Tenemos una web, pero está desactualizada y no vende</option>
-                                <option value="WhatsApp y Excel Puro">Operamos a pura fuerza bruta: WhatsApp, Excel y papel</option>
-                                <option value="Ecosistema Parcial">Tenemos algunas herramientas, pero están desconectadas</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="form-label" for="q_falla"><span class="prompt-symbol">~ $</span> Cuellos de Botella (Procesos Ineficientes):</label>
-                            <select id="q_falla" class="terminal-input" required>
-                                <option value="" disabled selected>Identifica el mayor problema actual</option>
-                                <option value="Pérdida de ventas por lentitud">Se pierden clientes por responder lento en WhatsApp / DM</option>
-                                <option value="Caos de Agendamiento">El control de citas o reservas es un dolor de cabeza manual</option>
-                                <option value="Cobros manuales">Los cobros no están automatizados, dependo de capturas de Yappy/Transferencia</option>
-                                <option value="Baja Percepción de Marca">El cliente no nos percibe "Premium", falta autoridad visual</option>
-                                <option value="Operación Fragmentada">Uso 5 plataformas distintas para vender un solo producto</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="form-label" for="q_detonante"><span class="prompt-symbol">~ $</span> Detonante del Cambio (Por qué buscar una solución HOY):</label>
-                            <textarea id="q_detonante" class="terminal-input" placeholder="Ej: Me cansé de perder ventas en la madrugada, necesito automatizar..." required></textarea>
-                        </div>
-                    </div>
-
-                    <!-- Bloque 3: Alcance y Visión -->
-                    <div class="form-block">
-                        <span class="block-header">Alcance y Visión</span>
-                        
-                        <div class="form-group">
-                            <label class="form-label" for="q_objetivo"><span class="prompt-symbol">~ $</span> Requerimiento Objetivo (Qué buscas construir):</label>
-                            <select id="q_objetivo" class="terminal-input" required>
-                                <option value="" disabled selected>Selecciona el módulo de software</option>
-                                <option value="Landing Page Transaccional">Landing Page Orientada a Ventas / Captura de Leads</option>
-                                <option value="E-commerce Integral">Tienda Online / E-commerce Completo</option>
-                                <option value="Software a Medida / SaaS">Plataforma Custom / Panel Administrativo a medida</option>
-                                <option value="Rebranding + Infraestructura Web">Reestructuración total: Identidad Visual + Sitio Web</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="form-label" for="q_vision"><span class="prompt-symbol">~ $</span> Visión a 12-24 meses:</label>
-                            <textarea id="q_vision" class="terminal-input" placeholder="¿Dónde ves a la empresa con esta nueva infraestructura?" required></textarea>
-                        </div>
-                    </div>
-
-                    <!-- Bloque 4: Asignación de Capital -->
-                    <div class="form-block">
-                        <span class="block-header">Asignación de Capital</span>
-                        
-                        <div class="form-group">
-                            <label class="form-label" for="q_presupuesto"><span class="prompt-symbol">~ $</span> Rango de Presupuesto Asignado (Ajuste Panamá):</label>
-                            <select id="q_presupuesto" class="terminal-input" required>
-                                <option value="" disabled selected>Selecciona el capital disponible para el despliegue</option>
-                                <option value="$300 - $600 USD (MVP)">$300 - $600 USD (Despliegue Rápido / Landing Page Básica)</option>
-                                <option value="$600 - $1,200 USD (Estándar)">$600 - $1,200 USD (Ecosistema Estándar / Landing Pro o E-commerce Básico)</option>
-                                <option value="$1,200 - $2,500 USD (Avanzado)">$1,200 - $2,500 USD (Infraestructura Comercial B2B Completa + Automatización)</option>
-                                <option value="$2,500 - $5,000 USD (SaaS)">$2,500 - $5,000 USD (Software Custom / Plataforma a Medida)</option>
-                                <option value="$5,000+ USD (Enterprise)">$5,000+ USD (Proyecto Enterprise / Integraciones Complejas)</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="terminal-submit-wrapper">
-                        <button type="submit" class="btn-execute">Ejecutar Compilación</button>
-                    </div>
-
-                </form>
             </div>
         </div>
+
     </main>
 
     <!-- Scripts Modulares -->
-    <script src="assets/js/main.js?v=20"></script>
-    <script src="assets/js/terminal.js?v=20"></script>
+    <script src="assets/js/main.js?v=21"></script>
+    <script src="assets/js/terminal.js?v=21"></script>
 </body>
 </html>

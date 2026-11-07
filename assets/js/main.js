@@ -95,6 +95,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // Ejecución inicial inmediata
     updateNavbar();
 
+    // ─── 2.1 FEEDBACK TÁCTIL INMEDIATO EN BOTONES DE NAVBAR ───
+    document.querySelectorAll('.top-navbar .nav-link').forEach(link => {
+        link.addEventListener('click', function () {
+            document.querySelectorAll('.top-navbar .nav-link').forEach(l => l.classList.remove('active'));
+            this.classList.add('active');
+        });
+    });
+
     // ─── 3. SCROLL SUAVE CON OFFSET PARA LA NAVBAR ───
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {

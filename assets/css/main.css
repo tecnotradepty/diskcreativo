@@ -33,6 +33,16 @@ html, body {
     box-sizing: border-box; 
     margin: 0; 
     padding: 0; 
+    -webkit-tap-highlight-color: transparent !important;
+}
+
+*, *::before, *::after {
+    -webkit-tap-highlight-color: transparent !important;
+}
+
+a, button, input, select, textarea, [role="button"] {
+    -webkit-tap-highlight-color: transparent !important;
+    outline: none;
 }
 
 body {
@@ -244,8 +254,8 @@ body {
     display: inline-block;
 }
 
-/* ─── 2. BOTÓN INICIO (HENDIDURA 3D ESCULPIDA) ─── */
-.nav-link.nav-link-inicio {
+/* ─── 2. BOTONES DE NAVEGACIÓN Y ESTADO ACTIVO ESCULPIDO ─── */
+.nav-link {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -253,63 +263,106 @@ body {
     font-family: var(--font-sans);
     border-radius: 999px;
     flex-shrink: 0;
-    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    -webkit-tap-highlight-color: transparent !important;
+    user-select: none;
 }
 
-/* En Estado Inicial (Blanco): Hendidura generosa ocupando la izquierda */
-.top-navbar.is-at-top .nav-link.nav-link-inicio {
-    width: 108px;
+.nav-link.nav-link-inicio {
+    font-size: 0.95rem;
+    padding: 0 16px;
     height: 48px;
+}
+
+.nav-link.nav-link-multiline {
+    font-size: 0.80rem;
+    line-height: 1.15;
+    text-align: center;
+    padding: 0 16px;
+    height: 48px;
+}
+
+/* Estado Activo en Inicio (Top / Blanco): Hendidura generosa 3D */
+.top-navbar.is-at-top .nav-link.active {
     background: linear-gradient(180deg, #DCE0E7 0%, #E8EBF0 100%);
     box-shadow: 
         inset 0 2px 4px rgba(0, 0, 0, 0.16),
         inset 0 -1.5px 2px rgba(255, 255, 255, 0.95);
     color: #0E0E12;
-    font-size: 0.98rem;
     font-weight: 700;
 }
 
-/* En Estado Scrolleado (Negro): Hendidura oscura y estilizada */
-.top-navbar.is-scrolled .nav-link.nav-link-inicio,
-.top-navbar:not(.is-at-top) .nav-link.nav-link-inicio {
-    width: 86px;
-    height: 44px;
+.top-navbar.is-at-top .nav-link.nav-link-inicio.active {
+    width: 108px;
+    padding: 0;
+}
+
+.top-navbar.is-at-top .nav-link.nav-link-multiline.active {
+    padding: 0 16px;
+}
+
+/* Estado Activo en Scrolleado (Negro / Dark Glass): Hendidura oscura y estilizada */
+.top-navbar.is-scrolled .nav-link.active,
+.top-navbar:not(.is-at-top) .nav-link.active {
     background: linear-gradient(180deg, #2A2A32 0%, #1F1F25 100%);
     box-shadow: 
         inset 0 2px 4px rgba(0, 0, 0, 0.75),
         inset 0 -1px 1.5px rgba(255, 255, 255, 0.12);
     color: #FFFFFF;
-    font-size: 0.86rem;
     font-weight: 600;
 }
 
-/* ─── 3. BOTÓN 'INICIA TU PROYECTO' ─── */
-.nav-link.nav-link-multiline {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    font-family: var(--font-sans);
-    font-size: 0.82rem;
-    line-height: 1.15;
-    text-align: left;
-    flex-shrink: 0;
-    transition: color 0.35s ease, opacity 0.35s ease;
+.top-navbar.is-scrolled .nav-link.nav-link-inicio.active,
+.top-navbar:not(.is-at-top) .nav-link.nav-link-inicio.active {
+    width: 86px;
+    height: 44px;
+    padding: 0;
+    font-size: 0.86rem;
 }
 
-.top-navbar.is-at-top .nav-link.nav-link-multiline {
+.top-navbar.is-scrolled .nav-link.nav-link-multiline.active,
+.top-navbar:not(.is-at-top) .nav-link.nav-link-multiline.active {
+    height: 44px;
+    padding: 0 14px;
+    font-size: 0.78rem;
+}
+
+/* Estado Inactivo (No Presionado): Texto limpio sin hendidura */
+.top-navbar.is-at-top .nav-link:not(.active) {
+    background: transparent;
+    box-shadow: none;
     color: #1A1A22;
     font-weight: 600;
 }
 
-.top-navbar.is-scrolled .nav-link.nav-link-multiline,
-.top-navbar:not(.is-at-top) .nav-link.nav-link-multiline {
-    color: #FFFFFF;
+.top-navbar.is-scrolled .nav-link:not(.active),
+.top-navbar:not(.is-at-top) .nav-link:not(.active) {
+    background: transparent;
+    box-shadow: none;
+    color: rgba(255, 255, 255, 0.72);
     font-weight: 500;
 }
 
-.nav-link.nav-link-multiline:hover {
-    opacity: 0.8;
+.nav-link:not(.active):hover {
+    opacity: 0.85;
+}
+
+/* Respuesta Háptica al Presionar (Click / Touch Inmediato) */
+.top-navbar.is-at-top .nav-link:active {
+    background: linear-gradient(180deg, #D4D8DF 0%, #DFE3E8 100%);
+    box-shadow: 
+        inset 0 2px 4px rgba(0, 0, 0, 0.2),
+        inset 0 -1px 1.5px rgba(255, 255, 255, 0.9);
+    transform: scale(0.97);
+}
+
+.top-navbar.is-scrolled .nav-link:active,
+.top-navbar:not(.is-at-top) .nav-link:active {
+    background: linear-gradient(180deg, #222228 0%, #18181D 100%);
+    box-shadow: 
+        inset 0 2px 4px rgba(0, 0, 0, 0.8),
+        inset 0 -1px 1px rgba(255, 255, 255, 0.08);
+    transform: scale(0.97);
 }
 
 /* ─── 4. BOTÓN CONTACTO (CÁPSULA TÁCTIL NEGRA) ─── */
@@ -521,18 +574,29 @@ body {
         0% { opacity: 0; transform: translateX(-16px); max-width: 0; }
         100% { opacity: 1; transform: translateX(0); max-width: 90px; }
     }
-    .top-navbar.is-at-top .nav-link.nav-link-inicio { 
+    .top-navbar.is-at-top .nav-link.nav-link-inicio.active { 
         width: 82px;
         height: 38px;
         font-size: 0.82rem; 
         padding: 0;
     }
-    .top-navbar.is-scrolled .nav-link.nav-link-inicio,
-    .top-navbar:not(.is-at-top) .nav-link.nav-link-inicio { 
+    .top-navbar.is-scrolled .nav-link.nav-link-inicio.active,
+    .top-navbar:not(.is-at-top) .nav-link.nav-link-inicio.active { 
         width: 66px;
         height: 36px;
         font-size: 0.74rem; 
         padding: 0;
+    }
+    .top-navbar.is-at-top .nav-link.nav-link-multiline.active { 
+        padding: 0 10px;
+        height: 38px;
+        font-size: 0.66rem; 
+    }
+    .top-navbar.is-scrolled .nav-link.nav-link-multiline.active,
+    .top-navbar:not(.is-at-top) .nav-link.nav-link-multiline.active { 
+        padding: 0 8px;
+        height: 36px;
+        font-size: 0.64rem; 
     }
     .nav-link.nav-link-multiline { 
         font-size: 0.66rem; 

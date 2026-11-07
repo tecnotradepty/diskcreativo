@@ -312,20 +312,24 @@
     pointer-events: none;
 }
 
+/* ─── TRANSICIÓN SUAVE / DIFUMINADO NEGRO (HERO -> IDENTIDAD) ─── */
 .analog-cut {
     width: 100%; 
-    height: 6vh; 
-    min-height: 40px; 
+    height: clamp(60px, 10vh, 120px); 
     display: block;
-    background-image: url('../images/backgrounds/cinta-analogica.jpg');
-    background-size: cover; 
-    background-position: center; 
-    background-repeat: no-repeat;
+    background: linear-gradient(
+        to bottom,
+        rgba(5, 5, 5, 0) 0%,
+        rgba(5, 5, 5, 0.45) 35%,
+        rgba(5, 5, 5, 0.88) 70%,
+        #050505 100%
+    );
     position: relative; 
     z-index: 25; 
-    border-top: var(--hairline); 
-    border-bottom: var(--hairline);
-    box-shadow: 0 -10px 40px rgba(0,0,0,0.9), 0 10px 40px rgba(0,0,0,0.9);
+    border: none;
+    box-shadow: none;
+    margin-top: -40px;
+    pointer-events: none;
 }
 
 /* ─── CUBOS 3D ESPACIALES (AISLADOS EN GPU Y CONFINADOS AL HERO) ─── */

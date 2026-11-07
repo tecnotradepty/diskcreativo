@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Disk Creativo | Corporación Futurista con Alma de Artista</title>
-    <meta name="description" content="Disk Creativo | Antes que programadores e ingenieros, somos humanos, somos artistas. Construimos software a medida, plataformas SaaS y experiencias web hechas para vender.">
+    <title>Disk Creativo | Sandbox Experimental</title>
+    <meta name="description" content="Disk Creativo | Entorno de experimentación y validación de diseño y arquitectura de software.">
     <meta name="theme-color" content="#050505">
     
     <!-- Open Graph / Meta Social -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Disk Creativo | Ingeniería Digital & Arte Creativo">
-    <meta property="og:description" content="Antes que programadores e ingenieros, somos humanos, somos artistas. Software a medida y arquitecturas web diseñadas para vender.">
+    <meta property="og:title" content="Disk Creativo | Sandbox Experimental">
+    <meta property="og:description" content="Entorno de experimentación y validación de diseño de Disk Creativo.">
     <meta property="og:image" content="assets/images/brand/disco-3d.png">
     <meta name="twitter:card" content="summary_large_image">
     
@@ -20,14 +20,15 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,700&display=swap" rel="stylesheet">
 
-    <!-- Hoja de Estilos del Prototipo -->
-    <link rel="stylesheet" href="assets/css/experimento.css?v=19">
+    <!-- Estilos Modulares (Sincronizados con Producción) -->
+    <link rel="stylesheet" href="assets/css/main.css?v=19">
+    <link rel="stylesheet" href="assets/css/landing.css?v=19">
 </head>
 <body>
 
-    <!-- ─── 01. LIENZO ESPACIAL Y ESCENARIO ARCOÍRIS ─── -->
+    <!-- Lienzo de fondo ambiental espacial -->
     <div class="ambient-canvas" id="parallaxBg"></div>
 
     <!-- Ecosistema 3D de Cubos Flotantes -->
@@ -35,15 +36,16 @@
         <div class="cube-container sym-1"><div class="cube-object"><div class="c-f f"></div><div class="c-f bk"></div><div class="c-f L"></div><div class="c-f R"></div><div class="c-f T"></div><div class="c-f B"></div></div></div>
         <div class="cube-container sym-2"><div class="cube-object"><div class="c-f f"></div><div class="c-f bk"></div><div class="c-f L"></div><div class="c-f R"></div><div class="c-f T"></div><div class="c-f B"></div></div></div>
         <div class="cube-container sym-3"><div class="cube-object"><div class="c-f f"></div><div class="c-f bk"></div><div class="c-f L"></div><div class="c-f R"></div><div class="c-f T"></div><div class="c-f B"></div></div></div>
+        <div class="cube-container sym-4"><div class="cube-object"><div class="c-f f"></div><div class="c-f bk"></div><div class="c-f L"></div><div class="c-f R"></div><div class="c-f T"></div><div class="c-f B"></div></div></div>
     </div>
 
-    <!-- Campo de Estrellas -->
+    <!-- Campo de estrellas -->
     <div class="stars-container">
         <div class="stars-1"></div>
         <div class="stars-2"></div>
     </div>
 
-    <!-- ─── 02. NAVBAR CLAYMORPHISM 3D BLACK MIRROR (PROTOTIPO DESLIZABLE) ─── -->
+    <!-- ─── 02. NAVBAR CLAYMORPHISM 3D & APPLE LIQUID GLASS ─── -->
     <nav class="top-navbar nav-claymorphic is-at-top" id="topNavbar">
         <div class="navbar-inner-wrapper">
             <!-- 1. Logo de la Marca: Colapsado en estado inicial, aparece al scrollear -->
@@ -70,17 +72,12 @@
         </div>
     </nav>
 
-    <!-- ─── 03. HERO SECTION (REDiseño EDITORIAL ASIMÉTRICO Y COMPACTO) ─── -->
+    <!-- ─── HERO SECTION (DISTRIBUCIÓN ASIMÉTRICA & COMPACTA) ─── -->
     <section class="hero-section hero-compact" id="inicio">
         <div class="hero-split-container">
             
             <!-- Columna Izquierda: Identidad & Titular Compacto -->
             <div class="hero-text-col">
-                <div class="hero-tag-badge">
-                    <span class="pulse-indicator"></span>
-                    <span>INGENIERÍA DIGITAL // ARTE DE SOFTWARE</span>
-                </div>
-
                 <h1 class="hero-compact-title">
                     <div class="title-line line-disk">
                         <span class="solid-gray-letter delay-1">D</span>
@@ -127,23 +124,19 @@
         </div>
     </section>
 
-    <!-- ─── 04. DIVISIÓN CINTA DE CINE ANALÓGICA (RESTAURADA) ─── -->
+    <!-- Corte Analógico -->
     <div class="analog-cut"></div>
 
-    <!-- ─── 05. CUERPO EDITORIAL Y DE INGENIERÍA ─── -->
+    <!-- ─── CUERPO EDITORIAL Y PORTAFOLIO ─── -->
     <main class="engineering-bg" id="identidad">
         
         <div class="minimal-stars"></div>
 
         <div class="content-wrapper">
             
-            <!-- Bloque 01: Identidad & Maqueta Playground -->
+            <!-- Sección: Bienvenida -->
             <section class="b2b-block">
                 <div class="block-text">
-                    <div class="section-tag-row">
-                        <span class="bp-sub">LA IDENTIDAD <span class="terminal-caret">›</span></span>
-                        <div class="bp-line"></div>
-                    </div>
                     <h2 class="bp-title">Ey, ¿qué tal?<br>Bienvenido a <i>Disk Creativo.</i></h2>
                     <p class="bp-desc">
                         Tu tiempo vale oro y tus ideas merecen un espacio real. Dejamos atrás las plantillas genéricas para materializar arquitecturas web y plataformas diseñadas a la medida de tu modelo comercial.
@@ -151,94 +144,24 @@
                 </div>
                 <div class="block-img">
                     <img src="assets/images/editorial/playground-3d.png" alt="Disk Creativo 3D Playground Render" class="bp-img playground-render" loading="lazy" decoding="async">
-                    <span class="maqueta-caption">FIG_01 // ECOSISTEMA CREATIVO &amp; LABORATORIO DE IDEAS</span>
                 </div>
             </section>
 
-            <!-- Bloque 02: Nuestra Misión & Maqueta Escenario -->
+            <!-- Sección: Nuestra Misión -->
             <section class="b2b-block">
                 <div class="block-text">
-                    <div class="section-tag-row">
-                        <span class="bp-sub">NUESTRA MISIÓN <span class="terminal-caret">›</span></span>
-                        <div class="bp-line"></div>
-                    </div>
-                    <h2 class="bp-title">Construimos software que <i>funciona, escala y factura</i>.</h2>
+                    <span class="bp-sub">NUESTRA MISIÓN <span class="terminal-caret">›</span></span>
                     <p class="bp-desc">
                         El software solo tiene valor si genera resultados comprobables y resuelve problemas operativos reales. En <strong>Disk Creativo</strong> diseñamos infraestructura digital a medida: tomamos la complejidad de tu modelo de negocio y la traducimos en sistemas estables, interfaces de alta conversión y arquitecturas robustas. No improvisamos con soluciones prefabricadas; en un mercado saturado de herramientas genéricas, construimos <strong>plataformas SaaS, automatizaciones y portales transaccionales</strong> que funcionan, escalan y facturan.
                     </p>
                 </div>
                 <div class="block-img">
                     <img src="assets/images/editorial/maqueta-movil.png" alt="Maqueta Visión Móvil" class="bp-img mobile-render" loading="lazy" decoding="async">
-                    <span class="maqueta-caption">FIG_02 // ARQUITECTURA DE SOFTWARE &amp; ESCALABILIDAD</span>
                 </div>
             </section>
 
-            <!-- Bloque 03: Divisiones de Ingeniería Creativa -->
-            <section class="divisions-section" id="divisiones">
-                <div class="divisions-header">
-                    <div class="section-tag-row" style="margin-bottom: 1.2rem;">
-                        <span class="bp-sub">03 // NUESTRAS DIVISIONES</span>
-                        <div class="bp-line"></div>
-                    </div>
-                    <h2 class="bp-title">Tecnología de corporación futurista, creada por <i>artistas</i>.</h2>
-                </div>
-
-                <div class="divisions-grid">
-                    <!-- División 1 -->
-                    <div class="division-card">
-                        <div>
-                            <div class="div-top">
-                                <span class="div-code">MOD_A // EXPERIENCIA</span>
-                                <span class="div-icon">◈</span>
-                            </div>
-                            <h3 style="margin-top: 1.2rem;">Landing Pages Transaccionales</h3>
-                            <p>Obras digitales inmersivas diseñadas con psicología de conversión para transmitir la esencia de tu marca y cerrar ventas.</p>
-                        </div>
-                        <ul class="div-specs">
-                            <li>Dirección de arte única y puesta en escena 3D</li>
-                            <li>Optimización extrema para dispositivos móviles</li>
-                            <li>Conexión directa a cierre en WhatsApp</li>
-                        </ul>
-                    </div>
-
-                    <!-- División 2 -->
-                    <div class="division-card">
-                        <div>
-                            <div class="div-top">
-                                <span class="div-code">MOD_B // ARQUITECTURA</span>
-                                <span class="div-icon">❖</span>
-                            </div>
-                            <h3 style="margin-top: 1.2rem;">Software a Medida &amp; SaaS</h3>
-                            <p>Plataformas web completas, paneles administrativos, sistemas de reservas y herramientas operativas en la nube.</p>
-                        </div>
-                        <ul class="div-specs">
-                            <li>Dashboards personalizados y bases de datos</li>
-                            <li>Interfaces intuitivas centradas en el humano</li>
-                            <li>Código limpio preparado para escalar</li>
-                        </ul>
-                    </div>
-
-                    <!-- División 3 -->
-                    <div class="division-card">
-                        <div>
-                            <div class="div-top">
-                                <span class="div-code">MOD_C // ECOSISTEMAS</span>
-                                <span class="div-icon">⚡</span>
-                            </div>
-                            <h3 style="margin-top: 1.2rem;">Automatización Comercial B2B</h3>
-                            <p>Transformamos procesos manuales lentos en flujos digitales inteligentes que atienden y califican clientes 24/7.</p>
-                        </div>
-                        <ul class="div-specs">
-                            <li>Sistemas de calificación y cotización interactiva</li>
-                            <li>Catálogos dinámicos autogestionables</li>
-                            <li>Integración fluida de herramientas de negocio</li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Bloque 04: El Producto, Maqueta Laptop y Portafolio -->
-            <section class="portfolio-block" id="portafolio">
+            <!-- Sección: El Producto y Portafolio -->
+            <section class="b2b-block portfolio-block" id="proyectos">
                 
                 <div class="projects-header">
                     <h2 class="projects-title">Portafolio</h2>
@@ -246,74 +169,50 @@
 
                 <div class="product-split">
                     <div class="block-text">
-                        <div class="section-tag-row">
-                            <span class="bp-sub">04 // EL PRODUCTO EN ACCIÓN</span>
-                            <div class="bp-line"></div>
-                        </div>
+                        <span class="bp-sub">// EL PRODUCTO</span>
                         <p class="bp-desc">
-                            Construimos software a la medida, automatizaciones, plataformas SaaS y Landing Pages transaccionales. No somos un simple grupo de programadores, somos <span class="bp-highlight">artistas construyendo motores de venta</span>. Porque seamos claros: nuestras arquitecturas no están hechas nada más para verse "pritty", <strong>están hechas para vender.</strong>
+                            Construimos software a la medida, automatizaciones, plataformas SaaS y Landing Pages transaccionales. No somos un simple grupo de programadores, somos <span class="bp-highlight">un motor de ventas</span>. Porque seamos claros: nuestras arquitecturas no están hechas nada más para verse "pritty", <strong>están hechas para vender.</strong>
                         </p>
                     </div>
                     <div class="block-img">
                         <img src="assets/images/editorial/laptop-proyectos.png" alt="Maqueta Proyectos Laptop" class="bp-img laptop-render" loading="lazy" decoding="async">
-                        <span class="maqueta-caption">FIG_03 // MOTOR DE PRODUCCIÓN &amp; CÓDIGO PROPIETARIO</span>
                     </div>
                 </div>
 
                 <!-- Grid Dinámico de Proyectos (Google Sheets API) -->
                 <div class="grid-editorial" id="portfolioGrid">
-                    <div style="grid-column: 1/-1; padding: 3rem; text-align:center; color: var(--text-muted); font-family: var(--font-code);">Iniciando lectura de servidor...</div>
+                    <div style="grid-column: 1/-1; padding: 3rem; text-align:center; color: var(--text-muted);">Iniciando lectura de servidor...</div>
                 </div>
 
-                <!-- Paginación Brutalista -->
+                <!-- Paginación Smooth -->
                 <div class="portfolio-toggle-container" id="toggleContainer" style="display: none;">
-                    <button id="toggleProjectsBtn" class="btn-toggle-portfolio">[ MOSTRAR MÁS PROYECTOS ]</button>
-                </div>
-
-                <!-- Banner de Ignición Final -->
-                <div class="cta-ignition-banner">
-                    <div class="cta-banner-text">
-                        <h3>¿Listo para darle vida a tu idea?</h3>
-                        <p>Abre nuestra consola interactiva, cuéntanos tu visión y diseñemos juntos la infraestructura de tu negocio.</p>
-                    </div>
-                    <a href="dex.html" class="cyber-launch-deck" style="margin-top: 0; max-width: 380px;">
-                        <div class="deck-left">
-                            <div class="deck-power-led">⚡</div>
-                            <div class="deck-Texts">
-                                <span class="deck-label-top">TERMINAL // OS</span>
-                                <span class="deck-main-action">Compilar Proyecto</span>
-                            </div>
-                        </div>
-                        <div class="deck-right">
-                            <span class="deck-keycap">[ ABRIR → ]</span>
-                        </div>
-                    </a>
+                    <button id="toggleProjectsBtn" class="btn-toggle-portfolio">Mostrar más proyectos ↓</button>
                 </div>
 
             </section>
         </div>
+
     </main>
 
-    <!-- ─── FOOTER CORPORATIVO ─── -->
+    <!-- ─── FOOTER B2B ─── -->
     <footer class="b2b-footer">
         <div class="footer-grid">
             <div class="footer-brand">
                 <h2>Disk Creativo</h2>
-                <p>Corporación de infraestructura digital con alma de artista. Desarrollo de ecosistemas B2B, dirección de arte y software de alto rendimiento.</p>
+                <p>Agencia de infraestructura digital, desarrollo de ecosistemas B2B y diseño de software de alto rendimiento.</p>
             </div>
             <div class="footer-nav">
                 <h4>Navegación</h4>
                 <ul>
                     <li><a href="#inicio">La Base</a></li>
-                    <li><a href="#identidad">Identidad &amp; Visión</a></li>
-                    <li><a href="#divisiones">Divisiones</a></li>
-                    <li><a href="#portafolio">Portafolio</a></li>
+                    <li><a href="#identidad">Identidad</a></li>
+                    <li><a href="dex.html">Construye tu Proyecto</a></li>
                 </ul>
             </div>
             <div class="footer-nav">
                 <h4>Contacto</h4>
                 <ul>
-                    <li><a href="dex.html">Construye tu Proyecto</a></li>
+                    <li><a href="#">Ciudad de Panamá, PTY</a></li>
                     <li><a href="mailto:hello@diskcreativo.com">hello@diskcreativo.com</a></li>
                     <li><a href="https://wa.me/50768529324" target="_blank" rel="noopener noreferrer">Atención Directa (WhatsApp)</a></li>
                 </ul>
@@ -321,14 +220,13 @@
         </div>
         <div class="footer-bottom">
             <span>&copy; 2026 Disk Creativo. Todos los derechos reservados.</span>
-            <span>Humanos y artistas desplegando desde el Casco Antiguo, PTY.</span>
+            <span>Desplegado desde el Casco Antiguo.</span>
         </div>
     </footer>
 
-    <!-- Conmutador de Prueba de la Barra Claymorphism en Experimento -->
+    <!-- Conmutador de Prueba de la Barra en Sandbox -->
     <div style="position: fixed; bottom: 20px; right: 20px; z-index: 9999; display: flex; gap: 8px; background: rgba(10,10,14,0.92); backdrop-filter: blur(12px); padding: 8px; border: 1px solid rgba(255,255,255,0.18); border-radius: 8px; font-family: monospace; font-size: 11px; box-shadow: 0 10px 25px rgba(0,0,0,0.5);">
-        <button onclick="document.getElementById('topNavbar').classList.toggle('is-scrolled'); document.getElementById('topNavbar').classList.toggle('is-at-top');" style="background: linear-gradient(135deg, #FFF, #00FF66); color: #000; border: none; padding: 6px 12px; cursor: pointer; font-weight: bold; font-family: inherit; border-radius: 4px;">⚡ TEST INTERACTIVO: ESTADO INICIAL ⮂ FINAL</button>
-        <button onclick="document.getElementById('topNavbar').classList.toggle('style-edge')" style="background: #222; color: #FFF; border: 1px solid #555; padding: 6px 12px; cursor: pointer; font-weight: bold; font-family: inherit; border-radius: 4px;">CÁPSULA / BORDE A BORDE</button>
+        <button onclick="document.getElementById('topNavbar').classList.toggle('is-scrolled'); document.getElementById('topNavbar').classList.toggle('is-at-top');" style="background: linear-gradient(135deg, #FFF, #00FF66); color: #000; border: none; padding: 6px 12px; cursor: pointer; font-weight: bold; font-family: inherit; border-radius: 4px;">⚡ TOGGLE NAVBAR: INICIAL ⮂ FINAL</button>
     </div>
 
     <!-- Scripts Modulares -->

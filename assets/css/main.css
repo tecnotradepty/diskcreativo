@@ -3,8 +3,11 @@
     --bg-primary: #050505;
     --bg-secondary: #0A0A0C;
     --brand-purple: #6B00FF;
-    --accent-neon: #00FF66;
-    --accent-neon-glow: rgba(0, 255, 102, 0.35);
+    --accent-neon: #B565FF;
+    --accent-neon-glow: rgba(181, 101, 255, 0.42);
+    --accent-violet-light: #D8B4FE;
+    --accent-violet-vivid: #A855F7;
+    --accent-violet-deep: #7000FF;
     --accent-cyan: #00F0FF;
     --text-main: #EAE9E4; 
     --text-muted: rgba(234, 233, 228, 0.6);
@@ -64,9 +67,9 @@ body {
     background-color: var(--bg-primary);
     background-image: 
         /* Fusión suave a los costados hacia negro sólido */
-        linear-gradient(to right, #050505 0%, rgba(5,5,5,0) 20%, rgba(5,5,5,0) 80%, #050505 100%),
-        /* Fusión suave inferior hacia negro antes de la cinta analógica */
-        linear-gradient(to bottom, rgba(5,5,5,0.06) 0%, transparent 40%, rgba(5,5,5,0.85) 80%, #050505 100%),
+        linear-gradient(to right, #050505 0%, rgba(5,5,5,0) 18%, rgba(5,5,5,0) 82%, #050505 100%),
+        /* Fusión vertical suave: las franjas se disuelven progresivamente a negro antes de llegar a Bienvenida */
+        linear-gradient(to bottom, rgba(5,5,5,0.02) 0%, transparent 20%, rgba(5,5,5,0.22) 36%, rgba(5,5,5,0.60) 52%, rgba(5,5,5,0.90) 70%, #050505 82%, #050505 100%),
         /* Fondo original de index */
         url('../images/backgrounds/escenario-lampara.png');
     background-position: center top, center top, center top;
@@ -510,9 +513,9 @@ body {
 .footer-nav h4 { 
     font-family: var(--font-sans); 
     font-size: 0.85rem; 
-    color: #fff; 
+    color: var(--accent-violet-light, #D8B4FE); 
     text-transform: uppercase; 
-    letter-spacing: 1px; 
+    letter-spacing: 1.5px; 
     margin-bottom: 1.5rem; 
     font-weight: 600;
 }
